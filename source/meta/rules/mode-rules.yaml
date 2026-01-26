@@ -1,0 +1,98 @@
+# モードルール（メタモード/開発モード）
+# モード別の編集権限と作業ルールを定義
+
+version: "1.0"
+last_updated: "2026-01-26"
+
+rules:
+  meta_mode:
+    name: "メタモードルール"
+    description: "ハーネス定義時に適用されるルール"
+    embed: true
+    rationale:
+      source: "research/investigations/2026-01-26_context-control-implementation.md"
+      finding: "pre-commit フックでモード分離を実現"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "meta/* ブランチでのみ source/ を編集する"
+      - "source/ 変更後は ./scripts/generate.sh を実行する"
+      - "generated/ の変更もコミットに含める"
+      - "repos/ は読み取り専用（参照のみ）"
+    must_not:
+      - "master ブランチで source/ を編集しない"
+      - "repos/ を編集しない"
+    checks:
+      pre_commit:
+        - question: "meta/* ブランチで作業しているか？"
+          method: "git branch --show-current でブランチ名を確認"
+        - question: "generate.sh を実行したか？"
+          method: "git diff --name-only で source/ と generated/ の整合性を確認"
+
+  dev_mode:
+    name: "開発モードルール"
+    description: "プロダクト開発時に適用されるルール"
+    embed: true
+    rationale:
+      source: "docs/agreement.md"
+      finding: "SAT は repos/ で作業し、縦×横エージェントを使用"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "master または feature/* ブランチで repos/ を編集する"
+      - "縦×横エージェントを使用する"
+      - "中間生成物（契約・失敗モード・テスト戦略）を作成する"
+      - "source/ は読み取り専用（参照のみ）"
+      - "generated/ は読み取り専用（参照のみ）"
+    must_not:
+      - "source/ を直接編集しない"
+      - "generated/ を直接編集しない"
+      - "meta/* ブランチで repos/ を編集しない"
+    checks:
+      pre_commit:
+        - question: "repos/ のみを編集しているか？"
+          method: "git diff --name-only | grep -v '^source/' -v '^generated/'"
+        - question: "中間生成物を作成したか？"
+          method: "契約・失敗モード・テスト戦略ファイルの存在を確認"
+
+  branch_strategy:
+    name: "ブランチ戦略"
+    description: "モード別のブランチ運用ルール"
+    embed: false
+    branches:
+      meta:
+        pattern: "meta/*"
+        purpose: "ハーネス定義の編集"
+        editable:
+          - "source/"
+          - "scripts/"
+          - "research/"
+        readonly:
+          - "repos/"
+          - "generated/"
+      dev:
+        pattern: "master, feature/*, fix/*"
+        purpose: "プロダクト開発"
+        editable:
+          - "repos/"
+        readonly:
+          - "source/"
+          - "generated/"

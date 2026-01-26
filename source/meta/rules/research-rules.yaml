@@ -1,0 +1,261 @@
+# リサーチルール（調査・文書作成・振り返り時に適用）
+# Webリサーチ、文書規約、学習還流等、調査・学習タスクに適用
+#
+# 用語定義は source/_shared/glossary.yaml を参照
+
+version: "1.0"
+last_updated: "2026-01-26"
+glossary_ref: "../_shared/glossary.yaml"
+
+rules:
+  web_research_first:
+    name: "Webリサーチ優先"
+    description: "疑問・不明・陳腐化しやすい情報は必ずWebリサーチを実施する"
+    embed: false
+    rationale:
+      source: "research/investigations/2026-01-26_llm-context-rule-management.md"
+      id: "R1"
+      finding: "調査タスク時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "調査、リサーチ、仕様確認時に適用"
+      claude:
+        priority: "medium"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "guideline"
+    checks:
+      implement:
+        - question: "調査が必要な場合、Web リサーチを実施したか？"
+          method: "research/investigations/ に記録があるか確認"
+      pre_commit:
+        - question: "調査結果が記録されているか？"
+          method: "調査タスクの場合、research/investigations/ を確認"
+    triggers:
+      - "疑問に思った時"
+      - "確信が持てない時"
+      - "外部ツール・ライブラリの仕様に関する時"
+      - "ベストプラクティスを確認したい時"
+      - "最新情報が必要な時"
+    must:
+      - "推測で回答せず、まずWebリサーチを実施する"
+      - "公式ドキュメントを優先的に参照する"
+      - "複数ソースでクロス検証する"
+      - "ソースの信頼性を評価する（CRAAP テスト）"
+    anti_patterns:
+      - "古い知識で回答する"
+      - "推測を事実のように述べる"
+      - "単一ソースで判断する"
+    output: "調査結果は research/investigations/ に記録し、引用を明記する"
+
+  ai_markdown:
+    name: "AI向けマークダウン記述規約"
+    description: "AIがマークダウンを書く際の装飾抑制とプロンプト可読性を確保する"
+    embed: false
+    rationale:
+      source: "research/investigations/2026-01-26_ai-markdown-best-practices.md"
+      finding: "文書作成時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "マークダウン作成、文書生成時に適用"
+      claude:
+        priority: "low"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "guideline"
+    checks:
+      pre_commit:
+        - question: "** を使っていないか？"
+          method: "rg '\\*\\*' --type md で確認"
+        - question: "区切り線を使っていないか？"
+          method: "rg '^---$' --type md で確認"
+    formatting_rules:
+      emphasis:
+        format: "__text__（** は使わない）"
+        allowed:
+          - "テーブルの合計行・小計行"
+          - "警告・注意事項の冒頭"
+        prohibited:
+          - "本文中の装飾目的の強調"
+          - "見出し内（見出しは ## で十分に目立つ）"
+      must:
+        - "絵文字は使わない（箇条書きは「-」で統一）"
+        - "区切り線（---）は使わない（見出しで分離する）"
+        - "emダッシュ（—）は使わない"
+        - "見出しは sentence case（文頭のみ大文字）"
+        - "箇条書きの末尾にピリオドを付けない（1文の場合）"
+      must_not:
+        - "Title Case の見出しにしない"
+        - "改行の代わりに line break を使わない（新しい段落を使う）"
+    prompt_structure:
+      description: "AIが解釈しやすいプロンプト構造"
+      principles:
+        - "指示を文脈より先に配置する"
+        - "セクションを明示的に区切る（### または XML タグ）"
+        - "出力形式の具体例（Few-shot）を示す"
+      claude_style: "XML タグ（<instructions>, <example>, <context>）で分離"
+      openai_style: "マークダウン見出し（###）と区切り文字（\"\"\"）で分離"
+    known_limitations:
+      - "emダッシュは訓練データの影響で完全抑制が困難"
+      - "会話が長くなると装飾が復活するため、定期的に再提示が必要"
+    suppression_prompt: |
+      以下のフォーマットルールに従ってください：
+      - 強調（__text__）はテーブル合計行・警告のみ。本文中では使わない
+      - 絵文字は使わない。箇条書きは「-」を使用
+      - emダッシュ（—）は使わない
+      - 区切り線（---）は使わない
+      - 見出しは sentence case（文頭のみ大文字）
+      - 改行ではなく新しい段落を使う
+      - 箇条書きが1文の場合、末尾にピリオドを付けない
+
+  external_docs:
+    name: "外部ドキュメント参照"
+    description: "外部ツールの仕様は公式ドキュメントを参照し、内部ドキュメント化しない"
+    embed: false
+    rationale:
+      source: "general"
+      finding: "外部ツール参照時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "外部ツール、ライブラリの仕様参照時に適用"
+      claude:
+        priority: "low"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "reference"
+    checks:
+      pre_commit:
+        - question: "外部ツールの仕様をコピペしていないか？"
+          method: "内部ドキュメントに外部仕様の詳細がないか確認"
+    must:
+      - "外部ツールの仕様は公式ドキュメントURLを参照する"
+      - "research/domains/tools.md にリンクのみ維持する"
+      - "URLは定期的に検証する"
+    must_not:
+      - "外部ツールの詳細仕様を内部ドキュメントとして固めない"
+      - "公式ドキュメントの内容をコピー&ペーストで複製しない"
+    reason: "外部ツールの仕様は急速に変化し、内部ドキュメントは即座に陳腐化するため"
+
+  research:
+    name: "リサーチ運用"
+    description: "週次リサーチでパラダイム変化をトラッキングする"
+    embed: false
+    rationale:
+      source: "general"
+      finding: "週次リサーチ時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "週次リサーチ、トラッキング時に適用"
+      claude:
+        priority: "low"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "guideline"
+    checks:
+      session_start:
+        - question: "週次リサーチが更新されているか？"
+          method: "research/weekly/ の最新ファイルを確認"
+    must:
+      - "毎週 research/weekly/YYYY-WW.md を作成する"
+      - "変化を検知したら changelog.md に記録する"
+      - "レバレッジポイントで影響度を判断する"
+    should:
+      - "高レバレッジの変化は慎重に検討する"
+      - "Slice 0 で小さく検証してから展開する"
+    cadence: "weekly"
+
+  feedback_loop:
+    name: "フィードバックループ"
+    description: "学習を還流させる"
+    embed: false
+    rationale:
+      source: "general"
+      finding: "振り返り時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "振り返り、学習還流時に適用"
+      claude:
+        priority: "low"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "guideline"
+    checks:
+      pre_commit:
+        - question: "学習を changelog.md に記録したか？"
+          method: "changelog.md の更新を確認"
+    must:
+      - "リサーチで得た学習を domains/ に反映する"
+      - "運用で得た学習を source/ に反映する"
+      - "changelog.md に対応を記録する"
+    check_questions:
+      - "学習還流ループは回っているか？"
+      - "品質担保ループは回っているか？"
+      - "リサーチループは回っているか？"
+      - "削除ループは回っているか？"
+
+  retrospective:
+    name: "振り返りとルール進化"
+    description: "学習をルールに反映し、次セッションに引き継ぐ"
+    embed: false
+    rationale:
+      source: "general"
+      finding: "セッション終了時に適用"
+    tool_config:
+      cursor:
+        alwaysApply: false
+        type: "intelligent"
+        description: "セッション終了、振り返り時に適用"
+      claude:
+        priority: "low"
+        location: "rules"
+      devin:
+        trigger: "on_demand"
+        knowledge_type: "guideline"
+    checks_dynamic:
+      session_start:
+        - question: "changelog.md に未反映の学習はないか？"
+          method: "changelog.md の直近エントリを確認"
+      pre_commit:
+        - question: "セッション中の学習を記録したか？"
+          method: "changelog.md の更新を確認"
+    timing:
+      pre_commit: "コミット前に振り返りを実施"
+      session_start: "セッション開始時に未反映学習を確認"
+    flow:
+      pre_commit:
+        - "セッション中の学習を特定"
+        - "changelog.md に記録"
+        - "ルール変更が必要か判断"
+        - "必要なら proposal を作成または即時修正"
+      session_start:
+        - "changelog.md の直近エントリを確認"
+        - "未反映の学習を特定"
+        - "ルール/スキル/エージェントへの反映を提案"
+    must:
+      - "学習は必ず changelog.md に記録する"
+      - "ルール変更が必要な学習は放置しない"
+      - "セッション開始時に未反映学習を確認する"
+    checks:
+      - "changelog.md の学習エントリに対応するルール変更があるか"
+      - "作成したサブエージェントを実際に使用しているか"
+      - "定義したルールを徹底できているか"
+    anti_patterns:
+      - "学習を記録しない"
+      - "学習を記録するが、ルールに反映しない"
+      - "ルールを作成するが、使用しない"
+      - "サブエージェントを作成するが、動作検証しない"

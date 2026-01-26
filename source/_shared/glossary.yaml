@@ -1,0 +1,99 @@
+# 用語集（Glossary）
+# AIが初期セッションで理解できるよう、ハイコンテキストな用語を定義
+# このファイルは generate.sh で参照され、各ツール向けルールファイルに埋め込まれる
+
+version: "1.0"
+last_updated: "2026-01-26"
+
+terms:
+  SSoT:
+    full_name: "Single Source of Truth"
+    ja: "単一の情報源"
+    description: "情報を一箇所で管理し、他の場所はそこから生成する原則。ダブルメンテ（複数箇所での重複管理）を防ぐ"
+    example: "source/ を編集し、.cursor/rules/ や .claude/rules/ は自動生成する"
+
+  CRAAP:
+    full_name: "Currency, Relevance, Authority, Accuracy, Purpose"
+    ja: "信頼性評価の5観点"
+    description: "ソースの信頼性を評価するフレームワーク。Currency（最新性）、Relevance（関連性）、Authority（権威性）、Accuracy（正確性）、Purpose（目的）"
+    usage: "Webリサーチ時にソースの信頼性を評価する際に使用"
+
+  Lost_in_the_Middle:
+    ja: "中間位置の情報損失"
+    description: "LLMがコンテキストの中間部分を無視しやすい現象。先頭と末尾の情報が優先され、中間の情報は見落とされやすい"
+    source: "Amazon Science 2025"
+    implication: "重要なルールは先頭または末尾に配置すべき"
+
+  Apply_Intelligently:
+    ja: "知的適用"
+    description: "Cursor の機能。Agent が description を見てルールの関連性を判断し、必要な場合のみコンテキストに含める"
+    tool: "cursor"
+    config: "alwaysApply: false で有効化"
+
+  Slice_0:
+    ja: "スライス0"
+    description: "最小の検証可能な変更単位。大きな変更を小さく分割し、先に検証してから展開する手法"
+    purpose: "リスクを最小化し、早期にフィードバックを得る"
+
+  vertical_slice:
+    full_name: "Vertical Slice"
+    ja: "バーティカルスライス"
+    description: "機能を薄く縦に切り、Plan→実装→検査を一貫して完結させる手法。横断的な変更ではなく、価値を端から端まで通す"
+    flow: "Plan → Implement → Validate"
+
+  intermediate_artifacts:
+    ja: "中間生成物"
+    description: "契約・失敗モード・テスト戦略など、コードの前に作成する検査可能な成果物。意図と根拠を明示し、レビュー可能にする"
+    source: "Righting Software"
+    examples:
+      - "契約: 何を作るか（スコープ、変更ファイル）"
+      - "失敗モード: 何が壊れうるか（リスク、対策）"
+      - "テスト戦略: どう検証するか（成功条件）"
+
+  rationale:
+    ja: "根拠"
+    description: "なぜそのルールや決定があるのかの理由。調査結果へのリンクを含み、トレーサビリティを確保する"
+    fields:
+      - "source: 調査レポートへのパス"
+      - "id: 調査レポート内の発見ID（R1, R2, ...）"
+
+  tool_config:
+    ja: "ツール固有設定"
+    description: "Cursor、Claude Code、Devin など各ツールの仕様差分を吸収するためのメタデータ"
+    purpose: "SSoT から各ツール向けファイルを生成する際に使用"
+
+  parallel_dispatch:
+    ja: "並列実行"
+    description: "独立したタスクを複数のサブエージェントで同時に実行するパターン"
+    conditions:
+      - "3つ以上の独立タスク"
+      - "タスク間で共有状態なし"
+      - "ファイル境界が明確（重複なし）"
+    examples:
+      - "Frontend/Backend/DB の同時変更"
+      - "複数の独立した調査タスク"
+    source: "research/investigations/2026-01-26_parallel-implementation-best-practices.md"
+
+  sequential_dispatch:
+    ja: "順次実行"
+    description: "依存関係のあるタスクを順番に実行するパターン"
+    conditions:
+      - "タスク間に依存関係がある（B は A の出力が必要）"
+      - "共有ファイル/状態がある（マージコンフリクトリスク）"
+      - "スコープが不明確（先に理解が必要）"
+    examples:
+      - "Schema → API → Frontend のチェーン"
+      - "調査 → 計画 → 実装"
+    source: "research/investigations/2026-01-26_parallel-implementation-best-practices.md"
+
+  background_dispatch:
+    ja: "バックグラウンド実行"
+    description: "メイン作業をブロックせずにリサーチ/分析タスクを実行するパターン"
+    conditions:
+      - "リサーチ/分析タスク（ファイル変更なし）"
+      - "結果が即座に必要ではない"
+      - "メイン作業をブロックしたくない"
+    examples:
+      - "Web リサーチ、ドキュメント調査"
+      - "コードベース探索、分析"
+    source: "research/investigations/2026-01-26_parallel-implementation-best-practices.md"

@@ -1,0 +1,202 @@
+# コアルール（常時適用）
+# SSoT、コミット規約、文書規約など、全てのタスクで適用されるルール
+# 
+# 用語定義は source/_shared/glossary.yaml を参照
+
+version: "1.0"
+last_updated: "2026-01-26"
+glossary_ref: "../_shared/glossary.yaml"
+
+rules:
+  ssot:
+    name: "SSoT運用"
+    description: "ダブルメンテを禁止し、source/ から自動生成する"
+    embed: true  # 超重要: .mdc に直接展開してコンテキストに常に含める
+    rationale:
+      source: "research/investigations/2026-01-26_llm-context-rule-management.md"
+      id: "R1"
+      finding: "SSoTは重要度最高のルールとして先頭に配置すべき"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "source/ を編集し、generated/ は直接編集しない"
+      - "変更後は ./scripts/generate.sh を実行する"
+      - "generated/ の変更もコミットに含める"
+    must_not:
+      - "generated/ 内のファイルを直接編集しない"
+      - "source/ と generated/ の不整合を放置しない"
+    checks:
+      session_start:
+        - question: "前セッションで source/ と generated/ の不整合はなかったか？"
+          method: "git status で未コミットの generated/ 変更を確認"
+      pre_commit:
+        - question: "generate.sh を実行したか？"
+          method: "git diff --name-only で source/ と generated/ の整合性を確認"
+        - question: "generated/ を直接編集していないか？"
+          method: "コミット履歴で generated/ のみの変更がないか確認"
+
+  commit:
+    name: "コミット規約"
+    description: "論理的な変更単位で分割する"
+    embed: true  # 超重要: .mdc に直接展開
+    rationale:
+      source: "research/investigations/2026-01-26_llm-context-rule-management.md"
+      id: "R1"
+      finding: "コミット規約は常時適用すべき基本ルール"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "構造変更、内容修正、追加、削除を混ぜない"
+      - "コミットメッセージは変更意図を簡潔に記述する"
+    patterns:
+      - "feat: [機能追加]"
+      - "fix: [修正]"
+      - "docs: [文書更新]"
+      - "refactor: [リファクタ]"
+      - "research: [リサーチ更新]"
+    checks:
+      pre_commit:
+        - question: "構造変更と内容修正を混ぜていないか？"
+          method: "git diff --stat でファイル種別を確認"
+        - question: "コミットメッセージが変更意図を表しているか？"
+          method: "メッセージが patterns のいずれかに従っているか確認"
+
+  documentation:
+    name: "文書規約"
+    description: "Git diff が読みやすい状態を保つ"
+    embed: false  # 参照で十分
+    rationale:
+      source: "research/investigations/2026-01-26_llm-context-rule-management.md"
+      id: "R1"
+      finding: "文書規約は常時適用すべき基本ルール"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "段落単位で改行する"
+      - "見出しは階層を明確にする"
+      - "__強調__ を使い、** は使わない"
+    should:
+      - "変更意図をコミットメッセージに記述する"
+      - "意味が変わる変更は理由を記録する"
+    checks:
+      pre_commit:
+        - question: "** を使っていないか？"
+          method: "rg '\\*\\*' で確認"
+
+  communication:
+    name: "コミュニケーション規約"
+    description: "ユーザーとの対話で明確な判断を示す"
+    embed: true  # 超重要: 常にコンテキストに含める
+    rationale:
+      source: "2026-01-26 セッションでの学習"
+      finding: "選択肢を提示するだけでは判断をユーザーに丸投げしている"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    must:
+      - "選択肢を提示する際は、どれが最も適切かを明示する"
+      - "推奨の理由を簡潔に説明する"
+      - "他の選択肢を却下する理由も述べる"
+    anti_patterns:
+      - "選択肢を並べるだけで推奨を示さない"
+      - "「どれにしますか？」で終わる"
+    checks:
+      implement:
+        - question: "選択肢提示時に推奨を明示しているか？"
+          method: "出力に「推奨」「最適」などのキーワードがあるか確認"
+
+  agent_routing:
+    name: "サブエージェントルーティング"
+    description: "タイミングに応じて適切なサブエージェントを呼び出す"
+    embed: true  # 超重要: 常にコンテキストに含める
+    rationale:
+      source: "research/proposals/2026-01-26_agent-routing-explicit.md"
+      finding: "サブエージェント呼び出しが明示されていないため、バリデーターが実行されなかった"
+    tool_config:
+      cursor:
+        globs: ["*"]
+        alwaysApply: true
+        type: "always"
+      claude:
+        priority: "high"
+        location: "rules"
+      devin:
+        trigger: "always"
+        knowledge_type: "rule"
+    routing_table:
+      調査:
+        - agent: "deep-research"
+          purpose: "複数ソースから情報収集"
+      plan:
+        - agent: "rules-validator"
+          purpose: "Plan がルールに沿っているか検査"
+          timing: "plan"
+      実装後:
+        - agent: "ssot-validator"
+          purpose: "SSoT 整合性検査"
+      コミット前:
+        - agent: "ssot-validator"
+          purpose: "SSoT 整合性検査"
+        - agent: "rules-validator"
+          purpose: "全ルール検査"
+          timing: "pre_commit"
+      マークダウン編集時:
+        - agent: "markdown-reviewer"
+          purpose: "ai_markdown ルール検査"
+      問題発生時:
+        - agent: "systematic-debugger"
+          purpose: "要因分割と検証"
+      週次:
+        - agent: "weekly-research"
+          purpose: "パラダイム変化トラッキング"
+    must:
+      - "調査タスク時は deep-research サブエージェントを呼び出す"
+      - "Plan フェーズで rules-validator サブエージェントを呼び出す（timing: plan）"
+      - "実装後に ssot-validator サブエージェントを呼び出す"
+      - "コミット前に ssot-validator サブエージェントを呼び出す"
+      - "コミット前に rules-validator サブエージェントを呼び出す（timing: pre_commit）"
+      - "問題発生時は systematic-debugger サブエージェントを呼び出す"
+    checks:
+      plan:
+        - question: "rules-validator サブエージェントを呼び出したか？"
+          method: "Plan 検査の実行を確認"
+      pre_commit:
+        - question: "ssot-validator サブエージェントを呼び出したか？"
+          method: "SSoT 整合性検査の実行を確認"
+        - question: "rules-validator サブエージェントを呼び出したか？"
+          method: "全ルール検査の実行を確認"
