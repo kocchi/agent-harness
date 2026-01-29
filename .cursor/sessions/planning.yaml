@@ -1,0 +1,75 @@
+# Planning Session
+# 方針・計画の決定のための場
+# スクラムの Sprint Planning に相当
+
+id: planning
+
+purpose: "方針・計画の決定"
+
+description: |
+  複数の選択肢から方向性を決める場。
+  長期的な視点と YAGNI のバランスを取りながら、
+  具体的な計画と受け入れ基準を策定する。
+
+# 参加者構成
+participants:
+  executor:
+    role: "計画策定者"
+    perspective: "長期視点、システム思考"
+    examples:
+      - "Peter Senge - 学習する組織、フィードバックループ"
+      - "Jeff Sutherland - スクラム、経験主義"
+  watcher:
+    role: "検査者"
+    perspective: "YAGNI、シンプルさ"
+    examples:
+      - "Kent Beck - 極限のシンプルさ、必要になるまで作らない"
+  system_thinker:
+    role: "全体観察（オプション）"
+    perspective: "フィードバックループ、システムアーキタイプ"
+
+# 人格インストール
+persona:
+  required: true
+  selection_axes:
+    - "追加 vs 削減"
+    - "短期 vs 長期"
+  rationale: "計画には複数の有効なアプローチがあり、メンタルモデルが判断に影響する"
+
+# イテレーション
+iterations:
+  min: 2
+  max: 3
+  criteria: "watcher が issues を出している間"
+  rationale: |
+    計画は一度で完璧にはならない。
+    watcher の YAGNI 視点で削ぎ落とし、
+    executor の長期視点で必要なものを守る。
+    このやり取りで計画が磨かれる。
+
+# 入出力
+inputs:
+  - "目標（何を達成したいか）"
+  - "制約（時間、リソース、技術的制約）"
+  - "コンテキスト（背景、関連情報）"
+
+outputs:
+  - "計画書（何を、どの順序で）"
+  - "受け入れ基準（何をもって完了とするか）"
+  - "リスクと対策"
+
+# 終了条件
+completion:
+  success: "executor と watcher が計画に合意し、受け入れ基準が明確"
+  escalation: "3イテレーションで合意できない場合、ユーザーにエスカレーション"
+
+# 遷移
+transitions:
+  on_success: "design または implement"
+  on_issues: "retrospective（計画プロセス自体に問題がある場合）"
+
+# 検査観点
+inspection:
+  - "VISION.md の方向性と整合しているか"
+  - "YAGNI を満たしているか"
+  - "受け入れ基準が検証可能か"

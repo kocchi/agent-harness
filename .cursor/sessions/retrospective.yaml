@@ -1,0 +1,106 @@
+# Retrospective Session
+# プロセス改善のための場
+# スクラムの Sprint Retrospective に相当
+
+id: retrospective
+
+purpose: "プロセス改善"
+
+description: |
+  何がうまくいったか、何がうまくいかなかったかを振り返り、
+  改善策を導く場。Learning Ledger から学びを抽出し、
+  次のサイクルに活かす。
+
+# 参加者構成
+participants:
+  executor:
+    role: "ファシリテーター"
+    perspective: "振り返りの進行、気づきの整理"
+    examples:
+      - "Esther Derby - Agile Retrospectives の著者"
+      - "Diana Larsen - レトロスペクティブの専門家"
+  watcher:
+    role: "システム思考者"
+    perspective: "全体パターン、フィードバックループ"
+    examples:
+      - "Peter Senge - 学習する組織、システムアーキタイプ"
+  system_thinker:
+    role: "watcher と兼任可"
+    perspective: "メタ的な視点"
+
+# 人格インストール
+persona:
+  required: true
+  selection_axes:
+    - "局所 vs 全体"
+  rationale: "振り返りには多角的な視点が有効。局所的な改善と全体最適のバランス"
+
+# イテレーション
+iterations:
+  min: 1
+  max: 1
+  criteria: "改善提案リスト作成"
+  rationale: |
+    レトロスペクティブは通常1回で完結する。
+    重要なのは「改善提案」を出すこと。
+
+# 入出力
+inputs:
+  - "Learning Ledger エントリ（期間内の決定、成果、学び）"
+  - "期間（振り返る範囲）"
+  - "関連するコンテキスト"
+
+outputs:
+  - "改善提案（優先順位付き）"
+  - "学び（Learning Ledger に記録）"
+  - "プロセス変更（ルール、スキルの更新提案）"
+
+# 終了条件
+completion:
+  success: "改善提案リストが作成され、優先順位が明確"
+  escalation: "重大なプロセス問題が発見された場合、ユーザーに報告"
+
+# 遷移
+transitions:
+  on_success: "planning（次のサイクルへ）"
+  on_issues: "planning（プロセス改善を計画に組み込む）"
+
+# 検査観点
+inspection:
+  - "Learning Ledger から学びが抽出されたか"
+  - "改善提案が具体的で実行可能か"
+  - "システムアーキタイプ（成功への妥協、対症療法への依存など）が検出されたか"
+
+# 振り返りフォーマット
+formats:
+  4Ls:
+    description: "Liked, Learned, Lacked, Longed For"
+    use_when: "一般的な振り返り"
+  
+  KPT:
+    description: "Keep, Problem, Try"
+    use_when: "シンプルな改善サイクル"
+  
+  KPT_plus:
+    description: "Keep, Problem, Try + Stop"
+    use_when: "棚卸しも含めた振り返り"
+    lifecycle: |
+      Problem → Try（実験）→ Keep（効果あり）→ Rule（ルール化）
+      Try → Stop（効果なし）
+      Keep/Rule → Stop（棚卸しで廃止）
+    note: "改善提案の段階的昇格フローを含む。詳細は repos/specs/improvement-lifecycle.yaml を参照"
+  
+  start_stop_continue:
+    description: "何を始める、やめる、続けるか"
+    use_when: "シンプルな改善に集中したい"
+  
+  sailboat:
+    description: "風（推進力）、錨（阻害）、岩（リスク）"
+    use_when: "リスクも含めて分析したい"
+
+# 自動トリガー
+auto_trigger:
+  conditions:
+    - "3回以上同じ失敗パターンが検出された（DEBT-003）"
+    - "Learning Ledger エントリが一定数を超えた"
+    - "ユーザーが明示的に要求した"

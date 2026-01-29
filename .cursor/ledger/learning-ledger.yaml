@@ -1,0 +1,157 @@
+# Learning Ledger - 契約定義
+# v0.3 Phase 1 で導入
+# システムの「メタ認知」を記録するシンプルなログ
+
+name: LearningLedger
+version: "0.1.0"
+schema_version: 1  # Fowler提案：スキーマ進化のため最初から入れる
+
+description: |
+  各コンポーネントの判断理由を記録し、システムが自分自身について学習できるようにする。
+  - 追記のみ（イミュータブル）
+  - 全ての判断には理由が必要
+  - 将来のパターン検出や自動改善提案の入力データ
+
+interface:
+  record:
+    description: "判断を記録する"
+    input:
+      component:
+        type: string
+        enum: ["TaskClassifier", "PersonaStrategy", "executor", "watcher", "ImprovementLifecycle", "SessionSelector", "system"]
+        required: true
+      event_type:
+        type: string
+        enum: ["decision", "outcome", "anomaly", "debt_recognized", "learning", "problem_identified", "try_proposed", "try_evaluated", "keep_promoted", "stopped"]
+        required: true
+      content:
+        type: string
+        description: "何をしたか"
+        required: true
+      rationale:
+        type: string
+        description: "なぜそうしたか（空禁止）"
+        required: true
+        constraints:
+          - min_length: 1
+    output:
+      entry_id:
+        type: string
+        format: "LEDGER-{timestamp}"
+
+  query_by_pattern:
+    description: "パターンで記録を検索する"
+    status: "implemented"  # Phase 3.1 で実装
+    input:
+      pattern:
+        type: string
+        description: "検索パターン（正規表現）"
+        required: true
+      filters:
+        type: object
+        properties:
+          component:
+            type: array
+            items: string
+            description: "フィルタするコンポーネント"
+          event_type:
+            type: array
+            items: string
+            description: "フィルタするイベントタイプ"
+          date_range:
+            type: object
+            properties:
+              start: { type: string, format: "ISO8601" }
+              end: { type: string, format: "ISO8601" }
+    output:
+      entries:
+        type: array
+        items: LedgerEntry
+      count:
+        type: number
+        description: "マッチした件数"
+
+  query_stats:
+    description: "統計クエリ（Phase 3.2 で実装）"
+    status: "implemented"
+    input:
+      metric:
+        type: string
+        enum: ["fail_rate", "pass_rate", "count"]
+        description: "計算する指標"
+        required: true
+      window:
+        type: object
+        description: "集計ウィンドウ"
+        oneOf:
+          - type: "last_n"
+            value: number
+          - type: "all"
+      filters:
+        type: object
+        properties:
+          component:
+            type: array
+            items: string
+          event_type:
+            type: array
+            items: string
+    output:
+      value:
+        type: number
+        description: "計算された統計値（0.0 - 1.0）"
+      sample_size:
+        type: number
+        description: "サンプルサイズ"
+      confidence_interval:
+        type: object
+        description: "95% Wilson スコア区間"
+        properties:
+          lower: number
+          upper: number
+      sufficient_data:
+        type: boolean
+        description: "サンプルサイズ >= 20"
+      raw_counts:
+        type: object
+        properties:
+          numerator: number
+          denominator: number
+
+  # Phase 3.3 で実装予定
+  discover_patterns:
+    description: "パターン発見（Phase 3.3 で実装予定）"
+    status: "not_implemented"
+    note: "ラン検定も Phase 3.3 で追加予定"
+
+storage:
+  path: "learnings/flow/entries.yaml"
+  format: "append-only"
+  rotation:
+    trigger: "1000 entries"
+    action: "archive to learnings/flow/archive/{year}-{month}.yaml"
+
+guarantees:
+  - 追記のみ（削除・編集禁止）
+  - rationale は必須（空文字は reject）
+  - タイムスタンプは自動付与
+  - entry_id は一意
+
+failure_modes:
+  - id: "storage_full"
+    impact: "記録不能"
+    detection: "ディスク監視"
+    mitigation: "古いエントリをアーカイブ"
+  - id: "invalid_rationale"
+    impact: "学習価値なし"
+    detection: "入力検証"
+    mitigation: "reject with reason"
+  - id: "ledger_unavailable"
+    impact: "学習停止"
+    detection: "ヘルスチェック"
+    mitigation: "フォールバックログ（stderr）"
+
+evolution_hooks:
+  - pattern_detection: "将来、パターン検出を追加可能"
+  - recommendation_engine: "将来、改善提案を追加可能"
+  - ml_integration: "将来、MLモデルで学習可能"

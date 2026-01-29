@@ -1,0 +1,124 @@
+# Session Schema
+# スクラムイベントを型とした「場」の定義スキーマ
+# v1.0.0
+
+schema_version: "1.0"
+
+# セッション（場）の定義スキーマ
+session:
+  # 基本情報
+  id:
+    type: string
+    required: true
+    description: "セッションの識別子"
+  
+  purpose:
+    type: string
+    required: true
+    description: "この場の目的（スクラムガイドの purpose に相当）"
+  
+  # 参加者（VISION P6 準拠）
+  participants:
+    executor:
+      type: string
+      required: true
+      description: "実行者の役割説明"
+    watcher:
+      type: string
+      required: true
+      description: "監視者の役割説明"
+    system_thinker:
+      type: string
+      required: false
+      description: "全体観察者（オプション）"
+  
+  # 人格インストール（VISION P5 準拠）
+  persona:
+    required:
+      type: boolean
+      required: true
+      description: "人格インストールが必須か"
+    selection_axes:
+      type: list
+      required: true
+      description: "推奨する歪み軸のリスト"
+  
+  # イテレーション
+  iterations:
+    min:
+      type: number
+      required: true
+      description: "最小イテレーション回数"
+    max:
+      type: number
+      required: true
+      description: "最大イテレーション回数"
+    criteria:
+      type: string
+      required: true
+      description: "イテレーション継続条件"
+  
+  # 入出力（VISION P2 準拠）
+  inputs:
+    type: list
+    required: true
+    description: "セッション開始時に必要なもの"
+  
+  outputs:
+    type: list
+    required: true
+    description: "セッション終了時に生成されるもの（中間生成物）"
+  
+  # 終了条件
+  completion:
+    success:
+      type: string
+      required: true
+      description: "成功条件"
+    escalation:
+      type: string
+      required: true
+      description: "エスカレーション条件"
+  
+  # 遷移
+  transitions:
+    on_success:
+      type: string
+      required: false
+      description: "成功時の次の場"
+    on_issues:
+      type: string
+      required: false
+      description: "問題発生時の分岐先"
+
+# イテレーション判断基準
+iteration_criteria:
+  single_iteration:
+    description: "1回のイテレーションで十分な条件"
+    conditions:
+      - "決定的に解ける（正解が一つ）"
+      - "設計済み仕様の実装"
+      - "合意形成済み"
+      - "事実の確認のみ"
+  
+  multiple_iterations:
+    description: "複数イテレーションが必要な条件"
+    conditions:
+      - "watcher が issues を出した"
+      - "トレードオフが存在する"
+      - "複数の有効なアプローチがある"
+      - "合意未形成"
+      - "判断基準が曖昧"
+
+# セッション開始時の自動チェック
+session_init:
+  steps:
+    - id: debt_check
+      skill: debt-monitor
+      description: "DEBT アラートがあれば報告"
+    - id: coverage_check
+      skill: coverage-check
+      description: "未使用軸があれば推奨"
+    - id: learning_recall
+      skill: ledger-query
+      description: "関連する過去の学びを提示"

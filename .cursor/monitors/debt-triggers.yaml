@@ -1,0 +1,141 @@
+# Debt Triggers - 認識済み負債のトリガー条件
+# v0.3 Phase 3.1 で導入
+# フィードバック遅延を短縮し、負債を早期発見する
+
+version: "0.1.0"
+
+description: |
+  v0.3 中間生成物セッションで認識された技術的負債を監視する。
+  各負債にトリガー条件を設定し、条件を満たしたらアラートを発行。
+
+# Phase 3.1 では DEBT-003 のみ実装
+monitored_debts:
+  - id: DEBT-003
+    title: "Task Classifier の判断基準が暗黙的"
+    source: "v0.3 中間生成物セッション（Martin Fowler 指摘）"
+    description: |
+      Task Classifier が誤分類を繰り返す場合、判断基準が曖昧である可能性がある。
+      3回の誤分類でトリガーし、判断ルールの明示化を促す。
+    
+    trigger:
+      type: "count"
+      query:
+        pattern: "誤分類"
+        filters:
+          component: ["watcher"]
+      threshold: 3
+    
+    severity: high
+    
+    action:
+      type: "alert"
+      message: |
+        DEBT-003 がトリガーされました。
+        Task Classifier の判断基準が曖昧である可能性があります。
+        
+        対策:
+        1. 誤分類パターンを分析する（ledger-query で検索）
+        2. 判断ルールを明示化する（task-classifier.md を更新）
+        3. 境界ケースのテストを追加する
+    
+    recommendations:
+      - "誤分類パターンを ledger-query で検索: pattern='誤分類'"
+      - "task-classifier.md の判定ルールを見直す"
+      - "requires_persona の閾値を調整する"
+
+  # DEBT-004: Phase 3.2 で追加（Kahneman + Taleb 統合設計）
+  - id: DEBT-004
+    title: "デフォルト fail のオオカミ少年化"
+    source: "v0.3 中間生成物セッション + Phase 3.2 Kahneman-Taleb 対話"
+    description: |
+      watcher が頻繁に fail を返すと、fail の意味が薄れる（オオカミ少年効果）。
+      統計的に有意に fail 率が高い場合にのみアラートを発行する。
+      
+      設計者:
+      - Daniel Kahneman: 統計的厳密さ（Wilson 区間、最小サンプル）
+      - Nassim Taleb: サーキットブレーカー（5連続で即時）
+    
+    trigger:
+      type: "statistical"
+      metric: "fail_rate"
+      
+      # Kahneman: 統計的判定
+      statistical_trigger:
+        threshold: 0.30  # 閾値変更時はコミット理由必須
+        minimum_sample_size: 20  # 少数の法則を防ぐ
+        window:
+          type: "last_n"
+          value: 30
+        significance_test:
+          type: "wilson_lower_bound"
+          condition: "CI の下限が threshold を超えたら有意"
+        consecutive_triggers: 2  # 連続2回で発火
+      
+      # Taleb: サーキットブレーカー（統計計算をバイパス）
+      circuit_breaker:
+        type: "consecutive_fails"
+        threshold: 5  # 5連続 fail で即時アラート
+        bypass_statistics: true
+    
+    severity: critical
+    
+    action:
+      type: "alert"
+      message: |
+        ⚠️ DEBT-004: オオカミ少年化アラート
+        
+        トリガー種別: {trigger_type}  # statistical | circuit_breaker
+        
+        統計情報（statistical の場合）:
+        - 観測 fail 率: {value:.1%}
+        - サンプルサイズ: {sample_size}
+        - 95% 信頼区間: [{ci_lower:.1%}, {ci_upper:.1%}]
+        
+        対策:
+        1. 最近の fail パターンを分析（ledger-query pattern="pass = false"）
+        2. watcher の判定基準が厳しすぎないか確認
+        3. 正当な fail vs 誤報を分類
+    
+    recommendations:
+      - "ledger-query で fail パターンを検索"
+      - "watcher の inspection_checklist を見直す"
+      - "閾値変更を検討（コミット理由必須）"
+    
+    # 閾値変更ポリシー（Kahneman + Taleb 妥協案）
+    threshold_change_policy: |
+      閾値を変更する場合は、コミットメッセージに以下を記録すること:
+      - なぜ変更するか
+      - 変更による影響の予測
+      事前登録は不要だが、結果に対する責任は変更者が負う。
+
+# Phase 3.3 で追加予定
+future_debts:
+  - id: DEBT-001
+    title: "executor-watcher 間の依存方向"
+    status: "not_monitored"
+    
+  - id: DEBT-002
+    title: "artifacts の型が未定義"
+    status: "not_monitored"
+    
+  - id: RUN-TEST
+    title: "自己相関検出（ラン検定）"
+    status: "not_implemented"
+    note: "Phase 3.3 で追加予定（Kahneman 提案）"
+    
+  - id: ANTIFRAGILE-METRICS
+    title: "反脆弱性指標"
+    status: "not_implemented"
+    note: "Phase 3.3 で追加予定（Taleb 提案）"
+
+# 監視設定
+monitoring:
+  # いつ監視を実行するか
+  execution_points:
+    - after_watcher_decision  # watcher が判断した後
+    - on_commit              # コミット前
+    - manual                 # 手動実行
+  
+  # 結果の記録先
+  log_to: "learnings/flow/entries.yaml"
+  event_type: "debt_recognized"
