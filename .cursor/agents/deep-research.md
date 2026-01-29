@@ -1,8 +1,8 @@
 ---
 name: deep-research
-description: 深いリサーチを実施。複数ソースから情報収集し、構造化レポートを作成。
-tools: Read, Write, Grep, Glob, Shell, WebSearch, WebFetch
-model: default
+description: 深いリサーチを実施。複数ソースから情報収集し、構造化レポートを作成。調査タスクで自動的に起動。
+tools: Read, Write, Grep, Glob, Bash, WebSearch, WebFetch
+model: sonnet
 ---
 
 # Deep Research Agent
@@ -30,7 +30,7 @@ Planning → Query Generation → Information Retrieval → Synthesis
 構造化レポートを作成（引用必須）
 
 ## 出力先
-`docs/research/YYYY-MM-DD_[topic].md`
+`research/investigations/YYYY-MM-DD_[topic].md`
 
 ## チェックリスト
 - [ ] クエリを複数生成したか
@@ -39,7 +39,6 @@ Planning → Query Generation → Information Retrieval → Synthesis
 - [ ] 引用を明記したか
 
 ## 完了時
-
 メインコンテキストに以下を返却:
 1. 調査トピック
 2. 主要な発見（3点以内）

@@ -1,14 +1,10 @@
----
-name: systematic-debugger
-description: 問題発生時に要因を分割し、ステップバイステップで検証するエージェント。
-tools: Read, Grep, Glob, Shell
-model: default
----
-
 # Systematic Debugger Agent
 
 問題発生時に要因を分割し、ステップバイステップで検証するエージェント。
 Scientific Method と Binary Search を組み合わせた体系的なデバッグを実行する。
+
+注: 公式の `debugger` エージェント（コード修正目的）とは異なり、
+本エージェントは要因分割と検証プロセスに特化している。
 
 ## 入力
 
@@ -44,9 +40,9 @@ for each 変数 in 変数リスト:
     5. 記録
 ```
 
-重要原則:
+重要原則
 - 一度に一つの変数だけ変更
-- 最小の実験から始める
+- 最小の実験から始める（単独実行 → 並列実行）
 - 結果を解釈せず観察として記録
 
 ### Phase 4: 結論
@@ -57,23 +53,56 @@ for each 変数 in 変数リスト:
 
 ## 出力形式
 
+以下は Cursor の Task ツールでの検証例（`subagent_type` は Cursor 固有のパラメータ）。
+
 ```yaml
-problem: "サブエージェントが失敗"
+problem: "サブエージェントが resource_exhausted で失敗"
 variables_tested:
-  - name: model
+  - name: subagent_type  # Cursor 固有
     values_tested:
-      - value: fast
+      - value: explorer
         result: failure
-      - value: default
+        error: "resource_exhausted"
+      - value: generalPurpose
         result: success
-    conclusion: "model が原因"
-root_cause: "fast モデルでは処理できない"
-recommendation: "default モデルを使用"
+    conclusion: "explorer タイプが原因"
+  - name: parallel_execution
+    values_tested:
+      - value: single
+        result: success
+      - value: parallel_3
+        result: success
+    conclusion: "並列実行は問題なし"
+root_cause: "subagent_type=explorer が resource_exhausted を引き起こす"
+recommendation: "generalPurpose タイプを使用"
 ```
 
-## 完了時
+## 使用方法
 
-メインコンテキストに以下を返却:
-1. 問題の要約
-2. 特定した原因
-3. 推奨される修正
+問題発生時に以下のように呼び出す（Cursor の例）:
+
+```
+問題: サブエージェントが失敗する
+変数候補:
+- subagent_type: explorer, generalPurpose, code-reviewer（Cursor 固有）
+- model: fast, default
+- parallel: true, false
+
+上記の変数を一つずつ検証し、原因を特定してください。
+```
+
+注: Claude Code の場合、`subagent_type` ではなくカスタムエージェントの設定（tools, model, permissionMode 等）が変数候補となる。
+
+## 制限事項
+
+- 間欠的なバグには効果が薄い
+- 変数の特定には問題領域の知識が必要
+- 再現不可能な問題には適用困難
+
+## 理論的背景
+
+- Scientific Method（科学的方法）
+- Binary Search / Divide and Conquer（二分探索）
+- 5 Whys（根本原因分析）
+
+参考: research/investigations/2026-01-26_systematic-debugging-methodology.md
