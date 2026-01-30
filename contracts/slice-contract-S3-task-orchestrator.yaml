@@ -1,0 +1,67 @@
+# Slice Contract: task-orchestrator の契約体系統合
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-task-orchestrator"
+  
+  parent: "SG-20260130-S3"
+  
+  feature:
+    name: "task-orchestrator と契約体系の関係整理"
+    description: "実行レイヤー（task-orchestrator）と合意レイヤー（契約体系）の使い分けを明確にする"
+  
+  slices:
+    - id: S1
+      name: "使い分けルールの定義"
+      description: "どの場面で契約系スキル vs task-orchestrator を使うかを明確化"
+      size: small
+      classification: known
+      reason: "分析で関係が明確になった（レイヤー違い）"
+      verify_timing: "実装後"
+      
+    - id: S2
+      name: "skills-inventory.md の更新"
+      description: "task-orchestrator の整合性を「✅」に更新し、使い分けルールを追記"
+      size: small
+      classification: known
+      reason: "S1 の結果を反映するだけ"
+      verify_timing: "実装後"
+      
+    - id: S3
+      name: "task-orchestrator と契約フローの連携図"
+      description: "VISION.md に全体像を追記（オプション）"
+      size: small
+      classification: known
+      reason: "既存の図に追記"
+      verify_timing: "実装後"
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "ルール定義が先"
+    - slice_id: S2
+      priority: 2
+      rationale: "ドキュメント反映"
+    - slice_id: S3
+      priority: 3
+      rationale: "オプショナル"
+  
+  classification_rationale: |
+    task-orchestrator を読んだ結果、契約体系と競合ではなくレイヤー違いと判明。
+    - 契約体系 = 合意レイヤー（Why）
+    - task-orchestrator = 実行レイヤー（How）
+    全スライスが「既知」となった。
+  
+  risks:
+    - slice_id: S1
+      risk: "使い分けが複雑になりすぎる"
+      mitigation: "シンプルなルール（2-3 行）に留める"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  status: "completed"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

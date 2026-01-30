@@ -31,12 +31,34 @@ agent-harness のスキル一覧と整理状況。
 
 **原則**: 契約系 = Why（価値・目標）、superpowers 系 = How（設計・計画）
 
+### 契約体系と task-orchestrator の使い分け
+
+| フェーズ | 使うスキル | 理由 |
+|---------|-----------|------|
+| 合意形成 | **契約系スキル** | 何を作るか（Why）を明文化 |
+| タスク実行 | **task-orchestrator** | どう作るか（How）を自動化 |
+
+**フロー例**:
+```
+Sprint Planning → sprint-goal スキル → sprint-goal-contract
+        ↓
+価値分類 → slice スキル → slice-contract
+        ↓
+タスク実行 → task-orchestrator → executor/watcher
+        ↓
+完了記録 → increment スキル → increment-contract
+        ↓
+学び記録 → insight スキル → insight-contract
+```
+
+**原則**: 契約体系 = 合意レイヤー、task-orchestrator = 実行レイヤー
+
 ## 既存スキル（整理が必要）
 
 | スキル | 目的 | 整合性 | 対応案 |
 |-------|------|--------|--------|
 | `task-classifier` | タスク分類、人格注入判定 | ✅ VISION と整合 | 維持 |
-| `task-orchestrator` | タスクのルーティング | △ 契約体系と統合検討 | 要検討 |
+| `task-orchestrator` | タスクのルーティング | ✅ 契約体系と補完（下記参照） | 維持 |
 | `session-init` | セッション開始時の初期化 | ✅ P0 と整合 | 維持 |
 | `session-selector` | セッション種別の選択 | △ 契約体系と統合検討 | 要検討 |
 | `propose-change` | 変更提案フロー | △ increment と重複可能性 | 統合検討 |
@@ -62,7 +84,7 @@ agent-harness のスキル一覧と整理状況。
 
 3. ~~`superpowers-brainstorming` → `discovery` との使い分けを明確化~~ ✅ S3 で完了
 4. ~~`superpowers-writing-plans` → `sprint-goal` との使い分けを明確化~~ ✅ S3 で完了
-5. `task-orchestrator` → 契約体系との統合検討
+5. ~~`task-orchestrator` → 契約体系との統合検討~~ ✅ S3 で完了（補完関係）
 
 ### 低（現状維持）
 
