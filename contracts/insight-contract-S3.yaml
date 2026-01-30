@@ -98,24 +98,65 @@ insights:
     status: "validated"
     created_at: "2026-01-30"
 
+  - id: "INS-20260130-005"
+    insight:
+      statement: "既存スキル（task-orchestrator, session-selector, propose-change）は契約体系と競合せず、レイヤーが異なる補完関係"
+      source: "スライス完了"
+      evidence:
+        summary: "4つの Increment で既存スキルを分析。全て「レイヤー違いで補完関係」と判明"
+        references:
+          - type: "url"
+            path: "https://github.com/kocchi/agent-harness/pull/2"
+            description: "task-orchestrator integration"
+          - type: "url"
+            path: "https://github.com/kocchi/agent-harness/pull/3"
+            description: "session-selector integration"
+          - type: "url"
+            path: "https://github.com/kocchi/agent-harness/pull/4"
+            description: "propose-change update"
+      confidence: "high"
+    impact:
+      affects:
+        - "skills-inventory.md"
+        - "スキル整理方針"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "方針として確定"
+      owner: null
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
 summary:
-  total_insights: 4
-  validated: 2
-  new: 2
+  total_insights: 5
+  validated: 3
+  applied: 2
   key_learnings:
     - "slice の「未知→既知」変換プロセスがリスク低減になる"
     - "契約体系と Git ワークフローは自然に対応"
     - "小さな単位で頻繁にプッシュすべき"
     - "ドッグフーディングで H1 の初期検証完了"
+    - "既存スキルは契約体系と補完関係（レイヤー違い）"
+
+sprint_summary:
+  increments_completed: 4
+  prs_merged:
+    - "https://github.com/kocchi/agent-harness/pull/1"
+    - "https://github.com/kocchi/agent-harness/pull/2"
+    - "https://github.com/kocchi/agent-harness/pull/3"
+    - "https://github.com/kocchi/agent-harness/pull/4"
+  goal_achieved: true
 
 retro:
   keep:
     - "slice スキルでの価値分類"
     - "コミット前レビュー（中間生成物での合意）"
     - "ブランチ戦略の明文化"
+    - "Increment 完了ごとの即プッシュ（新ルール適用）"
   problem:
-    - "origin/master との乖離"
-    - "リベース/マージの複雑化"
+    - "origin/master との乖離（解決済み: force push + 新ルール）"
   try:
-    - "Increment 完了ごとに即プッシュ"
-    - "大きな構造変更は小さな PR に分割"
+    - "次のスプリントで別リポジトリ（歩活等）でドッグフーディング"
+    - "improvement-lifecycle スキルの整理"
