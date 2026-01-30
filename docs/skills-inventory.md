@@ -53,6 +53,17 @@ Sprint Planning → sprint-goal スキル → sprint-goal-contract
 
 **原則**: 契約体系 = 合意レイヤー、task-orchestrator = 実行レイヤー
 
+### 契約体系の「場」と session-selector の違い
+
+| レイヤー | 概念 | 例 |
+|---------|------|-----|
+| ビジネスプロセス | 契約を作る「場」 | Sprint Planning, Discovery, Review |
+| タスク実行 | セッション種別 | planning, design, implement, retrospective |
+
+**使い分け**:
+- 「Sprint Planning を開催」→ **sprint-goal スキル**（契約を作る）
+- 「この設計をレビューして」→ **session-selector** → design session（タスク実行）
+
 ## 既存スキル（整理が必要）
 
 | スキル | 目的 | 整合性 | 対応案 |
@@ -60,7 +71,7 @@ Sprint Planning → sprint-goal スキル → sprint-goal-contract
 | `task-classifier` | タスク分類、人格注入判定 | ✅ VISION と整合 | 維持 |
 | `task-orchestrator` | タスクのルーティング | ✅ 契約体系と補完（下記参照） | 維持 |
 | `session-init` | セッション開始時の初期化 | ✅ P0 と整合 | 維持 |
-| `session-selector` | セッション種別の選択 | △ 契約体系と統合検討 | 要検討 |
+| `session-selector` | セッション種別の選択 | ✅ 契約体系と補完（下記参照） | 維持 |
 | `propose-change` | 変更提案フロー | △ increment と重複可能性 | 統合検討 |
 | ~~`log-learning`~~ | 学習の記録 | ✅ insight に統合済み | S3 で削除 |
 | `ledger-record` | 台帳への記録 | ✅ 独立（低レベル） | 維持 |
