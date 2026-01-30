@@ -1,0 +1,66 @@
+# Slice Contract: 重複スキルの整理
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-skill-cleanup"
+  
+  parent: "SG-20260130-S3"
+  
+  feature:
+    name: "重複スキルの整理"
+    description: "契約系スキルと既存スキルの関係を整理し、重複を解消する"
+  
+  slices:
+    - id: S1
+      name: "log-learning を insight に統合"
+      description: "重複する学び記録スキルを統合"
+      size: small
+      classification: known
+      reason: "手順が明確（insight スキルに追記 → log-learning 削除）"
+      verify_timing: "実装後"
+      
+    - id: S2
+      name: "propose-change と increment の関係明確化"
+      description: "propose-change の「契約」セクションを increment-contract 参照に更新"
+      size: small
+      classification: known  # 分析の結果、手順が明確になった
+      reason: "補完関係が判明。propose-change 内の記述を更新するだけ"
+      verify_timing: "実装後"
+      
+    - id: S3
+      name: "superpowers 系と契約系の使い分けルール"
+      description: "skills-inventory.md に使い分けルールを追記"
+      size: small
+      classification: known  # 分析の結果、手順が明確になった
+      reason: "補完関係が判明。使い分けルールを明文化するだけ"
+      verify_timing: "実装後"
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "最も明確な重複。先に片付ける"
+    - slice_id: S2
+      priority: 2
+      rationale: "propose-change の更新"
+    - slice_id: S3
+      priority: 3
+      rationale: "ドキュメント追記"
+  
+  # 全て「既知」になった → 分析で未知が解消された証拠
+  classification_rationale: |
+    当初 S2, S3 は「未知」と分類したが、スキル内容を分析した結果:
+    - propose-change と increment は補完関係（重複ではない）
+    - superpowers 系と契約系もレイヤーが異なり補完関係
+    検証の結果、全スライスが「既知」に変わった。
+  
+  risks:
+    - slice_id: S1
+      risk: "log-learning を使っているワークフローがある可能性"
+      mitigation: "削除前に参照を検索"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

@@ -59,7 +59,7 @@ product-goal-contract:
   
   iteration:
     planned: 3  # 四半期で3回のスプリント
-    current: 1
+    current: 3  # S3 開始
     trigger: "仮説の検証結果により方向転換が必要な場合"
   
   created_at: "2026-01-29"

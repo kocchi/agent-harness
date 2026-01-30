@@ -1,0 +1,74 @@
+# Sprint Goal Contract for agent-harness Sprint 3
+# Created: 2026-01-30
+
+sprint-goal-contract:
+  id: "SG-20260130-S3"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "実際のタスクで契約体系をドッグフーディングし、仮説を検証する"
+    contribution: "H1（手戻り削減）の初期検証、契約体系の実用性確認"
+    measurable: "1タスク以上を契約ドリブンで完了し、Retro で改善点を抽出"
+  
+  verification:
+    method: "ドッグフーディング + Retro"
+    success_criteria:
+      - "1タスク以上を discovery → sprint-goal → increment の流れで完了"
+      - "契約体系の使いやすさ/問題点を insight として記録"
+      - "H1（手戻り削減）の初期データを取得"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "ドッグフーディング対象タスクの選定"
+      - "契約ドリブンでのタスク実行"
+      - "ブランチ戦略の定義と適用"
+      - "Retro での改善点抽出"
+    out_of_scope:
+      - "YAML → Markdown/Dashboard 変換（S4 以降）"
+      - "重複スキルの整理（必要に応じて S4）"
+      - "Review ファシリテーションスキル（S4）"
+    risks:
+      - risk: "ドッグフーディング対象タスクが見つからない"
+        mitigation: "agent-harness 自体の改善タスクを使う"
+      - risk: "契約作成のオーバーヘッドが大きい"
+        mitigation: "問題点を記録し、軽量化を検討"
+  
+  # S2 Retro からのアクション
+  retro_actions:
+    - from: "S2-retro-try"
+      action: "小さな変更ごとにコミット"
+      status: "in_scope"
+    - from: "S2-retro-try"
+      action: "実際のタスクで slice-contract を試す"
+      status: "in_scope"
+  
+  # 新規: ブランチ戦略
+  git_workflow:
+    branch_strategy:
+      unit: "Increment"
+      naming: "feat/{increment-id}-{short-description}"
+      example: "feat/INC-S3-001-dogfooding-task"
+    commit_strategy:
+      unit: "論理的な変更単位"
+      rules:
+        - "構造変更、内容修正、追加、削除を混ぜない"
+        - "コミットメッセージは変更意図を簡潔に記述"
+        - "パターン: feat: / fix: / docs: / refactor: / chore:"
+    pr_strategy:
+      unit: "Increment"
+      description: "Increment 完了時に PR を作成し、DoD をチェックリストに"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントでドッグフーディングを実施する"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
