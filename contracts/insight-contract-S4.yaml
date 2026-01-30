@@ -1,0 +1,107 @@
+# Insight Contract for Sprint 4
+# Created: 2026-01-30
+
+insights:
+  - id: "INS-20260130-S4-001"
+    insight:
+      statement: "契約体系は構造が似たプロジェクトには低コストで適用できる"
+      source: "Retro"
+      evidence:
+        summary: "user-model-framework（スキル/ルールベース）で slice-contract → increment を手戻りなしで完走"
+        references:
+          - type: "file"
+            path: "user-model-framework/contracts/slice-contract-deep-analysis.yaml"
+            description: "S1→S2→S3 の順序で完了"
+      confidence: "high"
+    impact:
+      affects:
+        - "product-goal-contract の仮説 H1"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "H1 の継続検証データとして記録"
+      owner: null
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-S4-002"
+    insight:
+      statement: "「メタ目標」と「プロジェクト固有目標」の契約分離は再利用性を高める"
+      source: "Retro"
+      evidence:
+        summary: "agent-harness に S4 sprint-goal、user-model-framework に product-goal + slice-contract を配置"
+        references:
+          - type: "file"
+            path: "contracts/sprint-goal-contract-S4.yaml"
+            description: "メタ目標（ドッグフーディング）"
+          - type: "file"
+            path: "user-model-framework/contracts/product-goal-contract.yaml"
+            description: "プロジェクト固有目標"
+      confidence: "high"
+    impact:
+      affects:
+        - "契約体系の設計パターン"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "docs"
+      description: "VISION.md に「契約の配置パターン」を追記"
+      owner: "Yuki"
+      deadline: "2026-02-06"
+    status: "validated"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-S4-003"
+    insight:
+      statement: "構造が異なるプロジェクトでの契約体系適用はまだ未検証"
+      source: "Retro"
+      evidence:
+        summary: "user-model-framework は agent-harness と構造が似ていた（スキル/ルールベース）。異なる構造での検証が必要"
+        references: []
+      confidence: "medium"
+    impact:
+      affects:
+        - "H1 の一般化可能性"
+      action_required: true
+      urgency: "low"
+    next_action:
+      type: "experiment"
+      description: "構造が異なるプロジェクト（アプリ開発等）でドッグフーディング"
+      owner: "Yuki"
+      deadline: null
+    status: "new"
+    created_at: "2026-01-30"
+
+summary:
+  total_insights: 3
+  validated: 2
+  new: 1
+  key_learnings:
+    - "契約体系は構造が似たプロジェクトには低コストで適用"
+    - "メタ目標とプロジェクト目標の分離が有効"
+    - "構造が異なるプロジェクトでの検証が次の課題"
+
+sprint_summary:
+  increments_completed: 1
+  commits:
+    - "5068d59 feat: Add deep-analysis skill"
+    - "8c04ba2 docs: Add contracts directory"
+    - "8ed1605 feat: Add hypothesis-verification loop"
+    - "91b9fc6 docs: Complete slice-contract"
+  goal_achieved: true
+  h1_data:
+    rework_count: 0
+    note: "手戻りなしで完走"
+
+retro:
+  keep:
+    - "slice の S1→S2→S3 順序（known→unknown）"
+    - "契約ファイルの分離配置（メタ/プロジェクト）"
+    - "即プッシュルールの継続"
+    - "コミット前の中間生成物レビュー"
+  problem: []
+  try:
+    - "構造が異なるプロジェクトでのドッグフーディング"
+    - "H2（場の定義がプロセスを明確にする）の検証開始"
