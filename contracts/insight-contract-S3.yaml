@@ -1,0 +1,121 @@
+# Insight Contract for Sprint 3
+# Created: 2026-01-30
+
+insights:
+  - id: "INS-20260130-001"
+    insight:
+      statement: "slice スキルで「未知」を分析し「既知」に変えるプロセス自体がリスク低減になる"
+      source: "スライス完了"
+      evidence:
+        summary: "S2, S3 を最初「未知」と分類したが、スキル内容を読んで分析した結果、全て「既知」に変わった"
+        references:
+          - type: "file"
+            path: "contracts/slice-contract-S3-skill-cleanup.yaml"
+            description: "classification_rationale に分析プロセスを記録"
+      confidence: "high"
+    impact:
+      affects:
+        - "slice スキルの価値説明"
+        - "契約体系のドキュメント"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "knowledge"
+      description: "slice スキルの説明に「分析による未知→既知変換」の価値を追記"
+      owner: "Yuki"
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-002"
+    insight:
+      statement: "契約体系と Git ワークフローは自然に対応する: Increment = ブランチ/PR、コミット = 論理的変更"
+      source: "スライス完了"
+      evidence:
+        summary: "sprint-goal-contract-S3 に git_workflow を定義し、実際に運用して問題なく機能した"
+        references:
+          - type: "file"
+            path: "contracts/sprint-goal-contract-S3.yaml"
+            description: "git_workflow セクション"
+      confidence: "high"
+    impact:
+      affects:
+        - "ブランチ戦略のドキュメント"
+        - "VISION.md"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "docs"
+      description: "VISION.md に git_workflow との対応を追記"
+      owner: "Yuki"
+      deadline: "2026-02-06"
+    status: "new"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-003"
+    insight:
+      statement: "ローカルで大きな構造変更をしている間に origin が進むと、リベース/マージが複雑化する"
+      source: "スライス完了"
+      evidence:
+        summary: "origin/master と 27 コミット差があり、.cursor/ 移行でコンフリクト多発。最終的に force push で解決"
+        references: []
+      confidence: "high"
+    impact:
+      affects:
+        - "コミット戦略"
+        - "プッシュ頻度"
+      action_required: true
+      urgency: "high"
+    next_action:
+      type: "rule"
+      description: "「小さな単位で頻繁にプッシュ」をルールに追加検討"
+      owner: "Yuki"
+      deadline: "2026-02-06"
+    status: "new"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-004"
+    insight:
+      statement: "ドッグフーディングにより契約体系の実用性を確認できた（H1 の初期検証）"
+      source: "Retro"
+      evidence:
+        summary: "slice-contract → 実装 → コミット → PR → マージの流れを1タスクで完走"
+        references:
+          - type: "url"
+            path: "https://github.com/kocchi/agent-harness/pull/1"
+            description: "S3 Increment 1 の PR"
+      confidence: "medium"
+    impact:
+      affects:
+        - "product-goal-contract の仮説 H1"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "継続的にデータ収集"
+      owner: null
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
+summary:
+  total_insights: 4
+  validated: 2
+  new: 2
+  key_learnings:
+    - "slice の「未知→既知」変換プロセスがリスク低減になる"
+    - "契約体系と Git ワークフローは自然に対応"
+    - "小さな単位で頻繁にプッシュすべき"
+    - "ドッグフーディングで H1 の初期検証完了"
+
+retro:
+  keep:
+    - "slice スキルでの価値分類"
+    - "コミット前レビュー（中間生成物での合意）"
+    - "ブランチ戦略の明文化"
+  problem:
+    - "origin/master との乖離"
+    - "リベース/マージの複雑化"
+  try:
+    - "Increment 完了ごとに即プッシュ"
+    - "大きな構造変更は小さな PR に分割"
