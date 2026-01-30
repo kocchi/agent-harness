@@ -64,6 +64,23 @@ Sprint Planning → sprint-goal スキル → sprint-goal-contract
 - 「Sprint Planning を開催」→ **sprint-goal スキル**（契約を作る）
 - 「この設計をレビューして」→ **session-selector** → design session（タスク実行）
 
+### insight と improvement-lifecycle の使い分け
+
+| 状況 | 使うスキル | 理由 |
+|------|-----------|------|
+| 「今わかった、すぐ反映したい」 | **insight** | 即時還元（1回で完結） |
+| 「まず試してみたい」 | **improvement-lifecycle** | 段階的昇格（try → keep → rule） |
+
+**フロー例**:
+```
+Retro で改善提案 → improvement-lifecycle で「try」登録
+        ↓
+試行期間（数回のスプリント）
+        ↓
+効果あり → keep → rule 昇格（ルール化）
+効果なし → stop（廃止）
+```
+
 ## 既存スキル（整理が必要）
 
 | スキル | 目的 | 整合性 | 対応案 |
@@ -76,7 +93,7 @@ Sprint Planning → sprint-goal スキル → sprint-goal-contract
 | ~~`log-learning`~~ | 学習の記録 | ✅ insight に統合済み | S3 で削除 |
 | `ledger-record` | 台帳への記録 | ✅ 独立（低レベル） | 維持 |
 | `ledger-query` | 台帳の検索 | ✅ 独立（低レベル） | 維持 |
-| `improvement-lifecycle` | 改善サイクル | △ insight と重複可能性 | 統合検討 |
+| `improvement-lifecycle` | 改善サイクル | ✅ insight と補完（下記参照） | 維持 |
 | `debt-monitor` | 技術負債の監視 | ✅ 独立 | 維持 |
 | `create-subagent` | サブエージェント作成 | ✅ 独立 | 維持 |
 | `coverage-check` | カバレッジ確認 | ✅ 独立 | 維持 |
