@@ -1,0 +1,54 @@
+# Experiment Contract: H1 契約体系の効果測定
+# Created: 2026-01-30
+
+experiment-contract:
+  id: "EXP-20260130-H1"
+  
+  hypothesis:
+    id: "H1"
+    statement: "契約体系が手戻りを減らす"
+    source: "product-goal-contract"
+  
+  design:
+    type: "A/B comparison"
+    
+    control_group:
+      name: "契約なし"
+      tasks: 3
+      method: "従来通り（契約なしで実装）"
+      
+    treatment_group:
+      name: "契約あり"
+      tasks: 5  # 本日完了済み
+      method: "slice-contract → 実装"
+      data_collected: true
+      baseline:
+        total_commits: 17
+        prs: 5
+        reverts: 0
+        fix_commits: 0
+        pr_revisions: 0
+  
+  metrics:
+    - name: "revert_rate"
+      definition: "revert コミット / 総コミット"
+      measurement: "git log"
+    - name: "pr_revision_count"
+      definition: "マージまでの追加コミット数"
+      measurement: "gh pr"
+    - name: "rework_commits"
+      definition: "fix: プレフィックスのコミット数"
+      measurement: "git log"
+  
+  success_criteria:
+    - "契約ありの revert_rate < 契約なしの revert_rate"
+    - "契約ありの pr_revision_count < 契約なしの pr_revision_count"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  status: "in_progress"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
