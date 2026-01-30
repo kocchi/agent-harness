@@ -1,0 +1,115 @@
+# Slice Contract: 参照エラー修正（技術負債解消）
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-reference-fix"
+  
+  parent: "SG-20260130-S5"
+  
+  feature:
+    name: "エージェント/スキルの参照エラー修正"
+    description: "直接編集運用への移行で生じた古いパス参照を修正し、P0（セッション開始時の検査）を機能させる"
+  
+  slices:
+    - id: S1
+      name: "rules-validator.md の再設計"
+      description: |
+        - source/meta/rules/*.yaml → .cursor/rules/*.mdc に更新
+        - 動的検査プロトコルを直接編集運用に合わせて簡素化
+      size: medium
+      classification: known
+      reason: "修正箇所が明確"
+      verify_timing: "実装後"
+      files:
+        - ".cursor/agents/rules-validator.md"
+      
+    - id: S2
+      name: "ssot-validator.md の再設計"
+      description: |
+        - source/ と generate.sh の参照を削除
+        - .cursor/ の整合性チェックに変更
+        - または、役割が不要なら非推奨化
+      size: medium
+      classification: unknown
+      reason: "直接編集運用で SSoT validator の役割が不明確。再設計か削除かの判断が必要"
+      verify_timing: "実装前"
+      verification:
+        method: "ssot-validator の必要性を再評価"
+        options:
+          - "a: .cursor/ 内の symlink 整合性チェックに変更"
+          - "b: 役割不要として非推奨化（削除）"
+      files:
+        - ".cursor/agents/ssot-validator.md"
+      
+    - id: S3
+      name: "pre-commit-reviewer.md のパス修正"
+      description: "source/meta/rules/implementation-rules.yaml → .cursor/rules/implementation-rules.mdc"
+      size: small
+      classification: known
+      reason: "パス修正のみ"
+      verify_timing: "実装後"
+      files:
+        - ".cursor/agents/pre-commit-reviewer.md"
+      
+    - id: S4
+      name: "debt-monitor/SKILL.md のパス修正"
+      description: "source/meta/monitors/debt-triggers.yaml → .cursor/monitors/debt-triggers.yaml"
+      size: small
+      classification: known
+      reason: "パス修正のみ"
+      verify_timing: "実装後"
+      files:
+        - ".cursor/skills/debt-monitor/SKILL.md"
+      
+    - id: S5
+      name: "contribute-upstream/SKILL.md の再設計"
+      description: |
+        - source/ ベースの説明を削除
+        - 直接編集運用に合わせた貢献フローに変更
+      size: small
+      classification: known
+      reason: "修正箇所が明確"
+      verify_timing: "実装後"
+      files:
+        - ".cursor/skills/contribute-upstream/SKILL.md"
+  
+  order:
+    - slice_id: S2
+      priority: 1
+      rationale: "未知を先に検証（ssot-validator の必要性判断）"
+    - slice_id: S1
+      priority: 2
+      rationale: "P0 の中核機能を修正"
+    - slice_id: S3
+      priority: 3
+      rationale: "依存関係あり（S1 の後）"
+    - slice_id: S4
+      priority: 4
+      rationale: "独立した修正"
+    - slice_id: S5
+      priority: 5
+      rationale: "独立した修正"
+  
+  classification_rationale: |
+    S2（ssot-validator）のみ「未知」。理由:
+    - 直接編集運用で source/ がなくなったため、SSoT validator の役割が不明確
+    - 再設計か削除かの判断が必要
+    
+    他は全て「既知」（パス修正のみ）。
+  
+  risks:
+    - slice_id: S1
+      risk: "rules-validator の検査ロジックが複雑化"
+      mitigation: "シンプルなチェックリストベースに簡素化"
+    - slice_id: S2
+      risk: "ssot-validator を削除すると整合性チェックが失われる"
+      mitigation: "rules-validator に整合性チェックを統合"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  status: "completed"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

@@ -2,7 +2,7 @@
 name: contribute-upstream
 description: OSS本体（agent-harness）への貢献をガイドする
 trigger:
-  - "source/ を改善したい"
+  - "agent-harness を改善したい"
   - "OSS に貢献したい"
   - "上流に PR を送りたい"
 ---
@@ -13,8 +13,8 @@ OSS本体（agent-harness）への貢献をガイドするスキル。
 
 ## 前提
 
-- source/ は submodule として参照されているため、直接編集できない
-- OSS本体への貢献は、別途 Fork して作業する必要がある
+- agent-harness は直接編集運用（`.cursor/` 内を直接編集）
+- Fork して PR を送る標準的な OSS 貢献フロー
 
 ## 対話フロー
 
@@ -22,10 +22,11 @@ OSS本体（agent-harness）への貢献をガイドするスキル。
 
 ```
 どのような変更をしたいですか？
-- 設計原理（P1-P4）の改善
-- ルールの追加・改善
-- スキル/サブエージェントの追加
-- Guardian プリセットの追加
+- 設計原理（constitution の P0-P7）の改善
+- ルール（.cursor/rules/*.mdc）の追加・改善
+- スキル（.cursor/skills/）の追加
+- エージェント（.cursor/agents/）の追加
+- 契約テンプレートの改善
 ```
 
 ### 2. OSS本体を Fork
@@ -52,14 +53,25 @@ git checkout -b feat/your-feature
 
 ### 5. 変更を加える
 
-該当するファイルを編集:
-- 設計原理: `source/_shared/principles.yaml`
-- ルール: `source/meta/rules/*.yaml`
-- スキル: `source/meta/skills/*.md`
-- サブエージェント: `source/meta/agents/*.md`
-- Guardian プリセット: `source/distribution/guardians/presets/*.yaml`
+該当するファイルを直接編集:
 
-### 6. コミットして Push
+| 変更種別 | 対象パス |
+|----------|----------|
+| 設計原理 | `.cursor/rules/constitution.mdc` |
+| ルール | `.cursor/rules/*.mdc` |
+| スキル | `.cursor/skills/{name}/SKILL.md` |
+| エージェント | `.cursor/agents/*.md` |
+| セッション | `.cursor/sessions/*.yaml` |
+| 契約 | `contracts/*.yaml`（テンプレートとして） |
+
+### 6. ルール検査を実行
+
+```bash
+# rules-validator を呼び出して整合性チェック
+# timing: pre_commit
+```
+
+### 7. コミットして Push
 
 ```bash
 git add .
@@ -67,7 +79,7 @@ git commit -m "feat: add new feature"
 git push origin feat/your-feature
 ```
 
-### 7. PR を作成
+### 8. PR を作成
 
 ```bash
 gh pr create --title "feat: add new feature" --body "説明..."
@@ -77,4 +89,10 @@ gh pr create --title "feat: add new feature" --body "説明..."
 
 - 組織固有の内容は OSS に含めない
 - 汎用的な改善のみを PR する
-- P5 以降の原理は `_config/org/` で定義する
+- `.cursor/` と `.claude/` は symlink で同期されている
+
+## 参照
+
+- [AGENTS.md](../../AGENTS.md)
+- [philosophy.md](../../docs/philosophy.md)
+- [core-rules.mdc](../rules/core-rules.mdc)

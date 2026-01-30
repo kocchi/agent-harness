@@ -1,92 +1,95 @@
 # Rules Validator Agent
 
-全ルールの検査を統合実行するエージェント。
-__動的検査プロトコル__: ルール定義から checks を自動抽出して検査を実行。
+ルールの整合性を検査するエージェント。
+セッション開始時（P0）、Plan フェーズ、コミット前に呼び出される。
 
 ## 入力
 
-- timing: session_start | plan | implement | pre_commit
+- timing: session_start | plan | pre_commit
 - files: 変更対象ファイル（任意）
 
-## 動的検査プロトコル
+## 検査対象
 
-### 1. ルールファイルを読み込む
-
-```bash
-# 全ルールファイル
-source/meta/rules/core-rules.yaml
-source/meta/rules/implementation-rules.yaml
-source/meta/rules/research-rules.yaml
+```
+.cursor/rules/
+├── constitution.mdc      # 憲法（P0-P7）
+├── core-rules.mdc        # コアルール
+└── implementation-rules.mdc  # 実装ルール
 ```
 
-### 2. timing に応じた checks を抽出
+## 検査プロトコル
 
-各ルールの `checks.[timing]` を抽出する。
+### 1. ルールファイルの構文チェック
+
+各 `.mdc` ファイルが:
+- フロントマターが正しいか（任意）
+- Markdown の構造が正しいか
+- 必須セクションが存在するか
+
+### 2. 参照の整合性チェック
+
+エージェント/スキルが参照するパスが存在するか:
 
 ```yaml
-# 例: core-rules.yaml の ssot ルール
-ssot:
-  checks:
-    session_start:
-      - question: "前セッションで source/ と generated/ の不整合はなかったか？"
-        method: "git status で確認"
-    pre_commit:
-      - question: "generate.sh を実行したか？"
-        method: "git diff で確認"
+check_paths:
+  agents:
+    - ".cursor/agents/*.md"
+  skills:
+    - ".cursor/skills/*/SKILL.md"
+  rules:
+    - ".cursor/rules/*.mdc"
+  monitors:
+    - ".cursor/monitors/*.yaml"
+  sessions:
+    - ".cursor/sessions/*.yaml"
 ```
 
-### 3. 抽出した checks を実行
+### 3. ルール間の矛盾チェック
 
-```yaml
-# timing: pre_commit の場合、以下を実行:
-# - ssot.checks.pre_commit
-# - commit.checks.pre_commit
-# - documentation.checks.pre_commit
-# - vertical_slice.checks.pre_commit
-# - ...
-```
+- constitution.mdc の原則と他ルールが矛盾していないか
+- 「必須」と「禁止」が衝突していないか
 
-## timing 別のトリガー
+## timing 別の検査内容
 
-| timing | トリガー | 主な検査内容 |
-|--------|---------|-------------|
-| session_start | セッション開始時 | 前セッションの違反是正確認 |
-| plan | Plan 作成後 | Plan 存在、中間生成物、マルチツール考慮 |
-| implement | 実装中 | バーティカルスライス進行 |
-| pre_commit | コミット前 | 全ルール検査 |
+| timing | 主な検査内容 |
+|--------|-------------|
+| session_start | 全ルールの整合性、参照チェック |
+| plan | Plan が constitution に沿っているか |
+| pre_commit | 変更ファイルがルールに違反していないか |
 
 ## 出力形式
 
 ```yaml
-timing: pre_commit
+timing: session_start
 status: OK | NG
-rules_checked: 14
-checks:
-  - rule: ssot
-    timing: pre_commit
-    question: "generate.sh を実行したか？"
-    status: OK
-    detail: "差分なし"
-  - rule: commit
-    timing: pre_commit
-    question: "構造変更と内容修正を混ぜていないか？"
-    status: OK
-    detail: "単一種別の変更"
-  - rule: vertical_slice
-    timing: pre_commit
-    question: "Plan は存在するか？"
-    status: NG
-    detail: "Plan なしに実装開始"
-    action: "Plan を作成してから実装を再開"
 summary:
-  total: 8
-  passed: 7
+  total_checks: 12
+  passed: 11
   failed: 1
+
+checks:
+  - category: "syntax"
+    file: ".cursor/rules/core-rules.mdc"
+    status: OK
+    
+  - category: "reference"
+    file: ".cursor/agents/rules-validator.md"
+    status: OK
+    detail: "全ての参照パスが存在"
+    
+  - category: "reference"
+    file: ".cursor/agents/old-agent.md"
+    status: NG
+    detail: "source/meta/rules/*.yaml を参照（存在しないパス）"
+    action: ".cursor/rules/*.mdc に更新"
+
+recommendations:
+  - "参照エラーを修正してください"
 ```
 
 ## 使用方法
 
-### セッション開始時
+### セッション開始時（P0）
 
 ```
 セッション開始時のルール検査を実行してください。
@@ -103,20 +106,18 @@ timing: plan
 ### コミット前
 
 ```
-コミット前に全ルールを検査してください。
+コミット前にルールを検査してください。
 timing: pre_commit
 ```
 
-## 検査の実行手順
+## 他のエージェントとの連携
 
-1. 指定された timing を確認
-2. 全ルールファイル（core, implementation, research）を読み込む
-3. 各ルールから `checks.[timing]` を抽出
-4. 抽出した checks を順に実行
-5. 結果を構造化フォーマットで出力
-
-## 他のバリデーターとの連携
-
-- ssot-validator: SSoT 整合性の詳細検査
-- markdown-reviewer: ai_markdown ルールの詳細検査
+- ~~ssot-validator~~: 非推奨（直接編集運用のため）
+- pre-commit-reviewer: コミット前レビュー
 - systematic-debugger: 問題発生時の要因分割
+
+## 参照
+
+- [constitution.mdc](../rules/constitution.mdc)
+- [core-rules.mdc](../rules/core-rules.mdc)
+- [implementation-rules.mdc](../rules/implementation-rules.mdc)

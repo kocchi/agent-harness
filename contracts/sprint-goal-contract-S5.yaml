@@ -1,0 +1,77 @@
+# Sprint Goal Contract for agent-harness Sprint 5
+# Created: 2026-01-30
+
+sprint-goal-contract:
+  id: "SG-20260130-S5"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "参照エラーを修正し、P0（セッション開始時の検査）を機能させる"
+    contribution: "H3（スキル/ルールで自律度が上がる）の基盤整備"
+    measurable: "rules-validator が正常に動作し、参照エラーが0件"
+  
+  verification:
+    method: "rules-validator を実行して検査"
+    success_criteria:
+      - "rules-validator が .cursor/rules/*.mdc を正しく参照"
+      - "ssot-validator の役割が明確化（再設計 or 非推奨化）"
+      - "全エージェント/スキルの参照エラーが解消"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "rules-validator.md の再設計"
+      - "ssot-validator.md の再設計または非推奨化"
+      - "pre-commit-reviewer.md のパス修正"
+      - "debt-monitor/SKILL.md のパス修正"
+      - "contribute-upstream/SKILL.md の再設計"
+    out_of_scope:
+      - "新規エージェント/スキルの追加"
+      - "ルール自体の変更"
+      - "H2（場の定義）の検証"
+    risks:
+      - risk: "ssot-validator の役割判断に時間がかかる"
+        mitigation: "先に S2 を検証し、判断を確定させる"
+      - risk: "修正漏れが発生"
+        mitigation: "修正後に rules-validator を実行して検証"
+  
+  # S4 Retro からのアクション
+  retro_actions:
+    - from: "S4-retro-try"
+      action: "構造が異なるプロジェクトでのドッグフーディング"
+      status: "out_of_scope"
+      note: "S6 以降に延期"
+    - from: "S4-retro-try"
+      action: "H2（場の定義）の検証開始"
+      status: "out_of_scope"
+      note: "S6 以降に延期"
+    - from: "rules-validator"
+      action: "参照エラーの修正"
+      status: "in_scope"
+  
+  # Git ワークフロー（継続）
+  git_workflow:
+    branch_strategy:
+      unit: "Increment"
+      naming: "feat/{increment-id}-{short-description}"
+      example: "feat/INC-S5-001-rules-validator-fix"
+    commit_strategy:
+      unit: "論理的な変更単位"
+      rules:
+        - "構造変更、内容修正、追加、削除を混ぜない"
+        - "コミットメッセージは変更意図を簡潔に記述"
+        - "Increment 完了ごとに即プッシュ"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで参照エラーを解消する"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

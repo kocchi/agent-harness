@@ -1,0 +1,115 @@
+# Slice Contract: 大規模シンプル化
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-simplification"
+  
+  parent: "SG-20260130-S5"
+  
+  feature:
+    name: "エージェント/スキル/VISION の大規模シンプル化"
+    description: "P3（道具を減らす）を徹底し、契約体系に集中する"
+  
+  slices:
+    - id: S1
+      name: "エージェント削減（12 → 5）"
+      description: "使用実績なし/VISION乖離のエージェントを削除"
+      size: medium
+      classification: known
+      reason: "削除対象が明確"
+      verify_timing: "実装後"
+      delete:
+        - ".cursor/agents/debugger.md"
+        - ".cursor/agents/executor.md"
+        - ".cursor/agents/markdown-reviewer.md"
+        - ".cursor/agents/persona-strategy.md"
+        - ".cursor/agents/pre-commit-reviewer.md"
+        - ".cursor/agents/ssot-validator.md"
+        - ".cursor/agents/watcher.md"
+      keep:
+        - ".cursor/agents/deep-research.md"
+        - ".cursor/agents/guardian-generator.md"
+        - ".cursor/agents/rules-validator.md"
+        - ".cursor/agents/systematic-debugger.md"
+        - ".cursor/agents/weekly-research.md"
+      
+    - id: S2
+      name: "スキル削減（22 → 12）"
+      description: "task-orchestrator依存/使用実績なしのスキルを削除"
+      size: medium
+      classification: known
+      reason: "削除対象が明確"
+      verify_timing: "実装後"
+      delete:
+        - ".cursor/skills/changelog-update/"
+        - ".cursor/skills/coverage-check/"
+        - ".cursor/skills/debt-monitor/"
+        - ".cursor/skills/improvement-lifecycle/"
+        - ".cursor/skills/ledger-query/"
+        - ".cursor/skills/ledger-record/"
+        - ".cursor/skills/session-init/"
+        - ".cursor/skills/session-selector/"
+        - ".cursor/skills/task-classifier/"
+        - ".cursor/skills/task-orchestrator/"
+      
+    - id: S3
+      name: "関連ファイル削除"
+      description: "sessions, ledger, monitors を削除"
+      size: small
+      classification: known
+      reason: "依存するスキルが削除されるため"
+      verify_timing: "実装後"
+      delete:
+        - ".cursor/sessions/"
+        - ".cursor/ledger/"
+        - ".cursor/monitors/"
+      
+    - id: S4
+      name: "VISION.md 更新"
+      description: "契約/場を削減し、シンプル化"
+      size: medium
+      classification: known
+      reason: "変更内容が明確"
+      verify_timing: "実装後"
+      
+    - id: S5
+      name: "skills-inventory.md 更新"
+      description: "削減後の一覧に更新"
+      size: small
+      classification: known
+      reason: "変更内容が明確"
+      verify_timing: "実装後"
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "エージェントを先に削除"
+    - slice_id: S2
+      priority: 2
+      rationale: "スキルを削除"
+    - slice_id: S3
+      priority: 3
+      rationale: "関連ファイルを削除"
+    - slice_id: S4
+      priority: 4
+      rationale: "VISIONを更新"
+    - slice_id: S5
+      priority: 5
+      rationale: "ドキュメントを更新"
+  
+  risks:
+    - slice_id: S1
+      risk: "削除したエージェントが後で必要になる"
+      mitigation: "Git履歴から復元可能"
+    - slice_id: S4
+      risk: "VISION変更で既存の理解が崩れる"
+      mitigation: "insight-contractに変更履歴を記録"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  status: "completed"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
