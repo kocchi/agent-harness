@@ -71,7 +71,7 @@ insights:
       description: "「小さな単位で頻繁にプッシュ」をルールに追加検討"
       owner: "Yuki"
       deadline: "2026-02-06"
-    status: "new"
+    status: "applied"
     created_at: "2026-01-30"
 
   - id: "INS-20260130-004"
