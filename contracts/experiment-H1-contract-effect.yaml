@@ -16,15 +16,20 @@ experiment-contract:
       name: "契約なし"
       tasks: 3
       method: "従来通り（契約なしで実装）"
+      prs: ["#6", "#7", "#8"]
+      data:
+        total_commits: 6
+        reverts: 0
+        fix_commits: 0
+        pr_revisions: 0
       
     treatment_group:
       name: "契約あり"
-      tasks: 5  # 本日完了済み
+      tasks: 5
       method: "slice-contract → 実装"
-      data_collected: true
-      baseline:
+      prs: ["#1", "#2", "#3", "#4", "#5"]
+      data:
         total_commits: 17
-        prs: 5
         reverts: 0
         fix_commits: 0
         pr_revisions: 0
@@ -40,15 +45,40 @@ experiment-contract:
       definition: "fix: プレフィックスのコミット数"
       measurement: "git log"
   
-  success_criteria:
-    - "契約ありの revert_rate < 契約なしの revert_rate"
-    - "契約ありの pr_revision_count < 契約なしの pr_revision_count"
+  results:
+    comparison:
+      revert_rate:
+        with_contract: 0
+        without_contract: 0
+        difference: 0
+      pr_revision_count:
+        with_contract: 0
+        without_contract: 0
+        difference: 0
+    
+    conclusion: "inconclusive"
+    reason: "タスク複雑度が低く、差が出る条件でなかった"
+    
+    observations:
+      - "両グループとも手戻り（revert）なし"
+      - "両グループともドキュメント変更のみ"
+      - "契約体系の価値は「手戻り削減」以外にある可能性"
+    
+    alternative_hypotheses:
+      - "契約体系は「明確化」の価値がある（判断の根拠が残る）"
+      - "契約体系は「分析」の価値がある（未知→既知の変換）"
+      - "手戻り削減の効果は複雑なタスクで発現する"
+  
+  next_steps:
+    - "複雑な実装タスク（コード変更）で再実験"
+    - "「手戻り削減」以外の価値指標を定義"
+    - "主観的な満足度（ユーザー体験）を測定"
+  
+  status: "completed"
   
   duration:
     start: "2026-01-30"
-    end: "2026-02-06"
-  
-  status: "in_progress"
+    end: "2026-01-30"
   
   created_at: "2026-01-30"
   updated_at: "2026-01-30"
