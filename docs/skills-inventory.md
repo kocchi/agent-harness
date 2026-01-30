@@ -16,9 +16,20 @@ agent-harness のスキル一覧と整理状況。
 
 | スキル | 目的 | 整合性 |
 |-------|------|--------|
-| `superpowers-brainstorming` | 創造的作業の前に実行 | △ discovery と重複可能性 |
-| `superpowers-writing-plans` | 計画作成 | △ sprint-goal と重複可能性 |
+| `superpowers-brainstorming` | 創造的作業の前に実行 | ✅ discovery と補完（下記参照） |
+| `superpowers-writing-plans` | 計画作成 | ✅ sprint-goal と補完（下記参照） |
 | `superpowers-systematic-debugging` | デバッグ | ✅ 独立 |
+
+### 契約系と superpowers 系の使い分け
+
+| 質問 | 使うスキル | 理由 |
+|------|-----------|------|
+| 「何を作るべきか」がわからない | **discovery** | 価値定義（Why） |
+| 「どう作るか」を探索したい | **brainstorming** | 設計探索（How） |
+| 「このスプリントの目標は」 | **sprint-goal** | 目標設定（Why） |
+| 「実装計画を作りたい」 | **writing-plans** | 実装計画（How） |
+
+**原則**: 契約系 = Why（価値・目標）、superpowers 系 = How（設計・計画）
 
 ## 既存スキル（整理が必要）
 
@@ -49,8 +60,8 @@ agent-harness のスキル一覧と整理状況。
 
 ### 中（整合性確認）
 
-3. `superpowers-brainstorming` → `discovery` との使い分けを明確化
-4. `superpowers-writing-plans` → `sprint-goal` との使い分けを明確化
+3. ~~`superpowers-brainstorming` → `discovery` との使い分けを明確化~~ ✅ S3 で完了
+4. ~~`superpowers-writing-plans` → `sprint-goal` との使い分けを明確化~~ ✅ S3 で完了
 5. `task-orchestrator` → 契約体系との統合検討
 
 ### 低（現状維持）
