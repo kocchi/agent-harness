@@ -191,6 +191,25 @@ flowchart TB
 - Sprint は Increment を作る「コンテキスト」を提供
 - Increment は Sprint Goal ではなく **Product Goal との関係** で価値を持つ
 
+### 契約と Git ワークフローの対応
+
+| 契約レイヤー | Git 対応 | 理由 |
+|-------------|----------|------|
+| Sprint Goal | ブランチ不要 | Sprint は「焦点」であり、コード単位ではない |
+| **Increment** | **feature ブランチ / PR** | 検証可能な成果物単位 |
+| 個別変更 | **コミット** | 論理的な変更単位 |
+
+```
+main
+ └── feat/INC-S3-001-xxx  ← Increment 単位でブランチ
+      ├── commit: 構造変更
+      ├── commit: 内容追加
+      └── commit: テスト追加
+      → PR & マージ（Increment 完了ごとに即プッシュ）
+```
+
+**設計判断**: Increment = PR とすることで、Review 時に「何が完了したか」が明確になる。
+
 ### バックログと契約の違い
 
 | 項目 | スクラム用語 | agent-harness | 性質 |
