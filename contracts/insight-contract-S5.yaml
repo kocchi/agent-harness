@@ -1,0 +1,100 @@
+# Insight Contract for Sprint 5
+# Created: 2026-01-30
+
+insights:
+  - id: "INS-20260130-S5-001"
+    insight:
+      statement: "P3（道具を減らす）を徹底することで、4,586 行削減・50% シンプル化を達成"
+      source: "Retro"
+      evidence:
+        summary: "エージェント 12→5、スキル 22→12 に削減。契約体系だけで十分回ることが S3-S4 で検証済み"
+        references:
+          - type: "file"
+            path: "contracts/slice-contract-S5-simplification.yaml"
+            description: "削除対象の一覧"
+      confidence: "high"
+    impact:
+      affects:
+        - "P3 の実践パターン"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "定期的に P3 を実施する習慣として定着"
+      owner: null
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-S5-002"
+    insight:
+      statement: "FIC セッション（ペルソナ注入）は、大規模な意思決定の質を上げる"
+      source: "Retro"
+      evidence:
+        summary: "Cagan, Torres, Biddle の視点で VISION を評価。「契約/場が多すぎる」という共通指摘がシンプル化の根拠になった"
+        references: []
+      confidence: "high"
+    impact:
+      affects:
+        - "P5 の実践パターン"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "knowledge"
+      description: "FIC セッションの実施パターンをドキュメント化"
+      owner: "Yuki"
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-30"
+
+  - id: "INS-20260130-S5-003"
+    insight:
+      statement: "task-orchestrator モデル（executor/watcher）は VISION の課題タイプ別推奨と乖離していた"
+      source: "Retro"
+      evidence:
+        summary: "VISION では「単純実装/定型作業は素の AI」と定義。task-orchestrator は全タスクに executor/watcher を適用しようとしていた"
+        references:
+          - type: "file"
+            path: "docs/VISION.md"
+            description: "課題タイプと推奨パターン"
+      confidence: "high"
+    impact:
+      affects:
+        - "VISION と実装の整合性"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "削除により解消"
+      owner: null
+      deadline: null
+    status: "applied"
+    created_at: "2026-01-30"
+
+summary:
+  total_insights: 3
+  validated: 2
+  applied: 1
+  key_learnings:
+    - "P3 を徹底して 50% シンプル化"
+    - "FIC セッションで意思決定の質向上"
+    - "VISION と実装の乖離を解消"
+
+sprint_summary:
+  increments_completed: 2
+  commits:
+    - "7899a99 refactor: Major simplification (P3)"
+  goal_achieved: true
+  lines_deleted: 4586
+  agents_deleted: 7
+  skills_deleted: 10
+
+retro:
+  keep:
+    - "P3 を定期的に実施"
+    - "FIC で意思決定の質を上げる"
+    - "契約体系への集中"
+  problem: []
+  try:
+    - "rules-validator を実際に動作検証"
+    - "H3（スキル/ルールで自律度が上がる）の検証"

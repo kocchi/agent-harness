@@ -7,9 +7,9 @@ sprint-goal-contract:
   parent: "PG-2026-Q1-agent-harness"
   
   goal:
-    statement: "参照エラーを修正し、P0（セッション開始時の検査）を機能させる"
-    contribution: "H3（スキル/ルールで自律度が上がる）の基盤整備"
-    measurable: "rules-validator が正常に動作し、参照エラーが0件"
+    statement: "P3（道具を減らす）を徹底し、エージェント/スキルを 50% 削減"
+    contribution: "H3（スキル/ルールで自律度が上がる）の基盤整備、契約体系への集中"
+    measurable: "エージェント 12→5、スキル 22→12、VISION 更新完了"
   
   verification:
     method: "rules-validator を実行して検査"
