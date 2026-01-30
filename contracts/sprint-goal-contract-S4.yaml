@@ -1,0 +1,78 @@
+# Sprint Goal Contract for agent-harness Sprint 4
+# Created: 2026-01-30
+
+sprint-goal-contract:
+  id: "SG-20260130-S4"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "user-model-framework で契約体系をドッグフーディングし、H1 を継続検証"
+    contribution: "H1（手戻り削減）の外部プロジェクトでの検証、契約体系の一般化可能性確認"
+    measurable: "user-model-framework で1機能以上を契約ドリブンで完了"
+  
+  verification:
+    method: "ドッグフーディング + Retro"
+    success_criteria:
+      - "user-model-framework に product-goal-contract を作成"
+      - "deep-analysis スキルを slice-contract → increment で完了"
+      - "外部プロジェクトでの適用性を insight として記録"
+      - "H1 のデータを追加（手戻りの有無を記録）"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "user-model-framework の product-goal-contract 作成"
+      - "deep-analysis スキルの slice-contract 作成と実装"
+      - "未コミット変更の整理"
+      - "Retro での適用性評価"
+    out_of_scope:
+      - "user-model-framework の大規模リファクタリング"
+      - "新規スキルの追加（deep-analysis 以外）"
+      - "agent-harness 本体の機能追加"
+    risks:
+      - risk: "user-model-framework の文脈理解に時間がかかる"
+        mitigation: "既存の未コミット変更を活用し、スコープを絞る"
+      - risk: "契約体系のオーバーヘッドが外部プロジェクトで顕著になる"
+        mitigation: "問題点を記録し、軽量化を検討"
+  
+  # S3 Retro からのアクション
+  retro_actions:
+    - from: "S3-retro-try"
+      action: "別リポジトリ（歩活等）でドッグフーディング"
+      status: "in_scope"
+      note: "user-model-framework を選定"
+    - from: "S3-retro-try"
+      action: "improvement-lifecycle スキルの整理"
+      status: "out_of_scope"
+      note: "S5 以降に延期"
+  
+  # Git ワークフロー（S3 から継続）
+  git_workflow:
+    branch_strategy:
+      unit: "Increment"
+      naming: "feat/{increment-id}-{short-description}"
+      example: "feat/INC-S4-001-deep-analysis"
+    commit_strategy:
+      unit: "論理的な変更単位"
+      rules:
+        - "構造変更、内容修正、追加、削除を混ぜない"
+        - "コミットメッセージは変更意図を簡潔に記述"
+        - "パターン: feat: / fix: / docs: / refactor: / chore:"
+        - "Increment 完了ごとに即プッシュ"
+    pr_strategy:
+      unit: "Increment"
+      description: "Increment 完了時に PR を作成し、DoD をチェックリストに"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで user-model-framework をドッグフーディング対象とする"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
