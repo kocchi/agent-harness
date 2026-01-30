@@ -1,0 +1,66 @@
+# Product Goal Contract for agent-harness
+# Created: 2026-01-29
+
+product-goal-contract:
+  id: "PG-2026-Q1-agent-harness"
+  
+  value: |
+    最終判断以外を AI チームに委譲できる
+    - 契約体系で合意を明文化
+    - 場とワークフローでプロセスを提供
+    - ペルソナ注入と相互監視で判断の質を維持
+  
+  kill_criteria:
+    - "3ヶ月後に「何を判断すべきかわからない」が 50% 超"
+    - "契約活用率が 50% 未満"
+    - "手戻り率が現状より悪化"
+  
+  success_metrics:
+    - name: "契約活用率"
+      target: "80% 以上"
+      current: null
+    - name: "手戻り率"
+      target: "10% 以下"
+      current: null
+    - name: "自律度"
+      target: "6ヶ月で介入頻度 50% 減"
+      current: null
+  
+  hypotheses:
+    - id: H1
+      statement: "契約体系が手戻りを減らす"
+      risk_type: "value"
+      confidence: "medium"
+      status: "unvalidated"
+    - id: H2
+      statement: "場の定義がプロセスを明確にする"
+      risk_type: "usability"
+      confidence: "medium"
+      status: "unvalidated"
+    - id: H3
+      statement: "スキル/ルールで自律度が上がる"
+      risk_type: "feasibility"
+      confidence: "medium"
+      status: "unvalidated"
+  
+  stakeholders:
+    - name: "Yuki（メンテナー）"
+      role: "approver"
+      commitment: "このビジョンで agent-harness を作る"
+      committed_at: "2026-01-29"
+    - name: "コントリビューター"
+      role: "reviewer"
+      commitment: "このビジョンに沿って貢献する"
+      committed_at: null
+    - name: "ユーザー"
+      role: "informed"
+      commitment: "このビジョンを理解して使う"
+      committed_at: null
+  
+  iteration:
+    planned: 3  # 四半期で3回のスプリント
+    current: 1
+    trigger: "仮説の検証結果により方向転換が必要な場合"
+  
+  created_at: "2026-01-29"
+  updated_at: "2026-01-29"

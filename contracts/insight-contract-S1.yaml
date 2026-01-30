@@ -1,0 +1,234 @@
+# Insight Contract for Sprint 1 Review
+# Created: 2026-01-29
+
+insights:
+  - id: "INS-20260129-001"
+    insight:
+      statement: "入力（分析レポート、プロポーザル）と契約は異なる。入力は場を経由して契約に変換する必要がある"
+      source: "Review"
+      evidence: "歩活の分析レポートを例に議論し、discovery-contract への変換プロセスを設計した"
+      confidence: "high"
+    impact:
+      affects:
+        - "VISION.md - 抽象概念セクション"
+        - "discovery スキル"
+      action_required: true
+      urgency: "low"
+    next_action:
+      type: "knowledge"
+      description: "VISION.md に「入力と契約の違い」を追加済み"
+      owner: "Yuki"
+      deadline: "2026-01-29"
+    status: "applied"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-002"
+    insight:
+      statement: "契約の階層（OKR → Product Goal → Sprint Goal → Increment）が価値を一貫させる"
+      source: "Review"
+      evidence: "スクラムガイド 2020 の Product Goal / Sprint Goal を調査し、契約体系に統合した"
+      confidence: "high"
+    impact:
+      affects:
+        - "VISION.md - 契約の階層"
+        - "constitution.mdc - P7"
+        - "philosophy.md - P7"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "rule"
+      description: "constitution.mdc の P7 を更新済み"
+      owner: "Yuki"
+      deadline: "2026-01-29"
+    status: "applied"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-003"
+    insight:
+      statement: "Cursor mdc と Anthropic SKILL.md は互換性があり、用途で使い分けできる"
+      source: "調査"
+      evidence: "両形式の frontmatter を比較。description は共通、alwaysApply/globs は mdc 固有、name は skill 固有"
+      confidence: "high"
+    impact:
+      affects:
+        - "スキル作成方針"
+        - "ルール作成方針"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "knowledge"
+      description: "使い分け方針を記録"
+      owner: "Yuki"
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-004"
+    insight:
+      statement: "外部仕様書は自動生成 + Spec Review で管理するのが効率的"
+      source: "調査"
+      evidence: "OpenAPI, AsyncAPI などの自動生成ツールと、規制対応文書の手動作成の違いを調査"
+      confidence: "medium"
+    impact:
+      affects:
+        - "VISION.md - 成果物の種類"
+        - "external-spec-contract（未作成）"
+      action_required: true
+      urgency: "low"
+    next_action:
+      type: "skill"
+      description: "external-spec スキルを Sprint 2 以降で作成"
+      owner: "Yuki"
+      deadline: "2026-02-12"
+    status: "new"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-005"
+    insight:
+      statement: "PRD は作らない。代わりに契約の階層で価値を管理し、テストで仕様を証明する"
+      source: "Review"
+      evidence: "PRD とアジャイルの相性、ラディカルプロダクトシンキングの調査結果"
+      confidence: "medium"
+    impact:
+      affects:
+        - "VISION.md - 差別化"
+        - "開発プロセス"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "none"
+      description: "方針として記録済み"
+      owner: null
+      deadline: null
+    status: "validated"
+    created_at: "2026-01-29"
+
+  # Retro で追加
+  - id: "INS-20260129-006"
+    insight:
+      statement: "YAML 形式の契約はエンジニア以外のメンバーが参照しにくい可能性がある"
+      source: "Retro"
+      evidence: "ユーザーからのフィードバック「エンジニア以外のメンバーが参照できるか心配」"
+      confidence: "medium"
+    impact:
+      affects:
+        - "契約の形式"
+        - "ステークホルダーとのコミュニケーション"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "skill"
+      description: "契約を Markdown や Dashboard に変換する仕組みを検討"
+      owner: "Yuki"
+      deadline: "2026-02-12"
+    status: "new"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-007"
+    insight:
+      statement: "insight の evidence が薄い。調査結果への参照があると検証可能性が上がるが、コード量も増える"
+      source: "Retro"
+      evidence: "ユーザーからのフィードバック"
+      confidence: "medium"
+    impact:
+      affects:
+        - "insight スキル"
+        - "insight-contract の形式"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "skill"
+      description: "evidence に URL や research/ への参照を含める形式を検討"
+      owner: "Yuki"
+      deadline: "2026-02-05"
+    status: "new"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-008"
+    insight:
+      statement: "Review はファシリテーションが必要。意見収集、ポジティブ反応の引き出し、不安解消が重要"
+      source: "Review"
+      evidence:
+        summary: "ユーザーからのフィードバック。Review で一方的に報告するだけでなく、対話的にする必要がある"
+        references: []
+      confidence: "high"
+    impact:
+      affects:
+        - "Review の進め方"
+        - "insight スキル"
+        - "新規 review-facilitation スキルの検討"
+      action_required: true
+      urgency: "medium"
+    next_action:
+      type: "skill"
+      description: "Review 用のファシリテーション質問テンプレートを作成"
+      owner: "Yuki"
+      deadline: "2026-02-05"
+    status: "new"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-009"
+    insight:
+      statement: "Increment は Sprint Goal ではなく Product Goal へのステップ。Sprint Goal はスプリントの焦点（なぜ）"
+      source: "Review"
+      evidence:
+        summary: "スクラムガイド2020: 'An Increment is a concrete stepping stone toward the Product Goal'"
+        references:
+          - type: "url"
+            path: "https://scrumguides.org/scrum-guide.html#increment"
+            description: "Scrum Guide 2020 - Increment セクション"
+      confidence: "high"
+    impact:
+      affects:
+        - "契約の階層構造"
+        - "increment スキル"
+        - "VISION.md の記述"
+      action_required: true
+      urgency: "high"
+    next_action:
+      type: "docs"
+      description: "VISION.md の契約階層を修正し、Increment と Product Goal の関係を正しく記述"
+      owner: "Yuki"
+      deadline: "2026-01-30"
+    status: "new"
+    created_at: "2026-01-29"
+
+  - id: "INS-20260129-010"
+    insight:
+      statement: "agent-harness はバックログを管理しない。契約（価値の合意）に集中し、作業管理は外部ツール（JIRA等）に委ねる"
+      source: "Review"
+      evidence:
+        summary: "ユーザーとの議論で決定。責務分離により agent-harness のスコープを明確化"
+        references: []
+      confidence: "high"
+    impact:
+      affects:
+        - "agent-harness のスコープ"
+        - "外部ツールとの連携設計"
+      action_required: false
+      urgency: "low"
+    next_action:
+      type: "docs"
+      description: "VISION.md に責務分離を明記（完了）"
+      owner: "Yuki"
+      deadline: "2026-01-29"
+    status: "applied"
+    created_at: "2026-01-29"
+
+summary:
+  total_insights: 10
+  applied: 3
+  validated: 2
+  new: 5
+  key_learnings:
+    - "入力 → 場 → 契約の変換フローが重要"
+    - "契約の階層が価値検証を一貫させる"
+    - "PRD ではなく契約 + テストで仕様を管理"
+    - "Review はファシリテーション（対話）が必要"
+    - "Increment は Product Goal へのステップ（Sprint Goal ではない）"
+    - "バックログは外部ツールに委ね、契約に集中する"
+  retro_actions:
+    - "YAML 以外の形式（Markdown, Dashboard）への変換を検討"
+    - "evidence に参照リンクを含める形式を検討"
+    - "既存スキルの棚卸しと整理"
+    - "Review のファシリテーションスキルを検討"

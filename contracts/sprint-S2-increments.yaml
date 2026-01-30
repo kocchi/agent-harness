@@ -1,0 +1,116 @@
+# Sprint 2 成果物一覧
+# ここを見ればこのスプリントの成果がわかる
+
+sprint: "S2"
+period: "2026-01-29"
+
+# Increment は Product Goal へのステップ
+product_goal:
+  id: "PG-2026-Q1-agent-harness"
+  statement: "契約ドリブンでの価値検証フレームワークを構築する"
+
+# Sprint Goal はこのスプリントの焦点（なぜ）
+sprint_goal:
+  id: "SG-20260129-S2"
+  statement: "実装フェーズのスキル（increment, slice）を作成し、Retro の改善点を反映する"
+  achieved: true
+  
+# このスプリントで Product Goal に向かって進んだステップ
+progress_toward_product_goal: |
+  契約体系のスキル（discovery, sprint-goal, insight, increment, slice）が揃い、
+  ドッグフーディングの土台ができた。
+
+increments:
+  - id: "INC-S2-001"
+    name: "increment スキル"
+    type: "skill"
+    path: ".cursor/skills/increment/SKILL.md"
+    description: "成果物（Increment）を定義し、DoD を含む完了条件を明確にする"
+    dod:
+      - item: "スキルファイルが存在する"
+        status: "done"
+      - item: "トリガー、手順、出力が定義されている"
+        status: "done"
+      - item: "失敗時の振る舞いが定義されている"
+        status: "done"
+    verification:
+      method: "ファイル確認"
+      result: "pass"
+
+  - id: "INC-S2-002"
+    name: "slice スキル"
+    type: "skill"
+    path: ".cursor/skills/slice/SKILL.md"
+    description: "価値を分類（必須/既知/未知）し、実装順序を決定する"
+    dod:
+      - item: "スキルファイルが存在する"
+        status: "done"
+      - item: "3分類の基準が明確"
+        status: "done"
+      - item: "実装順序の決め方が定義されている"
+        status: "done"
+    verification:
+      method: "ファイル確認"
+      result: "pass"
+
+  - id: "INC-S2-003"
+    name: "insight スキルの evidence 形式改善"
+    type: "enhancement"
+    path: ".cursor/skills/insight/SKILL.md"
+    description: "evidence に summary + references 構造を追加"
+    dod:
+      - item: "evidence の形式が更新されている"
+        status: "done"
+      - item: "参照リンクの書き方が明文化されている"
+        status: "done"
+    verification:
+      method: "ファイル確認"
+      result: "pass"
+
+  - id: "INC-S2-004"
+    name: "スキル棚卸しドキュメント"
+    type: "docs"
+    path: "docs/skills-inventory.md"
+    description: "23 スキルの一覧と整理状況"
+    dod:
+      - item: "全スキルが一覧化されている"
+        status: "done"
+      - item: "重複・整合性の評価がある"
+        status: "done"
+      - item: "対応優先度が定義されている"
+        status: "done"
+    verification:
+      method: "ファイル確認"
+      result: "pass"
+
+summary:
+  total: 4
+  skills_created: 2
+  enhancements: 1
+  docs: 1
+
+review:
+  status: "completed"
+  feedback:
+    - "Increment と Product Goal の関係を正しく理解できた"
+    - "責務分離（契約 vs バックログ）が明確になった"
+
+retro:
+  keep:
+    - "Review 中にスクラムガイドを参照"
+    - "Insight を即座に記録"
+    - "ユーザーの質問から深堀り"
+  problem:
+    - "Review のファシリテーションが弱い"
+    - "コミット頻度が低い"
+  try:
+    - "小さな変更ごとにコミット"
+    - "実際のタスクで slice-contract を試す"
+  most_valuable: "スクラムガイドに基づく修正"
+  next_priorities:
+    - "実際のタスクでドッグフーディング"
+    - "重複スキルの整理"
+    - "Review ファシリテーションスキル"
+  
+created_at: "2026-01-29"
+updated_at: "2026-01-29"

@@ -1,0 +1,70 @@
+# Sprint Goal Contract for agent-harness Sprint 1
+# Created: 2026-01-29
+
+sprint-goal-contract:
+  id: "SG-20260129-S1"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "契約体系の基盤スキルを作成し、ドッグフーディングを開始する"
+    contribution: "契約活用率の向上、プロセスの明確化"
+    measurable: "discovery, sprint-goal, insight スキルが動作する"
+  
+  verification:
+    method: "実際に使ってみる（ドッグフーディング）"
+    success_criteria:
+      - "discovery スキルで discovery-contract が作成できる"
+      - "sprint-goal スキルで sprint-goal-contract が作成できる"
+      - "insight スキルで insight-contract が作成できる"
+    timing: "このスプリント終了時"
+  
+  scope:
+    in_scope:
+      - "discovery スキルの作成"
+      - "sprint-goal スキルの作成"
+      - "insight スキルの作成"
+      - "VISION.md の整理"
+      - "philosophy.md の更新"
+      - "contracts/ ディレクトリの作成"
+    out_of_scope:
+      - "okr-contract スキル"
+      - "release-contract スキル"
+      - "external-spec-contract スキル"
+      - "エージェントの作成"
+    risks:
+      - risk: "スキルが実際に使われない"
+        mitigation: "自分で使いながら改善する"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで基盤スキルを完成させる"
+      committed_at: "2026-01-29"
+  
+  duration:
+    start: "2026-01-29"
+    end: "2026-02-05"  # 1週間
+  
+  deliverables:
+    - name: "discovery スキル"
+      status: "done"
+      path: ".cursor/skills/discovery/SKILL.md"
+    - name: "sprint-goal スキル"
+      status: "done"
+      path: ".cursor/skills/sprint-goal/SKILL.md"
+    - name: "insight スキル"
+      status: "done"
+      path: ".cursor/skills/insight/SKILL.md"
+    - name: "VISION.md"
+      status: "done"
+      path: "docs/VISION.md"
+    - name: "philosophy.md"
+      status: "done"
+      path: "docs/philosophy.md"
+    - name: "product-goal-contract"
+      status: "done"
+      path: "contracts/product-goal-contract.yaml"
+  
+  created_at: "2026-01-29"
+  updated_at: "2026-01-29"

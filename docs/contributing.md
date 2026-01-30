@@ -64,6 +64,50 @@ refactor: リファクタリング
 
 ## レビュー観点
 
-- 設計原理（P1-P4）との整合性
+- 設計原理（P1-P7）との整合性
 - 汎用性（組織固有ではないか）
 - 検査可能性（テストや検証ができるか）
+
+---
+
+## 届け方：GitHub Template チェーン
+
+agent-harness は GitHub Template を使って段階的にカスタマイズできます。
+
+```
+agent-harness（OSS本体）
+    ↓ submodule
+agent-harness-template（GitHub Template）
+    ↓ "Use this template"
+{org}-agent-harness（組織のプラットフォーム）
+    ↓ "Use this template"
+{team}-agent-harness（チームのストリーム）
+```
+
+### L0: agent-harness（OSS本体）
+
+- 設計原理（P1-P7）
+- 共通ルール
+- 基本スキル/エージェント
+- Guardian プリセット
+
+### L1: {org}-agent-harness（組織レベル）
+
+- 組織固有のルール（P8以降）
+- セキュリティポリシー
+- コンプライアンス要件
+- 共通インフラ設定
+
+### L2: {team}-agent-harness（チームレベル）
+
+- チーム固有のルール
+- ドメイン知識
+- リポジトリ Guardian
+
+### 貢献先の判断
+
+| 変更の性質 | 貢献先 |
+|-----------|--------|
+| 汎用的な原理・ルール | L0（agent-harness） |
+| 組織固有のポリシー | L1（{org}-agent-harness） |
+| チーム固有の知識 | L2（{team}-agent-harness） |

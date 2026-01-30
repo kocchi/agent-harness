@@ -1,0 +1,55 @@
+# Sprint Goal Contract for agent-harness Sprint 2
+# Created: 2026-01-29
+
+sprint-goal-contract:
+  id: "SG-20260129-S2"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "実装フェーズのスキル（increment, slice）を作成し、Retro の改善点を反映する"
+    contribution: "契約体系の完成度向上、ユーザビリティ改善"
+    measurable: "increment-skill, slice-skill が動作し、evidence 形式が改善される"
+  
+  verification:
+    method: "ドッグフーディング"
+    success_criteria:
+      - "increment スキルで increment-contract が作成できる"
+      - "slice スキルで価値分類ができる"
+      - "evidence に参照リンクが含まれる形式が定義されている"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "increment スキルの作成"
+      - "slice スキルの作成"
+      - "insight スキルの evidence 形式改善"
+      - "既存スキルの棚卸し（一覧化）"
+    out_of_scope:
+      - "YAML → Markdown/Dashboard 変換（次スプリント）"
+      - "okr-contract スキル"
+      - "release-contract スキル"
+    risks:
+      - risk: "evidence 形式の改善がコード量増加につながる"
+        mitigation: "参照リンクのみに留め、本文は別ファイルに"
+  
+  retro_actions:
+    - from: "INS-20260129-006"
+      action: "YAML 以外の形式を検討"
+      status: "out_of_scope（次スプリント）"
+    - from: "INS-20260129-007"
+      action: "evidence に参照リンクを含める"
+      status: "in_scope"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで実装フェーズのスキルを完成させる"
+      committed_at: "2026-01-29"
+  
+  duration:
+    start: "2026-01-29"
+    end: "2026-02-05"
+  
+  created_at: "2026-01-29"
+  updated_at: "2026-01-29"
