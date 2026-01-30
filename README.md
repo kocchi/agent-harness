@@ -2,8 +2,8 @@
 
 > 自律的に価値を届け続ける AI チームのハーネス
 
-著名人の人格を降ろした複数の AI が、相互監視しながら動く。
-いつ、何を、どう動くか。型を一気通貫で提供。
+最終判断以外を AI チームに委譲できる。
+契約体系で合意を明文化し、ペルソナ注入と相互監視で判断の質を維持。
 
 ## クイックスタート
 
@@ -18,10 +18,10 @@ cd agent-harness
 
 ## 特徴
 
-- **設計原理（P1-P6）**: AI エージェント活用のベストプラクティス
+- **契約体系**: 価値の合意を明文化（sprint-goal, slice, increment, insight）
+- **設計原理（P0-P7）**: AI エージェント活用のベストプラクティス
 - **ルール定義**: 直接編集運用、コミット規約、Human-in-the-Loop
-- **スキル**: brainstorming, systematic-debugging, writing-plans
-- **サブエージェント**: rules-validator, deep-research, systematic-debugger
+- **スキル**: 契約系、superpowers 系、タスク管理系
 
 ## 構造
 
@@ -29,33 +29,47 @@ cd agent-harness
 .cursor/                # AI エージェント設定（正）
 ├── rules/              # ルール定義 (.mdc)
 ├── agents/             # サブエージェント定義
-└── skills/             # スキル定義
+├── skills/             # スキル定義
+├── sessions/           # セッション定義
+└── ledger/             # 学習台帳
 
-.claude/                # → .cursor/ への symlink
+contracts/              # 契約ファイル
+├── product-goal-*.yaml # プロダクト目標
+├── sprint-goal-*.yaml  # スプリント目標
+├── slice-*.yaml        # 価値分類
+└── insight-*.yaml      # 学び
 
 docs/                   # ドキュメント
 ├── VISION.md           # プロジェクトビジョン
-├── philosophy.md       # 設計原理（P1-P4）
-├── contributing.md     # 貢献ガイド
-└── team-topologies.md  # チームトポロジー
+├── philosophy.md       # 設計原理
+├── skills-inventory.md # スキル一覧
+└── contributing.md     # 貢献ガイド
 
-source/                 # 参照用定義（YAML）
-├── _shared/            # 汎用原理
-└── meta/               # ルール・スキル・エージェント（YAML）
+.claude/                # → .cursor/ への symlink
 ```
 
 ## 設計原理
 
 | 原理 | 名称 | 概要 |
 |------|------|------|
-| P1 | コンテキスト競合の排除 | 役割分離された複数サブエージェントの同時稼働を前提 |
-| P2 | 中間生成物で合意を運ぶ | 契約・失敗モード・テスト戦略で検査可能に |
-| P3 | 道具を減らす | 各スライスで「減らせる道具」を評価 |
-| P4 | 知識は資産 | ルール/スキル/ナレッジとして蓄積 |
-| P5 | FIC | 摩擦を注入し、A/B では到達できない C を生む |
-| P6 | 相互監視 | 最低2人（ベスト3人）で自律的に動く |
+| P0 | セッション開始時の検査 | rules-validator を自動実行 |
+| P1 | コンテキスト分離 | 役割ごとにエージェントを分ける |
+| P2 | 契約で合意 | コードの前に契約を作る |
+| P3 | 道具を減らす | 各スライスで減らせる道具を評価 |
+| P4 | 知識を蓄積 | ルール/スキル/ナレッジとして蓄積 |
+| P5 | ペルソナ注入 | 著名人の視点を借りる |
+| P6 | 相互監視 | 最低2人の異なる視点でレビュー |
+| P7 | 契約で価値をつなぐ | Product Goal → Sprint Goal → Increment |
 
 詳細は [docs/VISION.md](docs/VISION.md) を参照。
+
+## 契約体系
+
+```
+Product Goal Contract → Sprint Goal Contract → Slice Contract → Increment Contract
+                                                    ↓
+                                              Insight Contract（学び）
+```
 
 ## Cursor / Claude Code 対応
 
