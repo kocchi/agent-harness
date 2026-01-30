@@ -303,4 +303,4 @@ result:
   ready_for_learning: true  # 学び記録に進んでよいか
 ```
 
-`ready_for_learning: true` の場合、SliceOrchestrator は log-learning スキルを呼び出す。
+`ready_for_learning: true` の場合、SliceOrchestrator は insight スキルを呼び出す。

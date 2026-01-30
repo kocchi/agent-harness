@@ -176,7 +176,7 @@ pdm-agent サブエージェントを verify モードで呼び出し、以下�
 - [ ] 学びを中間生成物へ戻した
 - [ ] 次の仮説と次スライスを言語化した
 
-log-learning スキルを呼び出し、research/learnings/[slice-name].yaml に記録
+insight スキルを呼び出し、insight-contract に学びを記録
 ```
 
 ## 中間生成物の保存先
@@ -204,4 +204,4 @@ research/slices/[slice-name]/
 - [ ] テスト（証明書）が作成された
 - [ ] 実装が完了した
 - [ ] 受け入れ確認が completed（accepted or needs_work）
-- [ ] 学習が記録された（log-learning）
+- [ ] 学習が記録された（insight）

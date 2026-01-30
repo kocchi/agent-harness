@@ -29,7 +29,7 @@ agent-harness のスキル一覧と整理状況。
 | `session-init` | セッション開始時の初期化 | ✅ P0 と整合 | 維持 |
 | `session-selector` | セッション種別の選択 | △ 契約体系と統合検討 | 要検討 |
 | `propose-change` | 変更提案フロー | △ increment と重複可能性 | 統合検討 |
-| `log-learning` | 学習の記録 | ❌ insight と重複 | insight に統合 |
+| ~~`log-learning`~~ | 学習の記録 | ✅ insight に統合済み | S3 で削除 |
 | `ledger-record` | 台帳への記録 | ✅ 独立（低レベル） | 維持 |
 | `ledger-query` | 台帳の検索 | ✅ 独立（低レベル） | 維持 |
 | `improvement-lifecycle` | 改善サイクル | △ insight と重複可能性 | 統合検討 |
@@ -44,7 +44,7 @@ agent-harness のスキル一覧と整理状況。
 
 ### 高（重複解消）
 
-1. `log-learning` → `insight` に統合
+1. ~~`log-learning` → `insight` に統合~~ ✅ S3 で完了
 2. `propose-change` → `increment` との関係を明確化
 
 ### 中（整合性確認）

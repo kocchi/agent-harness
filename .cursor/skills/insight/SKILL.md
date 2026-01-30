@@ -14,8 +14,9 @@ description: |
 
 - Sprint Review 後
 - Sprint Retro 後
+- **スライス完了後**（旧 log-learning の機能を統合）
 - 「これは学びだ」と気づいたとき
-- 「記録しておきたい」と言われたとき
+- 「記録しておきたい」「学びを記録」と言われたとき
 - 実験や検証の結果が出たとき
 
 ## 実行手順
@@ -35,7 +36,7 @@ description: |
 ```yaml
 insight:
   statement: "〇〇ということがわかった"
-  source: "Review | Retro | 実験 | 調査 | 実装"
+  source: "Review | Retro | スライス完了 | 実験 | 調査 | 実装"
   evidence:
     summary: "根拠の要約（1-2文）"
     references:  # オプション: 詳細への参照
@@ -141,4 +142,3 @@ insight-contract:
 
 - [VISION.md - 学習系契約](../../../docs/VISION.md)
 - [philosophy.md - P4: 知識を蓄積](../../../docs/philosophy.md)
-- [log-learning スキル](../log-learning/SKILL.md)
