@@ -1,0 +1,101 @@
+# Sprint Goal Contract for agent-harness Sprint 6
+# Created: 2026-01-30
+
+sprint-goal-contract:
+  id: "SG-20260130-S6"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "Agent/Role/Persona/Skill の抽象化を実装し、価値検証を行う"
+    contribution: |
+      H2（場の定義がプロセスを明確にする）と H3（スキル/ルールで自律度が上がる）の検証。
+      場に必要な構成を定義し、コンテキスト消費を抑えつつ質の向上を検証する。
+    measurable: |
+      - 抽象化の基盤完了（roles/, personas/custom/, ドキュメント）
+      - 場の構成定義の追加
+      - H2, H3 の検証結果を insight に記録
+  
+  verification:
+    method: "rules-validator を実行 + insight-contract で検証結果を記録"
+    success_criteria:
+      - ".cursor/roles/ に pdm.md, tech-lead.md が存在"
+      - ".cursor/agents/persona-vessel.md が存在"
+      - ".cursor/personas/custom/ が存在"
+      - "VISION.md に場の構成定義が追加"
+      - "philosophy.md に Agent 構成の説明が追加"
+      - "vertical/ ディレクトリが削除されている"
+      - "H2, H3 の検証結果が insight-contract-S6 に記録されている"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "抽象化の基盤（roles/, personas/custom/, ドキュメント）"
+      - "場の構成定義（各場に必要な Role + Persona + Skill）"
+      - "H3 検証: Role + Persona + Skill の組み合わせ"
+      - "H2 検証: 場の構成定義が質を高めるか"
+    out_of_scope:
+      - "新規エージェント/スキルの追加"
+      - "契約体系の変更"
+      - "guardian-generator の変更（別スプリントで検討）"
+      - "persona-vessel の Subagent 呼び出し実装（軽量アプローチで検証）"
+    risks:
+      - risk: "参照が壊れる"
+        mitigation: "移動後にグレップで参照を確認"
+      - risk: "検証の効果が主観的"
+        mitigation: "insight に具体的な観察を記録"
+  
+  # プランニング参加者（場の構成の例）
+  planning_participants:
+    roles:
+      - PdM
+      - TechLead
+      - QA
+    personas:
+      - "価値重視（何が得られるか）"
+      - "検証可能性重視（測れるか）"
+      - "批判的（盲点を探す）"
+    skills:
+      - slice
+      - sprint-goal
+      - discovery
+    implementation: "軽量（参照 or チェックリスト、Subagent 呼び出しなし）"
+  
+  retro_actions:
+    - from: "S5-retro-try"
+      action: "rules-validator を実際に動作検証"
+      status: "in_scope"
+      note: "構造変更後に S7 で検証"
+    - from: "S5-retro-try"
+      action: "H3（スキル/ルールで自律度が上がる）の検証"
+      status: "in_scope"
+      note: "S9 で検証"
+    - from: "S5-retro-try"
+      action: "H2（場の定義がプロセスを明確にする）の検証"
+      status: "in_scope"
+      note: "S10 で検証"
+  
+  git_workflow:
+    branch_strategy:
+      unit: "Increment"
+      naming: "feat/{increment-id}-{short-description}"
+      example: "feat/INC-S6-001-roles-directory"
+    commit_strategy:
+      unit: "論理的な変更単位"
+      rules:
+        - "構造変更、内容修正、追加、削除を混ぜない"
+        - "コミットメッセージは変更意図を簡潔に記述"
+        - "Increment 完了ごとに即プッシュ"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで抽象化と価値検証を完了する"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

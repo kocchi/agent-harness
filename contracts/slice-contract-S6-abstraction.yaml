@@ -1,0 +1,182 @@
+# Slice Contract for Sprint 6: Agent/Role/Persona/Skill 抽象化 + 価値検証
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-S6-abstraction"
+  parent: "SG-20260130-S6"
+  
+  feature:
+    name: "Agent/Role/Persona/Skill の抽象化と価値検証"
+    description: |
+      エージェントの構成要素を明確に分離し、柔軟な組み合わせを可能にする。
+      場に必要な構成を定義し、コンテキスト消費を抑えつつ質の向上を検証する。
+      - Agent: 判断・実行する主体（器）
+      - Role: 責務の定義（何をするか）
+      - Persona: 人格・視点（どう考えるか）
+      - Skill: 手順書（どうやるか）
+  
+  # 検証する価値仮説
+  value_hypothesis:
+    statement: "Role + Persona + Skill の組み合わせで、単一 Agent が複数の専門家として振る舞える"
+    pain_solved:
+      - "判断の平凡化・暴走"
+      - "責務の曖昧さ"
+      - "手順の欠如"
+      - "専門家ごとに別 Agent を用意する負荷"
+  
+  slices:
+    # === 基盤（known） ===
+    - id: S1
+      name: "roles/ ディレクトリの作成と Role 移行"
+      description: "pdm.md, tech-lead.md を roles/ に移動し、Role として再定義"
+      size: small
+      classification: known
+      reason: "ファイル移動とリネーム、内容の微修正"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S2
+      name: "persona-vessel.md の移動"
+      description: "vertical/ から agents/ に移動"
+      size: small
+      classification: known
+      reason: "単純な移動"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S3
+      name: "personas/custom/ ディレクトリの作成"
+      description: "カスタム人格用ディレクトリを作成"
+      size: small
+      classification: known
+      reason: "ディレクトリ作成のみ"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S4
+      name: "philosophy.md の更新"
+      description: "Agent 構成の詳細（Role/Persona/Skill 注入）を追加"
+      size: medium
+      classification: known
+      reason: "既存の P5 を拡張して説明"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S5
+      name: "VISION.md の更新"
+      description: |
+        抽象概念セクションに Agent/Role/Persona/Skill を追加。
+        場の一覧に「必要な構成」を追加。
+      size: medium
+      classification: known
+      reason: "既存構造に追加"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S6
+      name: "skills-inventory.md の更新"
+      description: "新構造を反映"
+      size: small
+      classification: known
+      reason: "既存ファイルの更新"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S7
+      name: "vertical/ ディレクトリの削除"
+      description: "空になった vertical/ を削除"
+      size: small
+      classification: known
+      reason: "S1, S2 完了後に削除"
+      verify_timing: "実装後"
+      status: completed
+      
+    # === 場の構成定義（known） ===
+    - id: S8
+      name: "場の構成定義"
+      description: |
+        各場に必要な Role + Persona + Skill を定義。
+        軽量実装: 参照用定義 + チェックリスト（Subagent 呼び出しなし）。
+      size: medium
+      classification: known
+      reason: "VISION の場の一覧を拡張する形で実装"
+      verify_timing: "実装後"
+      status: completed
+    
+    # === 価値検証（unknown） ===
+    - id: S9
+      name: "H3 価値検証: Role + Persona + Skill の組み合わせ"
+      description: |
+        同じ Agent に異なる Role + Persona を注入し、
+        複数の専門家として振る舞えるか検証する。
+      size: medium
+      classification: unknown
+      reason: "組み合わせの効果は未検証"
+      verify_timing: "最初のマイルストーン"
+      experiment: "TechLead + Kent Beck の視点でタスクを実行し、結果を insight に記録"
+      status: completed
+      
+    - id: S10
+      name: "H2 価値検証: 場の構成定義が質を高めるか"
+      description: |
+        場の構成定義を参照するだけ（参照 or チェックリスト）で、
+        質が上がるか検証する。
+      size: medium
+      classification: unknown
+      reason: "定義があるだけの効果は未検証"
+      verify_timing: "最初のマイルストーン"
+      experiment: "Sprint Planning で構成定義を参照し、従来と比較して insight に記録"
+      status: completed
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "Role の概念を先に確立"
+    - slice_id: S2
+      priority: 2
+      rationale: "persona-vessel を正しい場所に配置"
+    - slice_id: S3
+      priority: 3
+      rationale: "カスタム人格の場所を用意"
+    - slice_id: S4
+      priority: 4
+      rationale: "詳細ドキュメントを先に更新"
+    - slice_id: S5
+      priority: 5
+      rationale: "VISION は philosophy を参照"
+    - slice_id: S6
+      priority: 6
+      rationale: "構造が確定してから更新"
+    - slice_id: S7
+      priority: 7
+      rationale: "最後に不要ディレクトリを削除"
+    - slice_id: S8
+      priority: 8
+      rationale: "基盤完了後に場の構成を定義"
+    - slice_id: S9
+      priority: 9
+      rationale: "未知を早期に検証（H3）"
+    - slice_id: S10
+      priority: 10
+      rationale: "未知を早期に検証（H2）"
+  
+  risks:
+    - slice_id: S1
+      risk: "pdm.md, tech-lead.md の参照が壊れる"
+      mitigation: "移動後に参照をグレップして修正"
+    - slice_id: S4
+      risk: "P5 の説明が冗長になる"
+      mitigation: "Role/Persona/Skill は別セクションに分離"
+    - slice_id: S9
+      risk: "検証の効果が主観的になる"
+      mitigation: "insight に具体的な観察を記録"
+    - slice_id: S10
+      risk: "比較対象がない"
+      mitigation: "S8 実装前後の Sprint Planning を比較"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

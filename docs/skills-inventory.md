@@ -1,16 +1,29 @@
 # スキル棚卸し
 
-agent-harness のスキル一覧。
+agent-harness の構成一覧。
 
-## エージェント（5）
+## エージェント（6）
 
 | エージェント | 目的 | 呼び出し元 |
 |-------------|------|-----------|
 | `rules-validator` | ルール整合性検査 | P0（セッション開始時）、コミット前 |
 | `deep-research` | 深い調査 | 調査タスク時 |
 | `systematic-debugger` | 体系的デバッグ | 問題発生時 |
-| `guardian-generator` | Guardian 生成 | リポジトリ追加時 |
+| `guardian-generator` | リポジトリ固有 Agent 生成 | リポジトリ追加時 |
 | `weekly-research` | 週次リサーチ | 週次 |
+| `persona-vessel` | 人格の器（P5 実装） | 判断が必要なとき |
+
+## Role（2）
+
+| Role | 責務 | 使用場面 |
+|------|------|----------|
+| `pdm` | Why/What を定義 | Discovery, Sprint Planning |
+| `tech-lead` | How を定義 | Sprint Planning, Slice 設計 |
+
+## Personas
+
+- **文脈から導出**: persona-vessel が context から選出（事前定義リストなし）
+- **カスタム**: `.cursor/personas/custom/` にユーザーが定義
 
 ## 契約系スキル（6）
 

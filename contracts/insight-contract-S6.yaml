@@ -1,0 +1,42 @@
+# Insight Contract for Sprint 6
+# Created: 2026-01-30
+# Source: S9, S10 価値検証
+
+insight-contract:
+  id: "INS-20260130-S6"
+  
+  insights:
+    # H3 検証結果
+    - id: H3-S9
+      statement: "Role + Persona の組み合わせで、専門家視点のレビューを実行できた"
+      source: "S9 価値検証"
+      hypothesis: "Role + Persona + Skill の組み合わせで、単一 Agent が複数の専門家として振る舞える"
+      evidence:
+        summary: "TechLead Role + Kent Beck Persona を注入し、slice contract をレビュー。検証可能性・失敗モード・最短テスト入口の観点でフィードバックを出せた。"
+        observation:
+          - "Role の判断基準（口癖）に沿ったレビューが可能だった"
+          - "Persona の歪み（テストファースト）が TechLead の責務と相乗した"
+      confidence: "high"
+      verdict: "supported"
+      
+    # H2 検証結果
+    - id: H2-S10
+      statement: "場の構成定義（チェックリスト）を参照することで、盲点が浮かんだ"
+      source: "S10 価値検証"
+      hypothesis: "場の構成定義が質を高める"
+      evidence:
+        summary: "Sprint Planning のチェックリスト（PdM/TechLead/QA の3問い）を適用。『検証方法は測れるか？』という問いが浮かび、成功判定基準の曖昧さに気づいた。"
+        observation:
+          - "チェックリストがあることで、確認すべき視点が明示された"
+          - "Subagent 呼び出しなしで、参照のみで効果があった"
+      confidence: "medium"
+      verdict: "supported"
+  
+  cross_cutting:
+    - statement: "価値検証スライスには『成功判定基準』を事前に定義すべき"
+      impact: "slice スキル、sprint-goal スキル"
+      next_action: "unknown スライスに success_criteria フィールドを追加することを検討"
+  
+  status: "validated"
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

@@ -42,9 +42,19 @@
 
 ## 抽象概念
 
+### Agent（エージェント）
+
+判断・実行する主体。器として Role / Persona / Skill を注入できる。
+
+| 概念 | 定義 | 例 |
+|------|------|-----|
+| **Role** | 責務（何をするか） | PdM, TechLead, QA |
+| **Persona** | 人格・視点（どう考えるか） | 文脈から導出 or カスタム定義 |
+| **Skill** | 手順書（どうやるか） | slice, propose-change, insight |
+
 ### 場（Place）
 
-ステークホルダーが集まり、契約を作成・レビュー・承認する環境
+ステークホルダーが集まり、契約を作成・レビュー・承認する環境。各場に「必要な構成」を定義することで質を高める。
 
 ### 契約（Contract）
 
@@ -81,12 +91,20 @@ flowchart TB
 
 ## 場の一覧
 
-| 場 | 目的 | 出力（契約） |
-|---|------|-------------|
-| **Discovery** | 問題を発見し仮説を検証 | （プロセス、契約なし） |
-| **Sprint Planning** | スプリント目標を決める | sprint-goal-contract |
-| **Sprint Review** | Increment を検証 | insight-contract |
-| **Sprint Retro** | プロセスを振り返る | insight-contract |
+| 場 | 目的 | 出力（契約） | 必要な構成 |
+|---|------|-------------|-----------|
+| **Discovery** | 問題を発見し仮説を検証 | （プロセス、契約なし） | PdM + 仮説検証重視 |
+| **Sprint Planning** | スプリント目標を決める | sprint-goal-contract | PdM + TechLead + QA |
+| **Sprint Review** | Increment を検証 | insight-contract | QA + 価値重視 |
+| **Sprint Retro** | プロセスを振り返る | insight-contract | 批判的 + 学び重視 |
+
+**必要な構成** = その場で質を高める Role + Persona の組み合わせ。軽量実装: 参照 or チェックリスト（Subagent 呼び出しなし）。
+
+| 場 | 確認すべき問い（チェックリスト例） |
+|---|----------------------------------|
+| Sprint Planning | 検証する価値は明確か？（PdM）／実現可能か？（TechLead）／検証方法は測れるか？（QA） |
+| Sprint Review | 成果は価値に貢献しているか？ |
+| Sprint Retro | 盲点は何か？学びは何か？ |
 
 **設計判断**: 場を 4 つに絞り、必要に応じて追加する（YAGNI）
 
