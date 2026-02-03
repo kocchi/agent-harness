@@ -1,0 +1,28 @@
+sprint-goal-contract:
+  id: "SG-20260203-S24"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "release-notes のトリガー改善を検証し、Product Goal の道筋を契約に反映する"
+    measurable: |
+      - S24 終了時に research/releases/S24-release-notes.md が存在する
+      - Retro 開催前に release-notes を実行する流れを検証（成功なら S25 でルール反映）
+      - product-goal-contract-Q2 の iteration が現状に更新されている
+
+  verification:
+    success_criteria:
+      - "research/releases/S24-release-notes.md が存在する"
+      - "Retro 開催時に release-notes が入力として揃っている（検証）"
+      - "product-goal-contract-Q2 の iteration.current が S24 を反映"
+
+  duration:
+    start: "2026-02-03"
+    end: "2026-02-10"
+
+  discussion_ref: "research/discussions/2026-02-03_sprint_planning_S24.md"
+
+  status: "closed"
+  closed_at: "2026-02-03"
+
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"

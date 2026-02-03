@@ -1,0 +1,19 @@
+insight-contract:
+  id: "INS-20260203-S24"
+  insights:
+    - id: S24-review-1
+      statement: "進捗ベースで Sprint を進めると、日付でブロックされず流れが止まらない"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S24-review-2
+      statement: "Retro 開催前に release-notes を実行する流れは S24 で検証成功。S25 で sprint-retro の入力に追加する"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S24-retro-1
+      statement: "sprint-retro の入力に release-notes を必須にすれば、Retro 開催がトリガーになり習慣化が確実になる"
+      source: "Sprint Retro"
+      confidence: "high"
+  status: "new"
+  discussion_ref: "research/discussions/2026-02-03_sprint_review_S24.md, research/discussions/2026-02-03_sprint_retro_S24.md"
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"

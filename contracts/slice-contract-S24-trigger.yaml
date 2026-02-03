@@ -1,0 +1,23 @@
+slice-contract:
+  id: "SLC-20260203-S24-trigger"
+  parent: "SG-20260203-S24"
+
+  feature:
+    name: "release-notes トリガー改善の検証 + Product Goal 道筋の反映"
+
+  slices:
+    - id: S1
+      name: "S24 の slice 完了時に release-notes を実行し、S24-release-notes.md を生成"
+      size: small
+      status: completed
+    - id: S2
+      name: "Retro 開催前に release-notes を実行する流れを検証（ルール変更は S25 で）"
+      size: small
+      status: completed
+    - id: S3
+      name: "product-goal-contract-Q2 の iteration を現状（S24）に更新"
+      size: small
+      status: completed
+
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"
