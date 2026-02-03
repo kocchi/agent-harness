@@ -1,0 +1,24 @@
+sprint-goal-contract:
+  id: "SG-20260430-S20"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "Cursor の .cursor/rules 読み込み仕様を調査し、OSS 境界の設計前提を明確にする"
+    measurable: |
+      - Cursor の rules 読み込み仕様が research に記録されている
+      - oss-boundary-design が調査結果に基づき更新されている
+      - 方式 A/B/C のいずれが現実的か、根拠付きで判断できる状態
+
+  verification:
+    success_criteria:
+      - "Cursor の .cursor/rules 読み込みパス・include サポートが research に記録されている"
+      - "oss-boundary-design-S17 が調査結果を反映して更新されている"
+
+  duration:
+    start: "2026-04-30"
+    end: "2026-05-06"
+
+  discussion_ref: "research/discussions/2026-04-30_sprint_planning_S20.md"
+
+  created_at: "2026-04-30"
+  updated_at: "2026-04-30"

@@ -1,0 +1,15 @@
+insight-contract:
+  id: "INS-20260520-S22"
+  insights:
+    - id: S22-review
+      statement: "release-notes が S22 で実行され、Review の materials に含まれた。習慣化の初回検証成功"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S22-retro-1
+      statement: "Sprint 終了日のルーティンに release-notes を明示すると忘れにくい"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  discussion_ref: "research/discussions/2026-05-20_sprint_review_S22.md, research/discussions/2026-05-20_sprint_retro_S22.md"
+  created_at: "2026-05-20"
+  updated_at: "2026-05-20"

@@ -1,0 +1,23 @@
+slice-contract:
+  id: "SLC-20260520-S23-symlink"
+  parent: "SG-20260520-S23"
+
+  feature:
+    name: "release-notes 継続 + OSS 境界 symlink 検証"
+
+  slices:
+    - id: S1
+      name: "S23 終了時に release-notes を実行し、S23-release-notes.md を生成"
+      size: small
+      status: pending
+    - id: S2
+      name: ".cursor/rules に vendor 内ファイルへの symlink を置いた場合の動作を検証"
+      size: medium
+      status: completed
+    - id: S3
+      name: "検証結果を research に記録し、oss-boundary-design を更新"
+      size: small
+      status: completed
+
+  created_at: "2026-05-20"
+  updated_at: "2026-05-20"

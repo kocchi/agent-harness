@@ -1,0 +1,23 @@
+slice-contract:
+  id: "SLC-20260430-S20-cursor"
+  parent: "SG-20260430-S20"
+
+  feature:
+    name: "Cursor .cursor/rules 読み込み仕様の調査"
+
+  slices:
+    - id: S1
+      name: "Cursor 公式ドキュメントから rules 読み込み仕様を調査"
+      size: small
+      status: completed
+    - id: S2
+      name: "調査結果を research に記録"
+      size: small
+      status: completed
+    - id: S3
+      name: "oss-boundary-design を調査結果で更新"
+      size: small
+      status: completed
+
+  created_at: "2026-04-30"
+  updated_at: "2026-04-30"

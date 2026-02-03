@@ -1,0 +1,10 @@
+---
+description: Symlink 検証用。.cursor/rules から参照されるか確認する。
+alwaysApply: false
+---
+
+# Symlink Test (S23)
+
+このファイルは research/symlink-test/ に配置され、.cursor/rules/ から symlink で参照される。
+
+Cursor がこのファイルを読み込む場合、symlink は有効。読み込まない場合、方式 A（vendor 配置）は symlink では実現できない。

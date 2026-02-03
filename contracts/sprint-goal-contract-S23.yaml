@@ -1,0 +1,23 @@
+sprint-goal-contract:
+  id: "SG-20260520-S23"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "release-notes の習慣化を継続し、OSS 境界の symlink 検証を実施する"
+    measurable: |
+      - S23 終了時に research/releases/S23-release-notes.md が存在する
+      - OSS 境界の symlink 検証結果が research に記録されている
+
+  verification:
+    success_criteria:
+      - "research/releases/S23-release-notes.md が存在する"
+      - "research/cursor-rules-investigation-S20.md または oss-boundary-design に symlink 検証結果が追記されている"
+
+  duration:
+    start: "2026-05-20"
+    end: "2026-05-27"
+
+  discussion_ref: "research/discussions/2026-05-20_sprint_planning_S23.md"
+
+  created_at: "2026-05-20"
+  updated_at: "2026-05-20"

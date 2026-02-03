@@ -1,0 +1,15 @@
+insight-contract:
+  id: "INS-20260513-S21"
+  insights:
+    - id: S21-review
+      statement: "リリースノートを Review の materials に含めた初回。S20 Retro で指摘された問題の解消を検証できる状態になった"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S21-retro-1
+      statement: "release-notes は workload-monitor の推奨に含まれるが、自動実行ではない。Sprint 終了日に workload-monitor を実行する習慣が必要"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  discussion_ref: "research/discussions/2026-05-13_sprint_review_S21.md, research/discussions/2026-05-13_sprint_retro_S21.md"
+  created_at: "2026-05-13"
+  updated_at: "2026-05-13"
