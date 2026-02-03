@@ -59,5 +59,5 @@
 
 - **実施**: `.cursor/rules/symlink-test.mdc` → `research/symlink-test/placeholder.mdc` の symlink を作成
 - **構造**: 作成可能。git で追跡される
-- **Cursor の読み込み**: 手動確認が必要（Cursor Settings > Rules で表示されるか）
-- **cursor-rules-investigation-S20.md** に S23 検証を追記
+- **Cursor の読み込み**: ✅ symlink は有効。Cursor Settings > Rules で表示される
+- **結論**: 方式 A（vendor 配置）は symlink で実現可能。OSS を vendor/ に submodule で配置し、.cursor/rules/ から symlink で参照する構成が検討できる

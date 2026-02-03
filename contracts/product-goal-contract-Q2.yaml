@@ -31,7 +31,7 @@ product-goal-contract:
       current: "follow-upstream スキルで手順確立（S17）"
     - name: "OSS の境界"
       target: "OSS が境界内に閉じ込められ、チームの作業空間と分離されている"
-      current: "設計案を research に記録。Phase 2 で具体化"
+      current: "symlink 検証済み（S23）。方式 A（vendor 配置）が検討可能。具体化は次 Sprint"
 
   hypotheses:
     - id: H4
@@ -81,4 +81,4 @@ product-goal-contract:
     trigger: "仮説の検証結果により方向転換が必要な場合"
 
   created_at: "2026-04-04"
-  updated_at: "2026-04-04"
+  updated_at: "2026-05-20"

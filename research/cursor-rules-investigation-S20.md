@@ -58,7 +58,7 @@
 - Cursor Settings > Rules で `symlink-test` が表示されるか
 - Agent が placeholder.mdc の内容を参照しているか（@symlink-test でメンションして応答を確認）
 
-**結果**: 要手動確認。構造は作成済み。
+**結果**: ✅ symlink は有効。Cursor Settings > Rules で symlink-test が表示される。方式 A（vendor 配置）は symlink で実現可能。
 
 ## oss-boundary-design への反映
 
