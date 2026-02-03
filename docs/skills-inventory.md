@@ -2,11 +2,12 @@
 
 agent-harness の構成一覧。
 
-## エージェント（7）
+## エージェント（8）
 
 | エージェント | 目的 | 呼び出し元 |
 |-------------|------|-----------|
 | `rules-validator` | ルール整合性検査 | P0（セッション開始時）、コミット前 |
+| `scrum-master` | ワークロード監視、障害検出、プロセス健全性 | セッション開始時（推奨）、Daily Scrum 相当、進捗確認時 |
 | `deep-research` | 深い調査 | 調査タスク時 |
 | `systematic-debugger` | 体系的デバッグ | 問題発生時 |
 | `guardian-generator` | リポジトリ固有 Agent 生成 | リポジトリ追加時 |
@@ -36,6 +37,12 @@ agent-harness の構成一覧。
 | `increment` | 成果物の定義、DoD | increment-contract |
 | `insight` | 学びの記録と還元 | insight-contract |
 | `propose-change` | 変更提案フロー | （中間生成物での合意） |
+
+## プロセス監視（1）
+
+| スキル | 目的 | 出力 |
+|-------|------|------|
+| `workload-monitor` | ワークロード監視、障害検出、プロセス健全性 | workload-report |
 
 ## 外部フレームワーク連携（3）
 

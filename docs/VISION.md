@@ -117,6 +117,20 @@ flowchart TB
 
 **設計判断**: 場を 4 つに絞り、必要に応じて追加する（YAGNI）
 
+### Daily Scrum 相当（ワークロード監視）
+
+Sprint 中の進捗確認は **scrum-master** サブエージェントが担う。
+
+| タイミング | 委譲先 | 目的 |
+|-----------|--------|------|
+| セッション開始時（推奨） | scrum-master | ワークロード、障害、プロセス健全性の可視化 |
+| 「進捗どう？」「ワークロードチェック」 | scrum-master | 同上 |
+
+**scrum-master** は workload-monitor スキルで以下をレポートする:
+- ワークロード集計（completed / in_progress / pending）
+- 障害検出（停滞 slice、未完了 retro_actions、過剰コミット）
+- Sprint Goal 達成見込み
+
 ---
 
 ## 契約の一覧

@@ -50,3 +50,7 @@ __必須__:
 - コミット前に rules-validator サブエージェントを呼び出す
 - 問題発生時は systematic-debugger サブエージェントを呼び出す
 - **場（Sprint Planning, Review, Retro）では persona-council サブエージェントを呼び出す**
+- **ワークロード確認時、Daily Scrum 相当、進捗確認時は scrum-master サブエージェントを呼び出す**
+
+__推奨__:
+- セッション開始時（アクティブ Sprint がある場合）は scrum-master でワークロードを確認する
