@@ -51,6 +51,7 @@ persona-council の議論から抽出（[highlights](research/highlights/README.
 
 | 用途 | パス |
 |------|------|
+| **リリースノート一覧** | [research/releases/README.md](research/releases/README.md) |
 | オンボーディング | [docs/onboarding-multi-repo.md](docs/onboarding-multi-repo.md) |
 | Product Goal Q2 | [contracts/product-goal-contract-Q2.yaml](contracts/product-goal-contract-Q2.yaml) |
 | 議論ログ | [research/discussions/](research/discussions/) |

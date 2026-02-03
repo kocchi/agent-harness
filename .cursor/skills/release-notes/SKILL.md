@@ -47,6 +47,7 @@ Sprint で届けた価値・変更点・検証結果を1ページにまとめ、
 ### 3. 出力
 
 - `research/releases/S{NN}-release-notes.md`
+- `research/releases/README.md` の一覧に当該 Sprint を追加
 
 ### 4. Review への引き渡し
 
