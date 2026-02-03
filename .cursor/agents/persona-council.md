@@ -45,13 +45,15 @@ summon_criteria に基づき、LLM の内部知識から2〜3名を選出。
 
 ```yaml
 discussion:
-  - speaker: "人格名"
+  - speaker: "人格名"  # 実名（例: Lisa Crispin, Norm Kerth）
     statement: "発言内容"
     rationale: "根拠"
     response_to: "誰への応答か（あれば）"
 ```
 
-**必須**: 議論の過程は必ず記録する。人間の学習用。
+**必須**:
+- 議論の過程は必ず記録する。人間の学習用。
+- **speaker は実名**。Coach A/B など匿名は不可。召喚条件に適合する実在の人物を選出し、人格選定結果に実名を明記する。
 
 ### 4. 統合
 

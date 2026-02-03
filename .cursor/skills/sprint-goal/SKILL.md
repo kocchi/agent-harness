@@ -24,6 +24,14 @@ Sprint Planning を実行し、sprint-goal-contract を作成する。
 
 ## 実行手順
 
+### 0. 場の開催（必須ゲート）
+
+**persona-council に委譲して Sprint Planning 場を開催してから、契約を作成する。**
+
+- 委譲せずに sprint-goal-contract を直接作成・更新してはならない（implementation-rules: 場の開催）
+- 議論の過程を research/discussions/ に記録する
+- 契約に discussion_ref を含める
+
 ### 1. Product Goal を確認
 
 ```yaml
@@ -33,15 +41,16 @@ Sprint Planning を実行し、sprint-goal-contract を作成する。
   - 検証済みの仮説と未検証の仮説
 ```
 
-### 2. 場の実行（persona-council に委譲）
+### 2. 場の実行（persona-council に委譲）【必須】
 
 Sprint Planning は**場**として実行する。[.cursor/places/sprint-planning.md](../../places/sprint-planning.md) に従い、**persona-council** サブエージェントに委譲する。
 
 - メインエージェントは憑依せず、オーケストレーターとして委譲のみ
-- persona-council が複数人格を憑依させ、議論する
-- 議論の過程は記録する（人間の学習用）
+- persona-council が複数人格（実名）を憑依させ、議論する
+- 議論の過程を research/discussions/ に記録する（人間の学習用）
+- **委譲をスキップして契約を作成しない**（implementation-rules: 場の開催）
 
-委譲できない場合は、軽量フォールバックとして [VISION.md - 場の一覧](../../../docs/VISION.md) のチェックリストを確認:
+委譲できない場合の軽量フォールバック（推奨しない）: [VISION.md - 場の一覧](../../../docs/VISION.md) のチェックリストを確認:
 - [ ] 検証する価値は明確か？（PdM）
 - [ ] 実現可能か？（TechLead）
 - [ ] 検証方法は測れるか？（QA）

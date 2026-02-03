@@ -21,6 +21,17 @@ description: |
 
 ## 実行手順
 
+### 0. Review/Retro の場合: 場の開催（必須ゲート）
+
+**Sprint Review / Retro で insight を作成する場合、先に persona-council に委譲して場を開催する。**
+
+- 委譲せずに insight-contract を直接作成・更新してはならない（implementation-rules: 場の開催）
+- 議論の過程を research/discussions/ に記録する
+- insight に discussion_ref を含める
+- 完了時に sprint-goal-contract の retro_actions を done に更新する
+
+※「スライス完了後」「これは学びだ」など、Review/Retro 以外のトリガーではこのステップは不要。
+
 ### 1. 学びを抽出
 
 ```yaml

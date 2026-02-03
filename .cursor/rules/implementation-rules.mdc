@@ -28,6 +28,20 @@ __禁止__:
 - ユーザーの承認なしにコミットしない
 - 一行ずつのコードレビューを強要しない
 
+## 場の開催（スキップ禁止）
+
+Sprint Planning / Review / Retro は**場**として開催する。persona-council に委譲してから契約を作成する。
+
+__必須__:
+- sprint-goal-contract を作成・更新する前に、**persona-council に委譲して Sprint Planning 場を開催する**
+- insight-contract を Review/Retro で作成・更新する前に、**persona-council に委譲して Sprint Review / Retro 場を開催する**
+- 議論の過程を research/discussions/ に記録する
+- 契約に議論ログへの参照（discussion_ref）を含める
+
+__禁止__:
+- 場を開催せずに sprint-goal-contract を直接作成・更新すること
+- 場を開催せずに Review/Retro の insight-contract を直接作成・更新すること
+
 ## サブエージェントルーティング
 
 タスクを適切な実行パターン（並列/順次/バックグラウンド）にルーティングする
