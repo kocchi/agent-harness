@@ -22,7 +22,8 @@ sprint-goal-contract:
 
   discussion_ref: "research/discussions/2026-02-03_sprint_planning_S26.md"
 
-  status: "active"
+  status: "closed"
+  closed_at: "2026-02-03"
 
   created_at: "2026-02-03"
   updated_at: "2026-02-03"

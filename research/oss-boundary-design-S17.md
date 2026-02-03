@@ -72,14 +72,22 @@
 
 2. **vendor への配置**
    ```bash
-   # .cursor/vendor/ に agent-harness を submodule として追加
-   git submodule add https://github.com/{team}/agent-harness.git .cursor/vendor/agent-harness
+   # .cursor/vendor/ に OSS（upstream）を submodule として追加
+   # ※ submodule の URL は upstream（本家）を指す。Fork の URL ではない
+   git submodule add https://github.com/kocchi/agent-harness.git .cursor/vendor/agent-harness
    ```
 
 3. **symlink の作成**
    - OSS の rules を参照する symlink を .cursor/rules/ に配置
+   - 命名: `oss-{元ファイル名}` で OSS 由来を明示（例: `oss-constitution.mdc`）
    - 例: `.cursor/rules/oss-constitution.mdc` → `../vendor/agent-harness/.cursor/rules/constitution.mdc`
-   - チーム固有の rules は .cursor/rules/ に直接配置（OSS より優先させる場合はファイル名の並びで制御、または .mdc の順序に依存）
+   - 必要な OSS rules ごとに symlink を作成:
+     ```bash
+     ln -sf ../vendor/agent-harness/.cursor/rules/constitution.mdc .cursor/rules/oss-constitution.mdc
+     ln -sf ../vendor/agent-harness/.cursor/rules/core-rules.mdc .cursor/rules/oss-core-rules.mdc
+     ln -sf ../vendor/agent-harness/.cursor/rules/implementation-rules.mdc .cursor/rules/oss-implementation-rules.mdc
+     ```
+   - チーム固有の rules は .cursor/rules/ に直接配置（ファイル名で OSS と区別）
 
 4. **上流追従**
    - follow-upstream スキルで `vendor/agent-harness` を更新
@@ -88,3 +96,17 @@
 5. **注意事項**
    - Windows では symlink に管理者権限が必要な場合あり。その場合は方式 B を検討
    - symlink は git で追跡される（macOS/Linux）
+
+## S26 更新（ドッグフーディング検証）
+
+### 実施
+
+- 対象: `/Users/yuki.hirako/ghq/github.com/desc-dena/kp-agent-harness`
+- agent-harness をクローンし、方式 A の手順を実行
+
+### 発見した抜け漏れ・修正
+
+1. **submodule の URL**: 手順 2 で `{team}/agent-harness` と記載していたが誤り。submodule は **upstream（kocchi/agent-harness）** を指す。Fork の URL ではない。
+2. **Fork 未作成時の手順**: Fork がまだない場合は、`kocchi/agent-harness` をクローンして開始可能。origin は kocchi のまま、upstream を追加。Fork 作成後は `git remote set-url origin <fork-url>` で切り替え。
+3. **symlink の具体コマンド**: 手順 3 に `ln -sf` の具体例を追記。`oss-` プレフィックスで OSS 由来を明示。
+4. **rules の重複解消**: クローン直後は通常ファイルと oss-* symlink の両方が存在する。一貫性のため、通常ファイル（constitution, core-rules, implementation-rules）を削除し、oss-* symlink のみにする。チーム固有ルールは別ファイル（例: team-rules.mdc）で追加する。
