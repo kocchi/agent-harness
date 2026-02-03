@@ -75,7 +75,7 @@ product-goal-contract:
 
   iteration:
     planned: 8
-    current: 0
+    current: 1  # S17 完了
     trigger: "仮説の検証結果により方向転換が必要な場合"
 
   created_at: "2026-04-04"

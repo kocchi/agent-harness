@@ -1,0 +1,23 @@
+sprint-goal-contract:
+  id: "SG-20260410-S17"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "上流追従の手順を定義し、follow-upstream スキルを作成する"
+    measurable: |
+      - 上流追従の手順が文書化される
+      - .cursor/skills/follow-upstream/SKILL.md が存在する
+      - OSS 境界の設計案が research に記録される
+
+  verification:
+    success_criteria:
+      - "follow-upstream スキルで upstream の取り込みが実行可能"
+      - "コンフリクト解消のガイドが含まれる"
+      - "research/oss-boundary-design-S17.md が存在"
+
+  duration:
+    start: "2026-04-10"
+    end: "2026-04-16"
+
+  created_at: "2026-04-10"
+  updated_at: "2026-04-10"

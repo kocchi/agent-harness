@@ -43,12 +43,13 @@ agent-harness の構成一覧。
 |-------|------|------|
 | `workload-monitor` | ワークロード監視、障害検出、プロセス健全性 | workload-report |
 
-## ユーティリティ（2）
+## ユーティリティ（3）
 
 | スキル | 目的 |
 |-------|------|
 | `add-repository` | 開発リポジトリを追加 |
 | `contribute-upstream` | OSS 貢献ガイド |
+| `follow-upstream` | upstream の変更を取り込む |
 
 ## メトリクス（1）
 

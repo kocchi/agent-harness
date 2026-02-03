@@ -93,6 +93,7 @@ gh pr create --title "feat: add new feature" --body "説明..."
 
 ## 参照
 
+- [follow-upstream](../follow-upstream/SKILL.md) - upstream の変更を取り込む（逆方向）
 - [AGENTS.md](../../AGENTS.md)
 - [philosophy.md](../../docs/philosophy.md)
 - [core-rules.mdc](../rules/core-rules.mdc)

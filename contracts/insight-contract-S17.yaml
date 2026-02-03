@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260410-S17"
+  insights:
+    - id: S17-review
+      statement: "follow-upstream スキルで上流追従の手順が確立した。OSS 境界の具体設計は、実際の追従でコンフリクト状況を観察してから決定する"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S17-retro-1
+      statement: "contribute-upstream（OSS へ）と follow-upstream（upstream から）は対になる。両方のスキルを相互参照すると、フローが明確になる"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-04-10"
+  updated_at: "2026-04-10"
