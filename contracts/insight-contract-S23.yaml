@@ -1,0 +1,19 @@
+insight-contract:
+  id: "INS-20260203-S23"
+  insights:
+    - id: S23-symlink
+      statement: "OSS 境界の方式 A（vendor 配置 + symlink）は実現可能。Cursor は .cursor/rules/ 内の symlink を有効に読み込む"
+      source: "Sprint S23 検証"
+      confidence: "high"
+    - id: S23-retro-1
+      statement: "preserve に書いただけでは実行保証にならない。習慣化には明確なトリガー（誰がいつ実行するか）が必要"
+      source: "Sprint Retro"
+      confidence: "high"
+    - id: S23-retro-2
+      statement: "Retro の入力に release-notes を必須にすれば、Retro 開催が release-notes 実行のトリガーになる"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  discussion_ref: "research/discussions/2026-02-03_sprint_retro_S23.md"
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"
