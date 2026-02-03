@@ -1,0 +1,56 @@
+# Insight Contract for Sprint 8
+# Created: 2026-01-30
+# Source: Sprint Review, Sprint Retro（persona-council で開催）
+# 議論ログ: research/discussions/2026-01-30_sprint_review_S8.md, 2026-01-30_sprint_retro_S8.md
+
+insight-contract:
+  id: "INS-20260130-S8"
+  
+  insights:
+    # Sprint Review の成果（Lisa Crispin, Don Reinertsen）
+    - id: S8-review
+      statement: "S8 の success_criteria は全て達成した。場テンプレート（sprint-review, sprint-retro）の初回使用が成功した"
+      source: "Sprint Review（persona-council）"
+      evidence:
+        summary: "insight スキルの必須ゲート、sprint-review/retro テンプレート、workload-monitor の retro_actions 照合、Sprint Planning のチェックリスト参照を全て確認。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_review_S8.md"
+      confidence: "high"
+      
+    - id: S8-review-value
+      statement: "S7 で発見した「場のスキップ」「retro_actions 更新漏れ」が、仕組みで防がれるようになった"
+      source: "Sprint Review（persona-council）"
+      evidence:
+        summary: "implementation-rules、スキル必須ゲート、場テンプレート、workload-monitor の推奨が構造的に問題を防ぐ。"
+      confidence: "high"
+      
+    # Sprint Retro の学び（Esther Derby, Norm Kerth）
+    - id: S8-retro-1
+      statement: "場テンプレートが召喚条件を明確にし、人格選定の再現性を高める"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "sprint-review は QA+価値重視、sprint-retro は批判的+学び重視を召喚条件に明記。S7 ではテンプレートがなく曖昧だった。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_retro_S8.md"
+      confidence: "high"
+      
+    - id: S8-retro-2
+      statement: "implementation-rules の「場の開催」セクションが委譲を促している"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "S8 の Review/Retro で persona-council が呼び出された。禁止事項が明示されたことで、委譲が行われた。"
+      confidence: "high"
+      
+    - id: S8-retro-3
+      statement: "スプリントの境界は柔軟でよい。重要なのは場を開催し、persona-council に委譲すること"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "S8 の slice を S8 開始前に実装した。スプリントは「焦点」であり、厳密なカレンダーではない。"
+      confidence: "medium"
+  
+  cross_cutting:
+    - statement: "場テンプレートと implementation-rules の組み合わせが委譲を確実にする"
+      impact: "次 Sprint 以降の Review/Retro"
+      next_action: "次 Sprint で継続して機能するか検証"
+  
+  status: "new"
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
