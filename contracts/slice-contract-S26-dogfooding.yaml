@@ -1,0 +1,27 @@
+slice-contract:
+  id: "SLC-20260203-S26-dogfooding"
+  parent: "SG-20260203-S26"
+
+  feature:
+    name: "方式 A のセットアップ手順ドッグフーディング"
+
+  slices:
+    - id: S1
+      name: "agent-harness の Fork を作成し、Fork 側で vendor に upstream を submodule で配置"
+      size: medium
+      status: pending
+    - id: S2
+      name: "symlink で OSS の rules を参照する構成を構築し、動作確認"
+      size: medium
+      status: pending
+    - id: S3
+      name: "手順の抜け漏れ・不明点を oss-boundary-design に追記"
+      size: small
+      status: pending
+    - id: S4
+      name: "S26 の slice 完了時に release-notes を実行し、S26-release-notes.md を生成"
+      size: small
+      status: pending
+
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"

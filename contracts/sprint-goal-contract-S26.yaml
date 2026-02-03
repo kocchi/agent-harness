@@ -1,0 +1,28 @@
+sprint-goal-contract:
+  id: "SG-20260203-S26"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "方式 A（vendor 配置）のセットアップ手順をドッグフーディングで検証する"
+    measurable: |
+      - agent-harness の Fork を作成し、Fork 側で vendor に upstream を submodule で配置
+      - symlink で OSS の rules を参照する構成が動作する
+      - 手順の抜け漏れ・不明点を oss-boundary-design に追記している
+      - S26-release-notes.md が存在する
+
+  verification:
+    success_criteria:
+      - "Fork リポジトリで方式 A のセットアップが完了している"
+      - "research/oss-boundary-design-S17.md にドッグフーディングで発見した抜け漏れ・不明点が追記されている"
+      - "research/releases/S26-release-notes.md が存在する"
+
+  duration:
+    start: "2026-02-03"
+    end: "2026-02-10"  # 目安
+
+  discussion_ref: "research/discussions/2026-02-03_sprint_planning_S26.md"
+
+  status: "active"
+
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"
