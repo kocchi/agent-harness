@@ -1,0 +1,21 @@
+sprint-goal-contract:
+  id: "SG-20260423-S19"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "add-repository と onboarding を統合し、Product Goal Q2 の検証状況を更新する"
+    measurable: |
+      - onboarding に repos/ の説明が含まれる
+      - product-goal-contract-Q2 の success_metrics.current と hypotheses が更新される
+
+  verification:
+    success_criteria:
+      - "オンボーディングで repos/ の役割が説明されている"
+      - "H5（上流追従のプロセス定義）が validated に更新"
+
+  duration:
+    start: "2026-04-23"
+    end: "2026-04-29"
+
+  created_at: "2026-04-23"
+  updated_at: "2026-04-23"

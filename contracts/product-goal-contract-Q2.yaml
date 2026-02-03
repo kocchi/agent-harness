@@ -25,13 +25,13 @@ product-goal-contract:
   success_metrics:
     - name: "チーム適用"
       target: "1 ストリームアラインドチームが複数リポジトリに横断して Sprint を回せる"
-      current: null
+      current: "オンボーディングドキュメント整備済み（S18）。2 人目導入で検証予定"
     - name: "上流追従"
       target: "月 1 回以上の upstream マージが成功する"
-      current: null
+      current: "follow-upstream スキルで手順確立（S17）"
     - name: "OSS の境界"
       target: "OSS が境界内に閉じ込められ、チームの作業空間と分離されている"
-      current: null
+      current: "設計案を research に記録。Phase 2 で具体化"
 
   hypotheses:
     - id: H4
@@ -42,8 +42,10 @@ product-goal-contract:
     - id: H5
       statement: "上流追従のプロセス（手順・頻度・コンフリクト解消）を定義すると、追従が確実になる"
       risk_type: "feasibility"
-      confidence: "medium"
-      status: "unvalidated"
+      confidence: "high"
+      status: "validated"
+      validated_at: "2026-04-23"
+      evidence: "follow-upstream スキルで手順を定義。contribute-upstream と相互参照で双方向フローが明確に"
     - id: H6
       statement: "複数リポジトリ運用のオンボーディング用ドキュメントがあると、チーム導入が速くなる"
       risk_type: "usability"
@@ -75,7 +77,7 @@ product-goal-contract:
 
   iteration:
     planned: 8
-    current: 1  # S17 完了
+    current: 3  # S19 完了
     trigger: "仮説の検証結果により方向転換が必要な場合"
 
   created_at: "2026-04-04"

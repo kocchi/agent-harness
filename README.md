@@ -79,6 +79,10 @@ Product Goal Contract → Sprint Goal Contract → Slice Contract → Increment 
 - `.claude/` は `.cursor/` への symlink
 - `CLAUDE.md` / `AGENTS.md` でエントリポイントを提供
 
+## チーム導入
+
+複数リポジトリ運用のオンボーディング: [docs/onboarding-multi-repo.md](docs/onboarding-multi-repo.md)
+
 ## 貢献
 
 1. このリポジトリを Fork

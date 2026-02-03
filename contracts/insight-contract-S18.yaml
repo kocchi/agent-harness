@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260423-S18"
+  insights:
+    - id: S18-review
+      statement: "オンボーディングドキュメントで 2 人目以降の導入手順が明確になった。チェックリスト形式で段階的に実行可能"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S18-retro-1
+      statement: "H6（オンボーディング用ドキュメントがあるとチーム導入が速くなる）の検証基盤ができた。実際の 2 人目導入で検証する"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-04-23"
+  updated_at: "2026-04-23"

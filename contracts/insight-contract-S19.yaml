@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260429-S19"
+  insights:
+    - id: S19-review
+      statement: "Product Goal Q2 の検証状況を更新。H5 が validated。success_metrics の current が可視化された"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S19-retro-1
+      statement: "検証状況の更新を Sprint ごとに実施すると、Product Goal との距離が把握しやすくなる"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-04-29"
+  updated_at: "2026-04-29"

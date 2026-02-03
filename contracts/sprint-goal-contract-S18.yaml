@@ -1,0 +1,21 @@
+sprint-goal-contract:
+  id: "SG-20260417-S18"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "複数リポジトリ運用のオンボーディング用ドキュメントを作成する"
+    measurable: |
+      - docs/onboarding-multi-repo.md が存在する
+      - Fork、add-repository、契約フロー、follow-upstream の導入手順が含まれる
+
+  verification:
+    success_criteria:
+      - "オンボーディングドキュメントで 2 人目がセットアップ可能"
+      - "チェックリスト形式で段階的に実行できる"
+
+  duration:
+    start: "2026-04-17"
+    end: "2026-04-23"
+
+  created_at: "2026-04-17"
+  updated_at: "2026-04-17"
