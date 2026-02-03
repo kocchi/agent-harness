@@ -56,7 +56,7 @@ Sprint のワークロードを監視し、障害を検出、プロセス健全�
 | 障害タイプ | 検出条件 | 推奨アクション |
 |-----------|---------|---------------|
 | stalled_slice | in_progress が 2 日以上変化なし | ブロッカー確認、分割検討 |
-| unfinished_retro | retro_actions に status: in_scope が残存 | 次 Sprint に持ち越し or スコープ調整 |
+| unfinished_retro | retro_actions に status: in_scope が残存 | **Review 時に sprint-goal-contract の retro_actions を done に更新する**。次 Sprint に持ち越し or スコープ調整 |
 | over_commit | pending が total の 50% 超 かつ 残り日数が少ない | スコープ縮小を提案 |
 | no_active_sprint | アクティブ Sprint なし | Sprint Planning を提案 |
 

@@ -112,8 +112,8 @@ flowchart TB
 | 場 | テンプレート | 委譲先 |
 |---|-------------|--------|
 | Sprint Planning | .cursor/places/sprint-planning.md | persona-council |
-| Sprint Review | （未定義） | persona-council |
-| Sprint Retro | （未定義） | persona-council |
+| Sprint Review | .cursor/places/sprint-review.md | persona-council |
+| Sprint Retro | .cursor/places/sprint-retro.md | persona-council |
 
 **設計判断**: 場を 4 つに絞り、必要に応じて追加する（YAGNI）
 

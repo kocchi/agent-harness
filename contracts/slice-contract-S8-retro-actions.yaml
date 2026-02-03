@@ -22,7 +22,7 @@ slice-contract:
       classification: known
       reason: "1-2行の追加。insight スキルのトリガー・前提条件セクションに記載"
       verify_timing: "実装後"
-      status: pending
+      status: completed
       
     - id: S2
       name: "insight スキルに retro_actions 更新を追加"
@@ -32,7 +32,7 @@ slice-contract:
       classification: known
       reason: "1-2行の追加。出力または実行手順の最後に記載"
       verify_timing: "実装後"
-      status: pending
+      status: completed
       
     - id: S3
       name: "sprint-review.md, sprint-retro.md の場テンプレート作成"
@@ -43,7 +43,7 @@ slice-contract:
       classification: known
       reason: "sprint-planning の構造を流用。Review は QA+価値重視、Retro は批判的+学び重視"
       verify_timing: "実装後"
-      status: pending
+      status: completed
       
     - id: S4
       name: "workload-monitor に retro_actions 照合を追加"
@@ -54,7 +54,7 @@ slice-contract:
       classification: known
       reason: "workload-monitor の障害検出セクションに1行追加"
       verify_timing: "実装後"
-      status: pending
+      status: completed
       
     - id: S5
       name: "Sprint Planning でチェックリスト参照の検証"
@@ -65,7 +65,7 @@ slice-contract:
       classification: known
       reason: "Sprint Planning は S8 開始時に実施。その際の参照を確認"
       verify_timing: "Sprint Planning 実行時"
-      status: pending
+      status: completed
   
   order:
     - slice_id: S1
