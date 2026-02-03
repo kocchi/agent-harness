@@ -1,0 +1,74 @@
+# Sprint Goal Contract for agent-harness Sprint 8
+# Created: 2026-01-30
+# Source: Sprint Planning 場（persona-council）で議論・承認
+# 議論ログ: research/discussions/2026-01-30_sprint_planning_S8.md
+
+sprint-goal-contract:
+  id: "SG-20260207-S8"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "S7 Retro の学びをスキル・場テンプレートに反映し、Review/Retro のプロセスを確実にする"
+    contribution: |
+      S7 で発見した「場の開催漏れ」「retro_actions 更新漏れ」を構造的に防ぐ。
+      insight スキル、workload-monitor、場テンプレートを更新し、次回の Review/Retro で確実に persona-council が呼び出されるようにする。
+    measurable: |
+      - insight スキルに persona-council 委譲と retro_actions 更新を手順として追加
+      - sprint-review.md, sprint-retro.md の場テンプレートを作成
+      - workload-monitor の推奨に retro_actions 照合を追加
+      - Sprint Planning 実行時にチェックリスト参照が行われるか検証（S7-review-next）
+  
+  verification:
+    method: "スキル・テンプレートの存在確認、実行手順の参照確認"
+    success_criteria:
+      - "insight スキルに「Review/Retro は persona-council に委譲してから insight を作成」が含まれる"
+      - "insight スキルに「retro_actions を done に更新」が含まれる"
+      - ".cursor/places/sprint-review.md, sprint-retro.md が存在する"
+      - "workload-monitor の障害検出に retro_actions 照合が含まれる"
+      - "Sprint Planning で VISION のチェックリストが参照されたか検証"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "insight スキルに persona-council 委譲を手順追加"
+      - "insight スキルに retro_actions 更新を手順追加"
+      - "sprint-review.md, sprint-retro.md の場テンプレート作成（sprint-planning を参考に）"
+      - "workload-monitor の推奨に「retro_actions の status を Review 時に更新」を追加"
+      - "Sprint Planning 実行時のチェックリスト参照検証（S7-review-next）"
+    out_of_scope:
+      - "他エージェント・スキルの必須事項棚卸し（S7-retro-4 の検討事項）"
+      - "場テンプレートの召喚条件の具体化（S7-retro-5、時間あれば）"
+    risks:
+      - risk: "スキルが冗長になる"
+        mitigation: "1-2行の追加に留める"
+  
+  retro_actions:
+    - from: "S7-retro-1"
+      action: "insight スキルに persona-council 委譲を手順追加"
+      status: "in_scope"
+    - from: "S7-retro-2"
+      action: "insight スキルに retro_actions 更新を手順追加"
+      status: "in_scope"
+    - from: "S7-retro-3"
+      action: "sprint-review, sprint-retro の場テンプレート作成"
+      status: "in_scope"
+    - from: "S7-workload-monitor"
+      action: "workload-monitor の推奨に retro_actions 照合を追加"
+      status: "in_scope"
+    - from: "S7-review-next"
+      action: "Sprint Planning でチェックリスト参照の検証"
+      status: "in_scope"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで S7 の学びをスキル・テンプレートに反映する"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-02-07"
+    end: "2026-02-14"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

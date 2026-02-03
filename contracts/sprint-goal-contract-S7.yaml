@@ -64,10 +64,10 @@ sprint-goal-contract:
   retro_actions:
     - from: "S5-retro-try"
       action: "rules-validator を実際に動作検証"
-      status: "in_scope"
+      status: "done"
     - from: "S6-cross-cutting"
       action: "unknown スライスに success_criteria を追加"
-      status: "in_scope"
+      status: "done"
   
   git_workflow:
     branch_strategy:

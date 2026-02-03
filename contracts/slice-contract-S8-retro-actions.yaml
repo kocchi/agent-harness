@@ -1,0 +1,92 @@
+# Slice Contract for Sprint 8: S7 Retro の学びを反映
+# Created: 2026-01-30
+# Source: Sprint Planning 場（persona-council）で承認
+# 議論ログ: research/discussions/2026-01-30_sprint_planning_S8.md
+
+slice-contract:
+  id: "SLC-20260207-S8-retro-actions"
+  parent: "SG-20260207-S8"
+  
+  feature:
+    name: "S7 Retro の学びをスキル・場テンプレートに反映"
+    description: |
+      insight-contract-S7 の next_action を実装する。
+      場の開催漏れ、retro_actions 更新漏れを構造的に防ぐ。
+  
+  slices:
+    - id: S1
+      name: "insight スキルに persona-council 委譲を追加"
+      description: |
+        実行手順に「Review/Retro 実行時は、先に persona-council に委譲し、議論結果を得てから insight を作成する」を追加
+      size: small
+      classification: known
+      reason: "1-2行の追加。insight スキルのトリガー・前提条件セクションに記載"
+      verify_timing: "実装後"
+      status: pending
+      
+    - id: S2
+      name: "insight スキルに retro_actions 更新を追加"
+      description: |
+        実行手順に「Review/Retro 完了時に sprint-goal-contract の retro_actions を done に更新する」を追加
+      size: small
+      classification: known
+      reason: "1-2行の追加。出力または実行手順の最後に記載"
+      verify_timing: "実装後"
+      status: pending
+      
+    - id: S3
+      name: "sprint-review.md, sprint-retro.md の場テンプレート作成"
+      description: |
+        sprint-planning.md を参考に、.cursor/places/ に sprint-review.md, sprint-retro.md を作成。
+        分析、召喚条件、議論、統合の構造。VISION の「必要な構成」を反映。
+      size: medium
+      classification: known
+      reason: "sprint-planning の構造を流用。Review は QA+価値重視、Retro は批判的+学び重視"
+      verify_timing: "実装後"
+      status: pending
+      
+    - id: S4
+      name: "workload-monitor に retro_actions 照合を追加"
+      description: |
+        障害検出の推奨アクションに「retro_actions の status を Review 時に更新」を明記。
+        既に unfinished_retro で検出しているが、推奨を具体化する。
+      size: small
+      classification: known
+      reason: "workload-monitor の障害検出セクションに1行追加"
+      verify_timing: "実装後"
+      status: pending
+      
+    - id: S5
+      name: "Sprint Planning でチェックリスト参照の検証"
+      description: |
+        S8 の Sprint Planning を実行し、VISION の Sprint Planning チェックリスト（PdM/TechLead/QA の3問い）が参照されたか検証する。
+        S7-review-next の検証項目。
+      size: small
+      classification: known
+      reason: "Sprint Planning は S8 開始時に実施。その際の参照を確認"
+      verify_timing: "Sprint Planning 実行時"
+      status: pending
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "insight スキルの前提条件を先に整える"
+    - slice_id: S2
+      priority: 2
+      rationale: "S1 と同時に追加可能"
+    - slice_id: S3
+      priority: 3
+      rationale: "場テンプレートは独立"
+    - slice_id: S4
+      priority: 4
+      rationale: "workload-monitor は独立"
+    - slice_id: S5
+      priority: 5
+      rationale: "Sprint Planning は S8 開始時に実施"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

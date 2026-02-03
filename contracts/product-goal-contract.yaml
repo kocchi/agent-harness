@@ -58,8 +58,8 @@ product-goal-contract:
       committed_at: null
   
   iteration:
-    planned: 7  # 四半期で7回のスプリント（S7 追加）
-    current: 7  # S7 開始
+    planned: 8  # 四半期で8回のスプリント（S8 追加）
+    current: 7  # S7 完了、S8 計画済み
     trigger: "仮説の検証結果により方向転換が必要な場合"
   
   created_at: "2026-01-29"

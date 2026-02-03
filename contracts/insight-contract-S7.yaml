@@ -1,0 +1,115 @@
+# Insight Contract for Sprint 7
+# Created: 2026-01-30
+# Source: Sprint Review, Sprint Retro（persona-council で開催、第2回 Retro 含む）
+# 議論ログ: research/discussions/2026-01-30_sprint_review.md, 2026-01-30_sprint_retro.md, 2026-01-30_sprint_retro_2.md
+
+insight-contract:
+  id: "INS-20260130-S7"
+  
+  insights:
+    # Sprint Review の成果（persona-council 議論より）
+    - id: S7-review
+      statement: "S6 成果物の呼び出し経路が整備され、rules-validator が正常に動作する"
+      source: "Sprint Review（persona-council）"
+      evidence:
+        summary: "verification-report-S7 で全 success_criteria を確認。sprint-goal/slice スキルに S6 成果物への参照を追加済み。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_review.md"
+        observation:
+          - "rules-validator の check_paths が現状のディレクトリ構造と一致"
+          - "sprint-goal に VISION の場の構成チェックリストを組み込み"
+          - "slice に success_criteria、roles/ 参照を追加"
+      confidence: "high"
+      
+    - id: S7-review-next
+      statement: "次 Sprint Planning で、チェックリスト参照が実際に行われるか検証する"
+      source: "Sprint Review（persona-council 統合）"
+      evidence:
+        summary: "存在確認と参照確認は別。実行時にチェックリストが使われるかは未検証。"
+      confidence: "medium"
+      next_action: "次 Sprint の検証項目に追加"
+      
+    # workload-monitor の初回検証
+    - id: S7-workload-monitor
+      statement: "workload-monitor が契約ベースでワークロードを可視化し、retro_actions の更新漏れを検出した"
+      source: "Sprint Review（persona-council）"
+      evidence:
+        summary: "初回実行で Sprint 7 の進捗（5/5 完了）を正確に集計。推奨アクションで retro_actions の status 更新漏れを指摘。"
+        observation:
+          - "slice-contract の status を集計するだけで十分な可視化ができた"
+          - "sprint-goal-contract の retro_actions との照合で盲点を発見"
+      confidence: "high"
+      
+    # Retro の学び（persona-council 議論より）
+    - id: S7-retro-1
+      statement: "Review/Retro は persona-council に委譲して場として開催すべき。場をスキップして insight を直接作成しない"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "S7 で場を開催せず直接 insight を作成。ユーザー指摘でやり直し。core-rules に「場では persona-council を呼び出す」とあるが守られなかった。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_retro.md"
+        observation:
+          - "sprint-review / sprint-retro の場テンプレートが未定義"
+          - "insight スキルに「場の開催」がトリガーとして明示されていない"
+      confidence: "high"
+      next_action:
+        type: "skill"
+        description: "insight スキルに「Review/Retro は persona-council に委譲してから insight を作成する」を追加"
+        owner: "次 Sprint"
+        
+    - id: S7-retro-2
+      statement: "Retro 完了時に sprint-goal-contract の retro_actions を done に更新するフローを明文化すべき"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "workload-monitor が指摘するまで retro_actions の更新漏れに気づかなかった。Review/Retro の出力定義に含まれていない。"
+        observation:
+          - "insight スキルの実行手順に「retro_actions を done に更新」を追加"
+          - "workload-monitor の推奨に「retro_actions の status を Review 時に更新」を追加"
+      confidence: "high"
+      next_action:
+        type: "skill"
+        description: "insight スキルに「Review/Retro 完了時に sprint-goal-contract の retro_actions を done に更新」を追加"
+        owner: "次 Sprint"
+        
+    - id: S7-retro-3
+      statement: "sprint-review / sprint-retro の場テンプレートを作成すると、persona-council の委譲が確実になる"
+      source: "Sprint Retro（persona-council）"
+      evidence:
+        summary: "sprint-planning のみ場テンプレートが存在。Review/Retro は未定義のため、委譲のトリガーが曖昧だった。"
+      confidence: "medium"
+      next_action:
+        type: "place"
+        description: "sprint-planning を参考に sprint-review.md, sprint-retro.md を作成"
+        owner: "次 Sprint"
+    
+    # 第2回 Retro の学び（Gerald Weinberg, Diana Larsen）
+    - id: S7-retro-4
+      statement: "仕様の欠陥が実装の欠陥を生む。必須事項は仕様に明記する"
+      source: "Sprint Retro 第2回（persona-council）"
+      evidence:
+        summary: "persona-council に「実名」が仕様になく、Coach A/B で書かれた。ユーザー指摘で修正。原因は仕様の欠陥。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_retro_2.md"
+      confidence: "high"
+      next_action: "persona-council に実名必須を追加済み。他エージェント・スキルも必須事項の棚卸しを検討"
+        
+    - id: S7-retro-5
+      statement: "実名の人格は、議論の説得力と学習の伝播を高める。召喚条件の粒度が人格の再現性を決める"
+      source: "Sprint Retro 第2回（persona-council）"
+      evidence:
+        summary: "Lisa Crispin, Don Reinertsen など実名にすると、読者がその人の著作・視点を想起できる。召喚条件を具体的に書くほど、同じ人格が選ばれやすくなる。"
+        discussion_ref: "research/discussions/2026-01-30_sprint_retro_2.md"
+      confidence: "high"
+      next_action: "場テンプレートの召喚条件を具体化する（人格の再現性のため）"
+  
+  cross_cutting:
+    - statement: "Review/Retro は persona-council に委譲して場として開催する"
+      impact: "insight スキル、場テンプレート"
+      next_action: "insight スキルに「先に persona-council に委譲し、議論結果を得てから insight を作成」を明記"
+    - statement: "Review/Retro の出力に「retro_actions の status 更新」を含める"
+      impact: "insight スキル、workload-monitor スキル"
+      next_action: "insight スキルの実行手順に追加、workload-monitor の推奨に追加"
+    - statement: "仕様に必須事項を明記する。召喚条件は具体的に書く"
+      impact: "persona-council、場テンプレート"
+      next_action: "召喚条件の粒度を上げ、人格の再現性を担保する"
+  
+  status: "new"
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"
