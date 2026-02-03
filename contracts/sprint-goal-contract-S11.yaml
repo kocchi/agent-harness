@@ -1,0 +1,15 @@
+sprint-goal-contract:
+  id: "SG-20260301-S11"
+  parent: "PG-2026-Q1-agent-harness"
+  goal:
+    statement: "手戻り率の測定を metrics スキルに追加し、H1 検証の基盤を作る"
+    measurable: "metrics で手戻り率が算出される"
+  verification:
+    success_criteria:
+      - "metrics スキルに手戻り集計が含まれる"
+      - "手戻りの定義が VISION に記載"
+  duration:
+    start: "2026-03-01"
+    end: "2026-03-07"
+  created_at: "2026-03-01"
+  updated_at: "2026-03-01"

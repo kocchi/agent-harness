@@ -1,0 +1,16 @@
+slice-contract:
+  id: "SLC-20260322-S14-evolution"
+  parent: "SG-20260322-S14"
+  feature:
+    name: "自己進化ループの強化"
+  slices:
+    - id: S1
+      name: "insight スキルに還元チェックリストを追加"
+      size: small
+      status: completed
+    - id: S2
+      name: "metrics と workload-monitor の統合検討（S9 Retro の持ち越し）"
+      size: small
+      status: completed
+  created_at: "2026-03-22"
+  updated_at: "2026-03-28"

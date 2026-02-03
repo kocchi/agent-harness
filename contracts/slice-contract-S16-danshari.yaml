@@ -1,0 +1,23 @@
+slice-contract:
+  id: "SLC-20260404-S16-danshari"
+  parent: "SG-20260404-S16"
+
+  feature:
+    name: "断捨離の棚卸しと実行"
+
+  slices:
+    - id: S1
+      name: "ルール・スキル・エージェントの参照元を棚卸し"
+      size: medium
+      status: completed
+    - id: S2
+      name: "削除候補の特定と判断"
+      size: small
+      status: completed
+    - id: S3
+      name: "断捨離の実行（代替経路確認後）"
+      size: small
+      status: completed
+
+  created_at: "2026-04-04"
+  updated_at: "2026-04-04"

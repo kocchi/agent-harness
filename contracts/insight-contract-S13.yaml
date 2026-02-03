@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260321-S13"
+  insights:
+    - id: S13-review
+      statement: "自律度の測定基盤ができ、介入頻度を追跡できるようになった"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S13-retro-1
+      statement: "介入頻度は「ユーザーが明示的に判断を求めた回数」に限定。暗黙の確認は計測困難"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-03-21"
+  updated_at: "2026-03-21"

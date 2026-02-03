@@ -1,0 +1,19 @@
+slice-contract:
+  id: "SLC-20260222-S10-place-effect"
+  parent: "SG-20260222-S10"
+
+  feature:
+    name: "場の効果を insight に記録"
+
+  slices:
+    - id: S1
+      name: "sprint-goal スキルに場の効果観察を追加"
+      size: small
+      status: completed
+    - id: S2
+      name: "insight スキルに place_effect フィールドを追加"
+      size: small
+      status: completed
+
+  created_at: "2026-02-22"
+  updated_at: "2026-02-28"

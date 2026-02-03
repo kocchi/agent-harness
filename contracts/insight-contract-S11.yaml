@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260307-S11"
+  insights:
+    - id: S11-review
+      statement: "手戻り率の測定基盤ができ、retro_actions と insight の next_action から推定可能になった"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S11-retro-1
+      statement: "手戻りの定義は「修正が必要だった成果物」に限定。範囲を広げるとノイズが増える"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-03-07"
+  updated_at: "2026-03-07"

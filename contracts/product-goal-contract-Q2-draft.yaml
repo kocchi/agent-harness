@@ -1,0 +1,82 @@
+# Product Goal Contract for agent-harness Q2（ドラフト）
+# Created: 2026-04-04
+# 承認前: persona-council で Sprint Planning 場を開催してから確定
+
+product-goal-contract:
+  id: "PG-2026-Q2-oss-team"
+  
+  context:
+    team: "1 ストリームアラインドチーム（Team Topologies）"
+    repos: "複数リポジトリを運用"
+  
+  value: |
+    OSS（agent-harness）を利用し、ストリームアラインドチームが複数リポジトリを運用でき、
+    上流の変更を追従できる状態にする
+    - OSS を境界内に閉じ込め、チーム固有を主にする（チームが OSS に混じらないのではなく、OSS がチームに混じらない）
+    - 1 チームが契約・スキル・場を共有し、複数リポジトリに横断して Sprint を回せる
+    - 上流（upstream）の変更を定期的に取り込み、コンフリクトを解消できる
+    - わかりやすさとシンプルさを維持するため、必要ないルール・スキル・エージェントは断捨離する
+  
+  kill_criteria:
+    - "チーム適用に 3 ヶ月以上かかり、1 人でも使えない状態が続く"
+    - "上流追従が 2 回連続で失敗する（コンフリクト解消不能）"
+    - "組織固有と汎用の分離ができず、OSS 貢献とチーム運用が両立しない"
+  
+  success_metrics:
+    - name: "チーム適用"
+      target: "1 ストリームアラインドチームが複数リポジトリに横断して Sprint を回せる"
+      current: null
+    - name: "上流追従"
+      target: "月 1 回以上の upstream マージが成功する"
+      current: null
+    - name: "OSS の境界"
+      target: "OSS が境界内に閉じ込められ、チームの作業空間と分離されている"
+      current: null
+  
+  hypotheses:
+    - id: H4
+      statement: "OSS を境界内に閉じ込めると、上流追従が容易になり、チーム固有が主のまま運用できる"
+      risk_type: "usability"
+      confidence: "medium"
+      status: "unvalidated"
+    - id: H5
+      statement: "上流追従のプロセス（手順・頻度・コンフリクト解消）を定義すると、追従が確実になる"
+      risk_type: "feasibility"
+      confidence: "medium"
+      status: "unvalidated"
+    - id: H6
+      statement: "複数リポジトリ運用のオンボーディング用ドキュメントがあると、チーム導入が速くなる"
+      risk_type: "usability"
+      confidence: "medium"
+      status: "unvalidated"
+  
+  scope:
+    in_scope:
+      - "OSS を境界内に閉じ込める設計（Sprint で How を決める）"
+      - "上流追従の手順"
+      - "複数リポジトリ運用のオンボーディング用ドキュメント"
+      - "1 チーム・複数リポジトリでの契約・スキル共有の検証"
+      - "repos/ と add-repository スキルによる複数リポジトリ管理"
+      - "不要なルール・スキル・エージェントの棚卸しと断捨離"
+    out_of_scope:
+      - "agent-harness 本体の大規模リファクタ"
+      - "複数ストリームアラインドチーム間の調整（まずは 1 チーム）"
+      - "他 OSS ツールの統合（まずは agent-harness に集中）"
+  
+  stakeholders:
+    - name: "Yuki（メンテナー）"
+      role: "approver"
+      commitment: "この Product Goal で Q2 を進める"
+      committed_at: null
+    - name: "ストリームアラインドチーム"
+      role: "reviewer"
+      commitment: "複数リポジトリ運用の検証に参加する"
+      committed_at: null
+  
+  iteration:
+    planned: 8  # Q2 で 8 スプリント想定
+    current: 0
+    trigger: "仮説の検証結果により方向転換が必要な場合"
+  
+  created_at: "2026-04-04"
+  updated_at: "2026-04-04"

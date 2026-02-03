@@ -1,0 +1,41 @@
+# Sprint Goal Contract for agent-harness Sprint 9
+# Created: 2026-02-15
+# Source: Sprint Planning 場（persona-council）
+# 議論ログ: research/discussions/2026-02-15_sprint_planning_S9.md
+
+sprint-goal-contract:
+  id: "SG-20260215-S9"
+  parent: "PG-2026-Q1-agent-harness"
+
+  goal:
+    statement: "契約活用率の測定基盤を作り、Product Goal の success_metrics を可視化する"
+    contribution: "測定しないと改善できない。H3（スキル/ルールで自律度）の検証に必要な基盤。"
+    measurable: |
+      - 契約活用率の定義を明文化
+      - metrics スキルを作成し、契約参照状況を集計
+      - product-goal-contract の success_metrics.current を初回計測で更新
+
+  verification:
+    method: "metrics スキル実行で契約活用率が算出されること"
+    success_criteria:
+      - "契約活用率の定義が docs/ または product-goal-contract に記載"
+      - ".cursor/skills/metrics/SKILL.md が存在"
+      - "metrics 実行で sprint/slice/insight の参照状況が集計される"
+
+  scope:
+    in_scope:
+      - "契約活用率の定義"
+      - "metrics スキルの作成"
+      - "product-goal-contract の current 初回更新"
+    out_of_scope:
+      - "手戻り率の測定（S11）"
+      - "自律度の測定（S13）"
+
+  retro_actions: []
+
+  duration:
+    start: "2026-02-15"
+    end: "2026-02-21"
+
+  created_at: "2026-02-15"
+  updated_at: "2026-02-15"

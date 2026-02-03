@@ -1,0 +1,18 @@
+insight-contract:
+  id: "INS-20260404-S16"
+  insights:
+    - id: S16-review
+      statement: "棚卸しで参照元を可視化すると、断捨離の判断が明確になる。weekly-research, create-subagent, superpowers-* を削除した"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S16-retro-1
+      statement: "superpowers-* は存在しないスキルを参照しており、契約系で代替可能だった。参照の整合性を定期確認する価値がある"
+      source: "Sprint Retro"
+      confidence: "medium"
+    - id: S16-retro-2
+      statement: "superpowers 系は洗練された外部 OSS のノウハウ。research/references/superpowers-knowhow.md に抽出して保持し、契約系と併用する際の参照とする"
+      source: "ユーザー指摘"
+      confidence: "high"
+  status: "new"
+  created_at: "2026-04-04"
+  updated_at: "2026-04-04"

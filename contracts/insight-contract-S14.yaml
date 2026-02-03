@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260328-S14"
+  insights:
+    - id: S14-review
+      statement: "insight の還元チェックリストで、next_action が rule/skill のとき還元漏れを防げる"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S14-retro-1
+      statement: "metrics と workload-monitor の統合は見送り。役割が違う（Product vs Sprint）。別スキルのままが明確"
+      source: "Sprint Retro"
+      confidence: "high"
+  status: "new"
+  created_at: "2026-03-28"
+  updated_at: "2026-03-28"

@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260404-S15"
+  insights:
+    - id: S15-review
+      statement: "Q1 の kill_criteria はトリガーされず、H1-H3 が支持された。四半期レポートで軌跡を記録した"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S15-retro-1
+      statement: "四半期総括を Sprint として回すと、振り返りの質が上がる。persona-council で議論し、レポートに統合する"
+      source: "Sprint Retro"
+      confidence: "high"
+  status: "new"
+  created_at: "2026-04-04"
+  updated_at: "2026-04-04"

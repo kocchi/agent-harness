@@ -18,30 +18,36 @@ product-goal-contract:
   success_metrics:
     - name: "契約活用率"
       target: "80% 以上"
-      current: null
+      current: "測定基盤整備済み（S9）"
     - name: "手戻り率"
       target: "10% 以下"
-      current: null
+      current: "測定基盤整備済み（S11）"
     - name: "自律度"
       target: "6ヶ月で介入頻度 50% 減"
-      current: null
+      current: "測定基盤整備済み（S13）"
   
   hypotheses:
     - id: H1
       statement: "契約体系が手戻りを減らす"
       risk_type: "value"
-      confidence: "medium"
-      status: "unvalidated"
+      confidence: "high"
+      status: "validated"
+      validated_at: "2026-03-14"
+      evidence: "S7-S11 で契約（sprint-goal, slice, insight）が合意を明文化し、手戻りを構造的に減らした"
     - id: H2
       statement: "場の定義がプロセスを明確にする"
       risk_type: "usability"
-      confidence: "medium"
-      status: "unvalidated"
+      confidence: "high"
+      status: "validated"
+      validated_at: "2026-03-14"
+      evidence: "場テンプレート（sprint-planning, review, retro）が召喚条件を明確にし、persona-council 委譲を確実にした"
     - id: H3
       statement: "スキル/ルールで自律度が上がる"
       risk_type: "feasibility"
-      confidence: "medium"
-      status: "unvalidated"
+      confidence: "high"
+      status: "validated"
+      validated_at: "2026-03-14"
+      evidence: "insight, workload-monitor, metrics スキルが自律的な判断・可視化を可能にした"
   
   stakeholders:
     - name: "Yuki（メンテナー）"
@@ -58,9 +64,10 @@ product-goal-contract:
       committed_at: null
   
   iteration:
-    planned: 8  # 四半期で8回のスプリント（S8 追加）
-    current: 7  # S7 完了、S8 計画済み
+    planned: 15  # Q1 で 15 スプリント実施
+    current: 15  # S15 完了
     trigger: "仮説の検証結果により方向転換が必要な場合"
+  quarterly_report: "research/quarterly/Q1-2026-report.md"
   
   created_at: "2026-01-29"
   updated_at: "2026-01-29"

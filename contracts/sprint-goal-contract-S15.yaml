@@ -1,0 +1,19 @@
+sprint-goal-contract:
+  id: "SG-20260329-S15"
+  parent: "PG-2026-Q1-agent-harness"
+  goal:
+    statement: "四半期総括を行い、kill_criteria を検証し、次四半期の基盤を整える"
+    measurable: |
+      - kill_criteria の検証結果を記録
+      - 四半期レポート（research/quarterly/）を作成
+      - success_metrics の current を更新
+  verification:
+    success_criteria:
+      - "kill_criteria がトリガーされていないことを確認"
+      - "research/quarterly/Q1-2026-report.md が存在"
+      - "product-goal-contract の iteration.current が 15"
+  duration:
+    start: "2026-03-29"
+    end: "2026-04-04"
+  created_at: "2026-03-29"
+  updated_at: "2026-03-29"

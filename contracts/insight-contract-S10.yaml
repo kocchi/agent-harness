@@ -1,0 +1,14 @@
+insight-contract:
+  id: "INS-20260228-S10"
+  insights:
+    - id: S10-review
+      statement: "場の効果を insight に記録する枠ができ、H2 検証が可能になった"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S10-retro-1
+      statement: "place_effect は optional にし、負荷を抑える"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  created_at: "2026-02-28"
+  updated_at: "2026-02-28"

@@ -1,0 +1,23 @@
+sprint-goal-contract:
+  id: "SG-20260222-S10"
+  parent: "PG-2026-Q1-agent-harness"
+
+  goal:
+    statement: "場の効果を insight に記録する仕組みを追加し、H2 を検証する"
+    measurable: "sprint-goal スキルに場の効果観察を手順追加、insight に place_effect フィールド追加"
+
+  verification:
+    success_criteria:
+      - "sprint-goal スキルに場の効果観察が含まれる"
+      - "insight-contract に place_effect が記録可能"
+
+  scope:
+    in_scope: ["場の効果観察の手順", "insight の place_effect フィールド"]
+    out_of_scope: ["場の追加・削除"]
+
+  duration:
+    start: "2026-02-22"
+    end: "2026-02-28"
+
+  created_at: "2026-02-22"
+  updated_at: "2026-02-22"

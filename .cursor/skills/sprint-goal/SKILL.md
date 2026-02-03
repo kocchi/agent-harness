@@ -50,6 +50,8 @@ Sprint Planning は**場**として実行する。[.cursor/places/sprint-plannin
 - 議論の過程を research/discussions/ に記録する（人間の学習用）
 - **委譲をスキップして契約を作成しない**（implementation-rules: 場の開催）
 
+**場の効果観察**（S10）: 場開催後、insight に place_effect を記録すると H2 検証に役立つ。optional。
+
 委譲できない場合の軽量フォールバック（推奨しない）: [VISION.md - 場の一覧](../../../docs/VISION.md) のチェックリストを確認:
 - [ ] 検証する価値は明確か？（PdM）
 - [ ] 実現可能か？（TechLead）

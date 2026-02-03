@@ -1,0 +1,16 @@
+slice-contract:
+  id: "SLC-20260308-S12-hypotheses"
+  parent: "SG-20260308-S12"
+  feature:
+    name: "仮説検証結果の統合"
+  slices:
+    - id: S1
+      name: "insight-contract S7-S11 を横断し仮説との対応を整理"
+      size: medium
+      status: completed
+    - id: S2
+      name: "product-goal-contract の hypotheses を validated に更新"
+      size: small
+      status: completed
+  created_at: "2026-03-08"
+  updated_at: "2026-03-14"

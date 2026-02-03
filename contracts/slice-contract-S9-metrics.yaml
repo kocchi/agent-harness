@@ -1,0 +1,31 @@
+# Slice Contract for Sprint 9: 契約活用率の測定基盤
+# Created: 2026-02-15
+# Parent: SG-20260215-S9
+
+slice-contract:
+  id: "SLC-20260215-S9-metrics"
+  parent: "SG-20260215-S9"
+
+  feature:
+    name: "契約活用率の測定基盤"
+    description: "Product Goal の success_metrics を可視化する metrics スキルを作成"
+
+  slices:
+    - id: S1
+      name: "契約活用率の定義を明文化"
+      size: small
+      classification: known
+      status: completed
+    - id: S2
+      name: "metrics スキルを作成"
+      size: medium
+      classification: known
+      status: completed
+    - id: S3
+      name: "product-goal-contract の current を初回更新"
+      size: small
+      classification: known
+      status: completed
+
+  created_at: "2026-02-15"
+  updated_at: "2026-02-21"

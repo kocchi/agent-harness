@@ -105,4 +105,7 @@ recommendation: "generalPurpose タイプを使用"
 - Binary Search / Divide and Conquer（二分探索）
 - 5 Whys（根本原因分析）
 
-参考: research/investigations/2026-01-26_systematic-debugging-methodology.md
+## 参照
+
+- research/investigations/2026-01-26_systematic-debugging-methodology.md
+- [research/references/superpowers-knowhow.md](../../research/references/superpowers-knowhow.md) - Systematic Debugging の詳細（Root Cause Tracing, 3+ 失敗時のアーキテクチャ疑義など）

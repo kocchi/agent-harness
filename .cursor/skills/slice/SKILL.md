@@ -155,3 +155,4 @@ slice-contract:
 - [VISION.md - 価値分類](../../../docs/VISION.md)
 - [philosophy.md - P7: 契約で価値をつなぐ](../../../docs/philosophy.md)
 - [.cursor/roles/ - 設計レビュー時の視点](../../roles/)
+- [research/references/superpowers-knowhow.md](../../../research/references/superpowers-knowhow.md) - 未知スライスでの 1 問ずつ・代替案提示（Brainstorming ノウハウ）

@@ -1,0 +1,23 @@
+sprint-goal-contract:
+  id: "SG-20260404-S16"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "ルール・スキル・エージェントの棚卸しを実施し、断捨離候補を特定する"
+    measurable: |
+      - 棚卸しレポートが research/ に作成される
+      - 削除候補が特定され、代替経路の有無が確認される
+      - 削除可能と判断したものは断捨離する（P3: 代替経路が証明されてから）
+
+  verification:
+    success_criteria:
+      - "research/danshari-inventory-S16.md が存在"
+      - "削除候補の一覧と判断理由が記録されている"
+      - "断捨離実行分がコミットされている"
+
+  duration:
+    start: "2026-04-04"
+    end: "2026-04-10"
+
+  created_at: "2026-04-04"
+  updated_at: "2026-04-04"

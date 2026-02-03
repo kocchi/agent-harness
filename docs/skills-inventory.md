@@ -2,7 +2,7 @@
 
 agent-harness の構成一覧。
 
-## エージェント（8）
+## エージェント（7）
 
 | エージェント | 目的 | 呼び出し元 |
 |-------------|------|-----------|
@@ -10,8 +10,7 @@ agent-harness の構成一覧。
 | `scrum-master` | ワークロード監視、障害検出、プロセス健全性 | セッション開始時（推奨）、Daily Scrum 相当、進捗確認時 |
 | `deep-research` | 深い調査 | 調査タスク時 |
 | `systematic-debugger` | 体系的デバッグ | 問題発生時 |
-| `guardian-generator` | リポジトリ固有 Agent 生成 | リポジトリ追加時 |
-| `weekly-research` | 週次リサーチ | 週次 |
+| `guardian-generator` | リポジトリ固有 Agent 生成 | リポジトリ追加時（add-repository） |
 | `persona-vessel` | 人格の器（単一憑依） | 非同期・単一視点が必要なとき |
 | `persona-council` | 複数人格の議論 | 場（Sprint Planning, Review, Retro） |
 
@@ -44,18 +43,15 @@ agent-harness の構成一覧。
 |-------|------|------|
 | `workload-monitor` | ワークロード監視、障害検出、プロセス健全性 | workload-report |
 
-## 外部フレームワーク連携（3）
-
-| スキル | 目的 |
-|-------|------|
-| `superpowers-brainstorming` | 創造的作業の前に実行 |
-| `superpowers-writing-plans` | 計画作成 |
-| `superpowers-systematic-debugging` | デバッグ |
-
-## ユーティリティ（3）
+## ユーティリティ（2）
 
 | スキル | 目的 |
 |-------|------|
 | `add-repository` | 開発リポジトリを追加 |
 | `contribute-upstream` | OSS 貢献ガイド |
-| `create-subagent` | サブエージェント作成ガイド |
+
+## メトリクス（1）
+
+| スキル | 目的 |
+|-------|------|
+| `metrics` | 契約活用率・手戻り率・自律度の集計 |

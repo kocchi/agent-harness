@@ -48,6 +48,9 @@ description: |
 insight:
   statement: "〇〇ということがわかった"
   source: "Review | Retro | スライス完了 | 実験 | 調査 | 実装"
+  place_effect:  # オプション（S10）。場の効果を記録する場合
+    place: "sprint_planning | sprint_review | sprint_retro"
+    observation: "場がどう効いたか（1-2文）"
   evidence:
     summary: "根拠の要約（1-2文）"
     references:  # オプション: 詳細への参照
@@ -120,6 +123,11 @@ insight-contract:
 ```
 
 ### 6. 還元を実行（オプション）
+
+**還元チェックリスト**（S14）: `next_action.type` が rule または skill のとき、以下を確認してから還元する:
+- [ ] 還元先のファイルが特定されているか
+- [ ] 変更内容が 1-2 行に収まるか（冗長化を避ける）
+- [ ] 既存のルール/スキルと矛盾しないか
 
 `next_action.type` に応じて:
 

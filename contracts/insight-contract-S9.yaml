@@ -1,0 +1,24 @@
+# Insight Contract for Sprint 9
+# Created: 2026-02-21
+# 議論ログ: research/discussions/2026-02-21_sprint_review_S9.md, 2026-02-21_sprint_retro_S9.md
+
+insight-contract:
+  id: "INS-20260221-S9"
+
+  insights:
+    - id: S9-review
+      statement: "契約活用率の測定基盤ができ、Product Goal の success_metrics を可視化できるようになった"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S9-retro-1
+      statement: "測定の定義を先に決めると、スキルの実装が明確になる"
+      source: "Sprint Retro"
+      confidence: "high"
+
+  cross_cutting:
+    - statement: "metrics と workload-monitor は役割が違う。統合は必要時に検討"
+      next_action: "S14 で検討"
+
+  status: "new"
+  created_at: "2026-02-21"
+  updated_at: "2026-02-21"

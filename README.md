@@ -21,7 +21,7 @@ cd agent-harness
 - **契約体系**: 価値の合意を明文化（sprint-goal, slice, increment, insight）
 - **設計原理（P0-P7）**: AI エージェント活用のベストプラクティス
 - **ルール定義**: 直接編集運用、コミット規約、Human-in-the-Loop
-- **スキル**: 契約系、superpowers 系、タスク管理系
+- **スキル**: 契約系、プロセス監視、メトリクス
 
 ## 構造
 

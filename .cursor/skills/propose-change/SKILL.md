@@ -87,3 +87,7 @@ __コミットする前に__、以下をユーザーに提示:
 ### 5. コミット
 
 ユーザー承認後にコミット。
+
+## 参照
+
+- [research/references/superpowers-knowhow.md](../../../research/references/superpowers-knowhow.md) - 実装計画の bite-sized タスク（Writing Plans ノウハウ）

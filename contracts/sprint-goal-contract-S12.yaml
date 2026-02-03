@@ -1,0 +1,16 @@
+sprint-goal-contract:
+  id: "SG-20260308-S12"
+  parent: "PG-2026-Q1-agent-harness"
+  goal:
+    statement: "H1, H2, H3 の検証結果を product-goal-contract に反映する"
+    measurable: "hypotheses の status が validated に更新される"
+  verification:
+    success_criteria:
+      - "H1: 契約体系が手戻りを減らす → validated"
+      - "H2: 場の定義がプロセスを明確にする → validated"
+      - "H3: スキル/ルールで自律度が上がる → validated"
+  duration:
+    start: "2026-03-08"
+    end: "2026-03-14"
+  created_at: "2026-03-08"
+  updated_at: "2026-03-08"
