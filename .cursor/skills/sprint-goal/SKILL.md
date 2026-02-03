@@ -123,7 +123,7 @@ sprint-goal-contract:
   
   duration:
     start: "YYYY-MM-DD"
-    end: "YYYY-MM-DD"
+    end: "YYYY-MM-DD"  # 目安。進捗ベースで Sprint を閉じる（core-rules）
 ```
 
 ### 7. チームの合意を取る

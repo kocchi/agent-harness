@@ -2,18 +2,28 @@
 
 > workload-monitor が更新。読む人を眠らせないことを目指す。
 
-**最終更新**: 2026-05-20
+**最終更新**: 2026-02-03
+
+---
+
+## 開催中の場
+
+_なし（S24 Review/Retro 終了。議論は [Review](research/discussions/2026-02-03_sprint_review_S24.md) / [Retro](research/discussions/2026-02-03_sprint_retro_S24.md)）_
 
 ---
 
 ## 今、何をしているか
 
-**S23**: release-notes の習慣化を継続しつつ、OSS 境界の symlink 検証に着手。神のみぞ知る領域に踏み込む。
+**S24 完了**。次は S25 Planning。
 
-**次にやること**（逃げられない）:
-1. .cursor/rules に symlink を置いて Cursor が読むか検証
-2. 検証結果を research に記録
-3. S23 終了時に release-notes を実行
+**S24 でやったこと**:
+- 進捗ベースの Sprint 運用を確立
+- Retro の入力に release-notes を必須追加（sprint-retro.md 更新済み）
+- STATUS.md 拡張、コミット/プッシュ分離
+
+**次にやること**:
+1. S25 Sprint Planning を開催
+2. **コンテキストリフレッシュ: 新セッション開始を推奨**（Sprint 終了後）
 
 ---
 
@@ -31,9 +41,9 @@
 
 | Sprint | やったこと |
 |--------|------------|
-| **S23**（進行中） | release-notes 継続、OSS symlink 検証 |
+| **S24**（完了） | 進捗ベース運用確立、Retro 入力に release-notes 追加、STATUS.md 拡張 |
+| S23 | OSS symlink 検証完了。release-notes 漏れ。Retro でトリガー改善の仮説 |
 | S22 | release-notes 習慣化の初回検証成功。Review/Retro 完了 |
-| S21 | リリースノートの仕組み導入。TEMPLATE、release-notes スキル、workload-monitor 連携 |
 
 ---
 
@@ -44,6 +54,18 @@ persona-council の議論から抽出（[highlights](research/highlights/README.
 - **S17 Planning**: 「依存関係を先に、設計は後から」— 設計が先に立つと空中楼閣になる、という教訓
 - **S8 Review**: 作った仕組みが自分自身の検証に使われている。自己言及の美学
 - **S7 Review**: 検証の境界を明確にして収束。スコープ creep より学びを優先する判断（Don Reinertsen らしい）
+
+---
+
+## コンテキストサイクル
+
+> ワークロードのサイクルごとにコンテキストをクリアすると劣化を防げる。
+
+| 区切り | 推奨アクション |
+|--------|----------------|
+| Sprint 終了（Review/Retro 完了後） | **新セッション開始** |
+| 長時間作業後（2h 超） | 新セッション開始を検討 |
+| workload-monitor で「コンテキストリフレッシュ推奨」が出た場合 | 新セッション開始 |
 
 ---
 

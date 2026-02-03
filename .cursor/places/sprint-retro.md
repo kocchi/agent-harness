@@ -6,6 +6,7 @@
 
 - 前回 Retro の議論（あれば）
 - insight-contract（初版または前スプリント）
+- **release-notes（該当 Sprint の成果物要約。Retro 開催前に実行）**
 - workload-monitor の推奨（あれば）
 - 本スプリントのプロセス（場の開催状況、障害など）
 
@@ -35,6 +36,8 @@ summon_criteria:
 ## Step 3: 議論（persona-council に委譲）
 
 選定された複数人格（実名）が議論する。議論の過程を research/discussions/ に記録する。
+
+**STATUS.md のリアルタイム更新**: 議論開始時に「開催中の場」を記載、議論中は「会話」に追記、終了時に research/discussions/ に移してクリア。
 
 ## Step 4: 統合
 

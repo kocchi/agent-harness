@@ -18,6 +18,14 @@ __禁止__:
 - 生成スクリプトへの依存
 - .cursor/ と .claude/ の内容の乖離
 
+## Sprint の進め方
+
+__原則__: **進捗ベースで進める。日付でブロックしない。**
+
+- slice が完了したら release-notes → Review → Retro を開催して Sprint を閉じる
+- duration.end は目安。すすめられるならどんどん進める
+- 日付を待たずに次の Sprint Planning に進んでよい
+
 ## コミット規約
 
 論理的な変更単位で分割する
@@ -26,7 +34,8 @@ __必須__:
 - 構造変更、内容修正、追加、削除を混ぜない
 - コミットメッセージは変更意図を簡潔に記述する
 - パターン: feat: / fix: / docs: / refactor: / chore:
-- **Increment 完了ごとに即プッシュする**（origin との乖離を防ぐ）
+- **コミット**: Increment 完了ごと（論理単位で分割）
+- **プッシュ**: Sprint 終了時（Review/Retro 後にまとめて origin へ）
 
 __推奨__:
 - 大きな構造変更は小さな PR に分割する

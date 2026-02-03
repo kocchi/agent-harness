@@ -1,8 +1,8 @@
 ---
 name: release-notes
 description: |
-  Sprint 終了時にリリースノートを生成するスキル。
-  Sprint Review の入力として persona-council に渡す。使用タイミング: Sprint 終了時、Review の前。
+  Sprint の成果物が揃ったらリリースノートを生成するスキル。
+  Sprint Review の入力として persona-council に渡す。使用タイミング: slice 完了時、Review の前。
 ---
 
 # Release Notes Skill
@@ -11,9 +11,9 @@ Sprint で届けた価値・変更点・検証結果を1ページにまとめ、
 
 ## トリガー
 
-- Sprint 終了時（Review の前）
+- slice が完了したら（Review の前。日付は待たない）
 - 「リリースノートを作成して」「Review の準備をして」と言われたとき
-- workload-monitor の推奨（Sprint 終了日に「release-notes を実行してから Review を」）
+- workload-monitor の推奨（slice 完了時に「release-notes を実行してから Review を」）
 
 ## 前提条件
 

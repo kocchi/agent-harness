@@ -37,6 +37,8 @@ summon_criteria:
 
 選定された複数人格（実名）が議論する。議論の過程を research/discussions/ に記録する。
 
+**STATUS.md のリアルタイム更新**: 議論開始時に「開催中の場」を記載、議論中は「会話」に追記、終了時に research/discussions/ に移してクリア。
+
 ## Step 4: 統合
 
 ```yaml
