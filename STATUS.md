@@ -8,21 +8,20 @@
 
 ## 開催中の場
 
-_なし（S24 Review/Retro 終了。議論は [Review](research/discussions/2026-02-03_sprint_review_S24.md) / [Retro](research/discussions/2026-02-03_sprint_retro_S24.md)）_
+_なし（S25 Review/Retro 終了。議論は [Planning](research/discussions/2026-02-03_sprint_planning_S25.md) / [Review](research/discussions/2026-02-03_sprint_review_S25.md) / [Retro](research/discussions/2026-02-03_sprint_retro_S25.md)）_
 
 ---
 
 ## 今、何をしているか
 
-**S24 完了**。次は S25 Planning。
+**S25 完了**。次は S26 Planning。
 
-**S24 でやったこと**:
-- 進捗ベースの Sprint 運用を確立
-- Retro の入力に release-notes を必須追加（sprint-retro.md 更新済み）
-- STATUS.md 拡張、コミット/プッシュ分離
+**S25 でやったこと**:
+- 方式 A（vendor 配置）の設計ドラフト作成
+- oss-boundary-design に具体手順を追記
 
 **次にやること**:
-1. S25 Sprint Planning を開催
+1. S26 Sprint Planning を開催（必要に応じて）
 2. **コンテキストリフレッシュ: 新セッション開始を推奨**（Sprint 終了後）
 
 ---
@@ -41,9 +40,9 @@ _なし（S24 Review/Retro 終了。議論は [Review](research/discussions/2026
 
 | Sprint | やったこと |
 |--------|------------|
-| **S24**（完了） | 進捗ベース運用確立、Retro 入力に release-notes 追加、STATUS.md 拡張 |
+| **S25**（完了） | 方式 A の設計ドラフト作成。oss-boundary-design に具体手順追記 |
+| S24（完了） | 進捗ベース運用確立、Retro 入力に release-notes 追加、STATUS.md 拡張 |
 | S23 | OSS symlink 検証完了。release-notes 漏れ。Retro でトリガー改善の仮説 |
-| S22 | release-notes 習慣化の初回検証成功。Review/Retro 完了 |
 
 ---
 

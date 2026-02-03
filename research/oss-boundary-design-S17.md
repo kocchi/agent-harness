@@ -61,3 +61,30 @@
 - **構造**: 作成可能。git で追跡される
 - **Cursor の読み込み**: ✅ symlink は有効。Cursor Settings > Rules で表示される
 - **結論**: 方式 A（vendor 配置）は symlink で実現可能。OSS を vendor/ に submodule で配置し、.cursor/rules/ から symlink で参照する構成が検討できる
+
+## S25 更新（方式 A の具体手順）
+
+### 方式 A の実装手順（ドラフト）
+
+1. **Fork 側のセットアップ**
+   - agent-harness を Fork し、チームリポジトリとしてクローン
+   - `git remote add upstream https://github.com/kocchi/agent-harness.git`
+
+2. **vendor への配置**
+   ```bash
+   # .cursor/vendor/ に agent-harness を submodule として追加
+   git submodule add https://github.com/{team}/agent-harness.git .cursor/vendor/agent-harness
+   ```
+
+3. **symlink の作成**
+   - OSS の rules を参照する symlink を .cursor/rules/ に配置
+   - 例: `.cursor/rules/oss-constitution.mdc` → `../vendor/agent-harness/.cursor/rules/constitution.mdc`
+   - チーム固有の rules は .cursor/rules/ に直接配置（OSS より優先させる場合はファイル名の並びで制御、または .mdc の順序に依存）
+
+4. **上流追従**
+   - follow-upstream スキルで `vendor/agent-harness` を更新
+   - コンフリクト時: チーム固有（.cursor/rules/ 直下の非 symlink）を優先
+
+5. **注意事項**
+   - Windows では symlink に管理者権限が必要な場合あり。その場合は方式 B を検討
+   - symlink は git で追跡される（macOS/Linux）

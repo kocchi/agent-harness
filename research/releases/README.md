@@ -10,6 +10,7 @@ Sprint の slice 完了時に生成するリリースノートを格納する。
 
 | Sprint | 期間 | 届けた価値（要約） |
 |--------|------|-------------------|
+| [S25](S25-release-notes.md) | 2026-02-03 ~ 02-10 | 方式 A の設計ドラフト作成 |
 | [S24](S24-release-notes.md) | 2026-02-03 ~ 02-10 | Sprint 進捗ベース、STATUS.md 拡張、コミット/プッシュ分離 |
 | [S22](S22-release-notes.md) | 2026-05-13 ~ 05-20 | release-notes 習慣化の初回検証成功 |
 | [S21](S21-release-notes.md) | 2026-05-06 ~ 05-13 | リリースノートの仕組み導入。Review の materials に含める |

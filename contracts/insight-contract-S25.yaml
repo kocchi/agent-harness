@@ -1,0 +1,15 @@
+insight-contract:
+  id: "INS-20260203-S25"
+  insights:
+    - id: S25-review-1
+      statement: "方式 A の設計ドラフトが具体化され、コンフリクト多発時の実装判断が速くなる"
+      source: "Sprint Review"
+      confidence: "high"
+    - id: S25-retro-1
+      statement: "進捗ベース + Retro の入力に release-notes の流れが S25 で定着した"
+      source: "Sprint Retro"
+      confidence: "high"
+  status: "new"
+  discussion_ref: "research/discussions/2026-02-03_sprint_review_S25.md, research/discussions/2026-02-03_sprint_retro_S25.md"
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"

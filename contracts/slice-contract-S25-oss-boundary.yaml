@@ -1,0 +1,19 @@
+slice-contract:
+  id: "SLC-20260203-S25-oss-boundary"
+  parent: "SG-20260203-S25"
+
+  feature:
+    name: "方式 A（vendor 配置）の設計ドラフト作成"
+
+  slices:
+    - id: S1
+      name: "oss-boundary-design に方式 A の具体手順（vendor 配置、symlink の使い方）を追記"
+      size: medium
+      status: completed
+    - id: S2
+      name: "S25 の slice 完了時に release-notes を実行し、S25-release-notes.md を生成"
+      size: small
+      status: completed
+
+  created_at: "2026-02-03"
+  updated_at: "2026-02-03"
