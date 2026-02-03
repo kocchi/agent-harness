@@ -1,0 +1,23 @@
+slice-contract:
+  id: "SLC-20260506-S21-release-notes"
+  parent: "SG-20260506-S21"
+
+  feature:
+    name: "リリースノート生成と Review 入力への組み込み"
+
+  slices:
+    - id: S1
+      name: "research/releases/ ディレクトリと S21 リリースノートのテンプレートを作成"
+      size: small
+      status: completed
+    - id: S2
+      name: "sprint-review 場の入力に release_notes を追加"
+      size: small
+      status: completed
+    - id: S3
+      name: "リリースノート生成を workload-monitor または insight スキルに組み込む方針を決定"
+      size: small
+      status: completed
+
+  created_at: "2026-05-06"
+  updated_at: "2026-05-06"

@@ -1,0 +1,19 @@
+slice-contract:
+  id: "SLC-20260513-S22-release-notes-habit"
+  parent: "SG-20260513-S22"
+
+  feature:
+    name: "release-notes の習慣化検証"
+
+  slices:
+    - id: S1
+      name: "S22 終了時に release-notes スキルを実行し、S22-release-notes.md を生成"
+      size: small
+      status: completed
+    - id: S2
+      name: "S22 Review で S22-release-notes.md を materials に含める"
+      size: small
+      status: completed
+
+  created_at: "2026-05-13"
+  updated_at: "2026-05-13"

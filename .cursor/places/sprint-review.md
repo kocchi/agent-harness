@@ -7,6 +7,7 @@ Increment を検証する場。persona-council サブエージェントに委譲
 - sprint-goal-contract
 - slice-contract（関連）
 - verification-report（あれば）
+- **release_notes**（research/releases/S{NN}-release-notes.md）※S21 から必須
 - 成果物（実装、契約の変更など）
 
 ## Step 1: 分析（ペルソナ選定の変数）

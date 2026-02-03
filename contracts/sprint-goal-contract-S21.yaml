@@ -1,0 +1,24 @@
+sprint-goal-contract:
+  id: "SG-20260506-S21"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "リリースノートを Sprint 終了時に生成する仕組みを導入し、sprint-review の入力に含める"
+    measurable: |
+      - research/releases/ に S21 のリリースノートが存在する
+      - sprint-review 場の入力に release_notes が追加されている
+      - S21 Review でリリースノートが materials に含まれる
+
+  verification:
+    success_criteria:
+      - "research/releases/S21-release-notes.md が存在する"
+      - "sprint-review.md の入力に release_notes が追加されている"
+
+  duration:
+    start: "2026-05-06"
+    end: "2026-05-13"
+
+  discussion_ref: "research/discussions/2026-05-06_sprint_planning_S21.md"
+
+  created_at: "2026-05-06"
+  updated_at: "2026-05-06"

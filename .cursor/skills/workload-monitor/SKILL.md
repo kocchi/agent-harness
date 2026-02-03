@@ -59,14 +59,18 @@ Sprint のワークロードを監視し、障害を検出、プロセス健全�
 | unfinished_retro | retro_actions に status: in_scope が残存 | **Review 時に sprint-goal-contract の retro_actions を done に更新する**。次 Sprint に持ち越し or スコープ調整 |
 | over_commit | pending が total の 50% 超 かつ 残り日数が少ない | スコープ縮小を提案 |
 | no_active_sprint | アクティブ Sprint なし | Sprint Planning を提案 |
+| sprint_ending | 残り日数 0-1 日、リリースノート未作成 | **release-notes を実行してから Review を開催する** |
 
 ### 5. プロセス健全性
 
 - **Sprint Goal 達成見込み**: completion_rate と残り日数から判定
 - **場の実施状況**: sprint-goal-contract の planning_participants、retro_actions の有無
 - **ルール整合性**: rules-validator の結果を参照（別実行の場合は要約のみ）
+- **Sprint 終了時**: 残り日数 0-1 日かつ `research/releases/S{NN}-release-notes.md` がなければ、recommendations に「release-notes を実行してから Review を開催する」を追加
 
-### 6. レポート生成
+### 6. レポート生成と STATUS.md 更新
+
+workload_report を生成し、**STATUS.md** を更新する。STATUS.md は進捗の単一参照先。
 
 ```yaml
 workload_report:
@@ -99,9 +103,22 @@ workload_report:
     - ""
 ```
 
+**STATUS.md の構成**（読む人を眠らせない方針）:
+
+| セクション | 内容 |
+|------------|------|
+| 今、何をしているか | アクティブ Sprint の焦点を1文。次にやることを具体的に2-3個 |
+| Q2 の野望と現実 | Product Goal の success_metrics を「やりたいこと」「今の状態」で平易に |
+| 直近の戦績 | 直近 3 Sprint の「やったこと」を結果ベースで |
+| 専門家が言ってた面白いこと | research/highlights から 2-3 件を抜粋（安心・面白み） |
+| リンク | オンボーディング、契約、議論ログ、四半期レポート |
+
+**トーン**: ユーモアを軽く。抽象的な指標名より「何がわかるか」で書く。障害がないときは障害セクションを省略。
+
 ## 出力
 
 - ユーザーへの Markdown レポート（簡潔な箇条書き）
+- **STATUS.md を更新する**（進捗ダッシュボード。ここだけ見れば進捗が追える）
 - 必要に応じて `contracts/workload-report-{YYYY-MM-DD}.yaml` に記録
 
 ## 失敗時の振る舞い
@@ -121,5 +138,6 @@ workload_report:
 ## 参照
 
 - [scrum-master エージェント](../../agents/scrum-master.md)
+- [release-notes スキル](../release-notes/SKILL.md)（Sprint 終了時に Review の前で実行）
 - [sprint-goal スキル](../sprint-goal/SKILL.md)
 - [slice スキル](../slice/SKILL.md)

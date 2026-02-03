@@ -1,0 +1,23 @@
+sprint-goal-contract:
+  id: "SG-20260513-S22"
+  parent: "PG-2026-Q2-oss-team"
+
+  goal:
+    statement: "release-notes の習慣化を検証する。Sprint 終了時に release-notes を実行し、Review で materials に含まれることを確認する"
+    measurable: |
+      - S22 終了時に research/releases/S22-release-notes.md が存在する
+      - S22 Review の materials に S22-release-notes.md が含まれている
+
+  verification:
+    success_criteria:
+      - "research/releases/S22-release-notes.md が存在する"
+      - "S22 Review で release_notes が materials に含まれている"
+
+  duration:
+    start: "2026-05-13"
+    end: "2026-05-20"
+
+  discussion_ref: "research/discussions/2026-05-13_sprint_planning_S22.md"
+
+  created_at: "2026-05-13"
+  updated_at: "2026-05-13"

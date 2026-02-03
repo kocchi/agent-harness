@@ -37,11 +37,12 @@ agent-harness の構成一覧。
 | `insight` | 学びの記録と還元 | insight-contract |
 | `propose-change` | 変更提案フロー | （中間生成物での合意） |
 
-## プロセス監視（1）
+## プロセス監視（2）
 
 | スキル | 目的 | 出力 |
 |-------|------|------|
 | `workload-monitor` | ワークロード監視、障害検出、プロセス健全性 | workload-report |
+| `release-notes` | Sprint 終了時にリリースノート生成、Review の入力 | research/releases/S{NN}-release-notes.md |
 
 ## ユーティリティ（3）
 

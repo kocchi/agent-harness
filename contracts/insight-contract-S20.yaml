@@ -1,0 +1,15 @@
+insight-contract:
+  id: "INS-20260506-S20"
+  insights:
+    - id: S20-retro-1
+      statement: "Review の入力にリリースノートがないと、persona-council が何をレビューしているか曖昧になる。契約と成果物の羅列だけでは検証の質が落ちる"
+      source: "Sprint Retro"
+      confidence: "high"
+    - id: S20-retro-2
+      statement: "Sprint 終了時にリリースノートを生成し、Review の入力に含めると、レビュー品質が上がる"
+      source: "Sprint Retro"
+      confidence: "medium"
+  status: "new"
+  discussion_ref: "research/discussions/2026-05-06_sprint_retro_S20.md"
+  created_at: "2026-05-06"
+  updated_at: "2026-05-06"
