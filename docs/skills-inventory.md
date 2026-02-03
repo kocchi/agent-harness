@@ -2,7 +2,7 @@
 
 agent-harness の構成一覧。
 
-## エージェント（6）
+## エージェント（7）
 
 | エージェント | 目的 | 呼び出し元 |
 |-------------|------|-----------|
@@ -11,7 +11,8 @@ agent-harness の構成一覧。
 | `systematic-debugger` | 体系的デバッグ | 問題発生時 |
 | `guardian-generator` | リポジトリ固有 Agent 生成 | リポジトリ追加時 |
 | `weekly-research` | 週次リサーチ | 週次 |
-| `persona-vessel` | 人格の器（P5 実装） | 判断が必要なとき |
+| `persona-vessel` | 人格の器（単一憑依） | 非同期・単一視点が必要なとき |
+| `persona-council` | 複数人格の議論 | 場（Sprint Planning, Review, Retro） |
 
 ## Role（2）
 

@@ -17,3 +17,7 @@ docs/philosophy.md を参照
 ## スキル
 
 .cursor/skills/ を参照
+
+## 場
+
+.cursor/places/ を参照（Sprint Planning, Review, Retro のテンプレート）

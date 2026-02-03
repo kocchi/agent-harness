@@ -33,7 +33,20 @@ Sprint Planning を実行し、sprint-goal-contract を作成する。
   - 検証済みの仮説と未検証の仮説
 ```
 
-### 2. Sprint Goal を設定
+### 2. 場の実行（persona-council に委譲）
+
+Sprint Planning は**場**として実行する。[.cursor/places/sprint-planning.md](../../places/sprint-planning.md) に従い、**persona-council** サブエージェントに委譲する。
+
+- メインエージェントは憑依せず、オーケストレーターとして委譲のみ
+- persona-council が複数人格を憑依させ、議論する
+- 議論の過程は記録する（人間の学習用）
+
+委譲できない場合は、軽量フォールバックとして [VISION.md - 場の一覧](../../../docs/VISION.md) のチェックリストを確認:
+- [ ] 検証する価値は明確か？（PdM）
+- [ ] 実現可能か？（TechLead）
+- [ ] 検証方法は測れるか？（QA）
+
+### 3. Sprint Goal を設定
 
 ```yaml
 sprint_goal:
@@ -48,7 +61,7 @@ sprint_goal:
 - Product Goal に貢献する
 - チームがコミットできる
 
-### 3. 検証方法を定義
+### 4. 検証方法を定義
 
 ```yaml
 verification:
@@ -57,7 +70,7 @@ verification:
   timing: "スプリント終了時 | Review 時"
 ```
 
-### 4. スコープを決める
+### 5. スコープを決める
 
 ```yaml
 scope:
@@ -69,7 +82,7 @@ scope:
     - "リスクと対策"
 ```
 
-### 5. sprint-goal-contract を作成
+### 6. sprint-goal-contract を作成
 
 ```yaml
 sprint-goal-contract:
@@ -102,7 +115,7 @@ sprint-goal-contract:
     end: "YYYY-MM-DD"
 ```
 
-### 6. チームの合意を取る
+### 7. チームの合意を取る
 
 - 開発チームがコミットできるか確認
 - スコープが現実的か確認

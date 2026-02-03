@@ -1,0 +1,95 @@
+# Slice Contract for Sprint 7: S6 成果物の呼び出し経路整備
+# Created: 2026-01-30
+
+slice-contract:
+  id: "SLC-20260130-S7-invocation"
+  parent: "SG-20260130-S7"
+  
+  feature:
+    name: "S6 成果物の呼び出し経路整備と場の設計（persona-council）"
+    description: |
+      S6 で作った Role、場の構成定義が自然に参照されるようにする。
+      rules-validator の check_paths を現状に合わせ、動作を検証する。
+      INC-S7-002: メインに憑依させない、サブエージェントに複数人格憑依、議論の過程を残す設計。
+  
+  slices:
+    - id: S1
+      name: "rules-validator の check_paths 修正"
+      description: "monitors, sessions を削除し、roles/, personas/ を追加"
+      size: small
+      classification: known
+      reason: "S5 で monitors, sessions は削除済み"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S2
+      name: "rules-validator の動作検証"
+      description: "rules-validator を実行し、エラーなく完了することを確認"
+      size: small
+      classification: known
+      reason: "修正後の動作確認"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S3
+      name: "sprint-goal スキルに場の構成チェックリストを組み込み"
+      description: "実行手順に「VISION の Sprint Planning チェックリストを確認」を追加"
+      size: small
+      classification: known
+      reason: "S6 で場の構成定義を追加済み。参照するだけで効果あり（S10 検証済み）"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S4
+      name: "slice スキルに success_criteria と Role 参照を追加"
+      description: |
+        - unknown スライスに success_criteria フィールドを追加（S6 横断的学び）
+        - 設計レビュー時に .cursor/roles/ を参照する旨を追加
+      size: medium
+      classification: known
+      reason: "slice スキルの参照セクションを拡張"
+      verify_timing: "実装後"
+      status: completed
+      
+    - id: S5
+      name: "INC-S7-002: persona-council と場のテンプレート"
+      description: |
+        メインに憑依させない、サブエージェントに複数人格憑依、議論の過程を残す設計。
+        persona-council エージェント、場のテンプレート（sprint-planning）、philosophy/VISION 更新。
+      size: medium
+      classification: known
+      reason: "設計議論から実装"
+      verify_timing: "実装後"
+      status: completed
+  
+  order:
+    - slice_id: S1
+      priority: 1
+      rationale: "rules-validator を先に修正"
+    - slice_id: S2
+      priority: 2
+      rationale: "修正後に動作検証"
+    - slice_id: S3
+      priority: 3
+      rationale: "sprint-goal は Sprint Planning で使用"
+    - slice_id: S4
+      priority: 4
+      rationale: "slice は Slice 設計で使用"
+    - slice_id: S5
+      priority: 5
+      rationale: "INC-S7-002: 場の設計"
+  
+  risks:
+    - slice_id: S1
+      risk: "見落としの参照がある"
+      mitigation: "rules-validator 実行で検証"
+    - slice_id: S3
+      risk: "スキルが冗長になる"
+      mitigation: "1-2行の追加に留める"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

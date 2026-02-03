@@ -38,10 +38,12 @@ check_paths:
     - ".cursor/skills/*/SKILL.md"
   rules:
     - ".cursor/rules/*.mdc"
-  monitors:
-    - ".cursor/monitors/*.yaml"
-  sessions:
-    - ".cursor/sessions/*.yaml"
+  roles:
+    - ".cursor/roles/*.md"
+  personas:
+    - ".cursor/personas/custom/"
+  places:
+    - ".cursor/places/*.md"
 ```
 
 ### 3. ルール間の矛盾チェック
@@ -113,7 +115,6 @@ timing: pre_commit
 ## 他のエージェントとの連携
 
 - ~~ssot-validator~~: 非推奨（直接編集運用のため）
-- pre-commit-reviewer: コミット前レビュー
 - systematic-debugger: 問題発生時の要因分割
 
 ## 参照

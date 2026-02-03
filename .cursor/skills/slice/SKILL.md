@@ -58,6 +58,7 @@ classification:
       reason: "技術的に実現可能か不明"
       verify_timing: "最初のマイルストーン"
       experiment: "プロトタイプで検証"
+      success_criteria: "何をもって検証成功とするか（事前に定義）"
 ```
 
 **分類の基準**:
@@ -100,6 +101,7 @@ slice-contract:
       reason: ""
       verify_timing: ""
       experiment: ""  # unknown の場合のみ
+      success_criteria: ""  # unknown の場合: 何をもって検証成功とするか
   
   order:
     - slice_id: S1
@@ -122,8 +124,10 @@ slice-contract:
 ### 5. 合意を取る
 
 - スライスの分類と順序を説明
-- 未知のスライスの検証計画を確認
+- 未知のスライスに success_criteria があるか確認
 - approver の承認を得る
+
+**設計レビュー時**: [.cursor/roles/](../../roles/) の TechLead を参照し、検証可能性の観点で確認する。
 
 ## 出力
 
@@ -150,4 +154,4 @@ slice-contract:
 
 - [VISION.md - 価値分類](../../../docs/VISION.md)
 - [philosophy.md - P7: 契約で価値をつなぐ](../../../docs/philosophy.md)
-- [task-classifier スキル](../task-classifier/SKILL.md)
+- [.cursor/roles/ - 設計レビュー時の視点](../../roles/)

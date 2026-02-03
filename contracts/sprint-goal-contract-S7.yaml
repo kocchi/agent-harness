@@ -1,0 +1,94 @@
+# Sprint Goal Contract for agent-harness Sprint 7
+# Created: 2026-01-30
+
+sprint-goal-contract:
+  id: "SG-20260130-S7"
+  
+  parent: "PG-2026-Q1-agent-harness"
+  
+  goal:
+    statement: "S6 成果物の呼び出し経路を整備し、rules-validator を動作検証する"
+    contribution: |
+      S6 で作った Role/場の構成/persona-vessel が自然に参照されるようにする。
+      rules-validator の動作を検証し、P0 検査を確実に機能させる。
+    measurable: |
+      - sprint-goal スキルに場の構成チェックリストを組み込み
+      - slice スキルに success_criteria、Role 参照を追加
+      - rules-validator の check_paths を現状に合わせて修正・動作検証
+      - INC-S7-002: persona-council、場のテンプレート、メイン憑依なし設計
+  
+  verification:
+    method: "スキル実行時に S6 成果物が参照されることを確認 + rules-validator 実行"
+    success_criteria:
+      - "sprint-goal スキル実行時に VISION の場の構成チェックリストが参照される"
+      - "slice スキルに unknown スライス用 success_criteria が追加されている"
+      - "rules-validator がエラーなく実行できる"
+      - "rules-validator の check_paths が現状のディレクトリ構造と一致している"
+      - "persona-council エージェント、場のテンプレートが存在する"
+    timing: "スプリント終了時"
+  
+  scope:
+    in_scope:
+      - "S6 成果物の呼び出し経路検証（事前調査）"
+      - "sprint-goal スキルに場の構成チェックリストを組み込み"
+      - "slice スキルに success_criteria フィールドを追加（S6 横断的学び）"
+      - "slice スキルに roles/ 参照を追加"
+      - "rules-validator の check_paths 修正（monitors, sessions 削除）"
+      - "rules-validator の動作検証"
+      - "INC-S7-002: persona-council、場のテンプレート、メイン憑依なし設計"
+    out_of_scope:
+      - "persona-vessel の呼び出しトリガー追加（P5 は適用条件で十分と判断）"
+    risks:
+      - risk: "スキルが冗長になる"
+        mitigation: "参照は簡潔に、実行手順に1行追加する程度"
+  
+  # S6 呼び出し経路検証結果
+  s6_invocation_audit:
+    roles:
+      status: "not_invoked"
+      detail: "sprint-goal, slice スキルから roles/ を参照していない"
+      action: "slice スキルに「設計レビュー時は .cursor/roles/ を参照」を追加"
+    place_composition:
+      status: "not_invoked"
+      detail: "sprint-goal スキルに場の構成チェックリストが組み込まれていない"
+      action: "sprint-goal 実行手順に「VISION の Sprint Planning チェックリストを確認」を追加"
+    persona_vessel:
+      status: "weak"
+      detail: "P5 で適用条件はあるが、persona-vessel への明示的参照なし。CLAUDE.md が agents/ を参照するため一覧には含まれる"
+      action: "core-rules に「判断が必要なときは persona-vessel を検討」を追加（オプション）"
+    rules_validator:
+      status: "broken"
+      detail: "check_paths に monitors, sessions を参照。S5 で削除済み"
+      action: "check_paths を修正し、roles/, personas/ を追加"
+  
+  retro_actions:
+    - from: "S5-retro-try"
+      action: "rules-validator を実際に動作検証"
+      status: "in_scope"
+    - from: "S6-cross-cutting"
+      action: "unknown スライスに success_criteria を追加"
+      status: "in_scope"
+  
+  git_workflow:
+    branch_strategy:
+      unit: "Increment"
+      naming: "feat/{increment-id}-{short-description}"
+      example: "feat/INC-S7-001-sprint-goal-place-check"
+    commit_strategy:
+      unit: "論理的な変更単位"
+      rules:
+        - "構造変更、内容修正、追加、削除を混ぜない"
+        - "Increment 完了ごとに即プッシュ"
+  
+  stakeholders:
+    - name: "Yuki"
+      role: "approver"
+      commitment: "このスプリントで S6 成果物の呼び出し経路を整備する"
+      committed_at: "2026-01-30"
+  
+  duration:
+    start: "2026-01-30"
+    end: "2026-02-06"
+  
+  created_at: "2026-01-30"
+  updated_at: "2026-01-30"

@@ -98,13 +98,22 @@ flowchart TB
 | **Sprint Review** | Increment を検証 | insight-contract | QA + 価値重視 |
 | **Sprint Retro** | プロセスを振り返る | insight-contract | 批判的 + 学び重視 |
 
-**必要な構成** = その場で質を高める Role + Persona の組み合わせ。軽量実装: 参照 or チェックリスト（Subagent 呼び出しなし）。
+**場の実行**:
+- メインエージェントは憑依せず、オーケストレーターとして振る舞う
+- 場に入る際は **persona-council** サブエージェントに委譲
+- persona-council は複数人格を憑依させ、議論させる
+- 議論の過程は必ず記録する（人間の学習用）
 
-| 場 | 確認すべき問い（チェックリスト例） |
-|---|----------------------------------|
-| Sprint Planning | 検証する価値は明確か？（PdM）／実現可能か？（TechLead）／検証方法は測れるか？（QA） |
-| Sprint Review | 成果は価値に貢献しているか？ |
-| Sprint Retro | 盲点は何か？学びは何か？ |
+**ペルソナ選定**:
+- 固定リストは使わない。「どのような人物を召喚するか」の**条件**を記載
+- 場の分析結果（focus, risk, context など）を変数として、召喚条件を生成
+- LLM の内部知識を最大限活用
+
+| 場 | テンプレート | 委譲先 |
+|---|-------------|--------|
+| Sprint Planning | .cursor/places/sprint-planning.md | persona-council |
+| Sprint Review | （未定義） | persona-council |
+| Sprint Retro | （未定義） | persona-council |
 
 **設計判断**: 場を 4 つに絞り、必要に応じて追加する（YAGNI）
 
